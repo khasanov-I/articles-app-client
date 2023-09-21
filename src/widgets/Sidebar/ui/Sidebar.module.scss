@@ -1,0 +1,10 @@
+.Sidebar {
+  background-color: var(--primary-color);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.collapsed {
+  width: var(--button-width);
+}

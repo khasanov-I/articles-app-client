@@ -1,0 +1,12 @@
+.navbar {
+  background-color: var(--secondary-color);
+  position: relative;
+  display: flex;
+  height: var(--navbar-height);
+  align-items: center;
+}
+
+.links {
+  position: absolute;
+  right: 30px;
+}
