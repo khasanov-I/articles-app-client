@@ -1,26 +1,26 @@
-import { ReactNode } from 'react';
-import { Link, LinkProps } from 'react-router-dom';
-import { classNames } from 'shared/lib/classNames';
+import {type ReactNode} from 'react';
+import {Link, type LinkProps} from 'react-router-dom';
+import {classNames} from 'shared/lib/classNames';
 import cls from './AppLink.module.scss';
 
 enum LinkTheme {
-  CLEAR = 'clear',
+    CLEAR = 'clear',
 }
 
-interface AppLinkProps extends LinkProps {
-  className?: string;
-  theme?: LinkTheme;
-}
+type AppLinkProps = {
+    className?: string;
+    theme?: LinkTheme;
+} & LinkProps;
 
 export function AppLink(props: AppLinkProps): ReactNode {
-  const { theme = LinkTheme.CLEAR, className, children, ...otherProps } = props;
+    const {theme = LinkTheme.CLEAR, className = '', children, ...otherProps} = props;
 
-  return (
-    <Link
-      className={classNames(cls.AppLink, {}, [className, cls[theme]])}
-      {...otherProps}
-    >
-      {children}
-    </Link>
-  );
+    return (
+        <Link
+            className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+            {...otherProps}
+        >
+            {children}
+        </Link>
+    );
 }

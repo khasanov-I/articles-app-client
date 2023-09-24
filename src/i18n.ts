@@ -1,16 +1,23 @@
 import i18next from 'i18next';
 import I18nextBrowserLanguageDetector from 'i18next-browser-languagedetector';
 import I18NextHttpBackend from 'i18next-http-backend';
-import { initReactI18next } from 'react-i18next';
+import {initReactI18next} from 'react-i18next';
 
 i18next
-  .use(initReactI18next)
-  .use(I18NextHttpBackend)
-  .use(I18nextBrowserLanguageDetector)
-  .init({
-    fallbackLng: 'en',
-    debug: _IS_DEV_,
-    backend: { loadPath: '/public/locales/{{lng}}{{ns}}.json' },
-  });
+    .use(I18NextHttpBackend)
+    .use(I18nextBrowserLanguageDetector)
+    .use(initReactI18next)
+    .init({
+        fallbackLng: 'en',
+        debug: __IS_DEV__,
+        backend: {loadPath: '/locales/{{lng}}/{{ns}}.json'},
+        detection: {
+            // I remove all detectors to make sure it will use the i18nOptions.fallbackLng
+            order: [],
+        },
+    }).catch(err => {
+        console.log(err.message);
+    });
 
 export default i18next;
+

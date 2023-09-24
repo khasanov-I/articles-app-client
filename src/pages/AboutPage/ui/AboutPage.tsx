@@ -1,5 +1,8 @@
-import { ReactNode } from 'react';
+import {type ReactNode} from 'react';
+import {useTranslation} from 'react-i18next';
 
 export default function AboutPage(): ReactNode {
-  return <div>AboutPage</div>;
+    const {t} = useTranslation('about');
+
+    return <div>{t('О сайте')}</div>;
 }

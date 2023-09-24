@@ -1,3 +1,3 @@
-import { pagePaths, routeConfig } from './routeConfig';
+import {pagePaths, routeConfig} from './routeConfig';
 
-export { routeConfig, pagePaths };
+export {routeConfig, pagePaths};

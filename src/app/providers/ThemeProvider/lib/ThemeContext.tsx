@@ -1,15 +1,15 @@
-import { createContext, useState } from 'react';
+import {createContext, useState} from 'react';
 
 export const LOCAL_STORAGE_THEME = 'theme';
 
 export enum Theme {
-  LIGHT = 'light',
-  DARK = 'dark',
+    LIGHT = 'light',
+    DARK = 'dark',
 }
 
-interface ContextProps {
-  theme?: Theme;
-  setTheme?: (e: Theme) => void;
-}
+type ContextType = {
+    theme?: Theme;
+    setTheme?: (theme: Theme) => void;
+};
 
-export const ThemeContext = createContext<ContextProps>({});
+export const ThemeContext = createContext<ContextType>({});
