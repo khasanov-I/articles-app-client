@@ -3,17 +3,16 @@ import {type BuildOptions} from './types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export function buildLoaders(options: BuildOptions): RuleSetRule[] {
-
     const babelLoader = {
-        test: /\.(js|jsx|tsx|ts)$/,
+        test: /\.(js|jsx|tsx)$/,
         exclude: /node_modules/,
         use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-                presets: ['@babel/preset-env']
-            }
-        }
-    }
+                presets: ['@babel/preset-env'],
+            },
+        },
+    };
 
     const svgLoader = {
         test: /\.svg$/,

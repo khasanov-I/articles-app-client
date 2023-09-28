@@ -11,7 +11,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": { "*": ["./src/*"] },
-    "strictNullChecks": true
+    "strictNullChecks": true,
   },
   "ts-node": {
     "compilerOptions": {
