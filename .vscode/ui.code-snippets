@@ -1,0 +1,20 @@
+{
+	"Create ui": {
+		"scope": "",
+		"prefix": "ui",
+		"body": [
+			"type ${1}Props = {"
+			"	className?: string;"
+			"};"
+			""
+			"export function ${1}(props: ${1}Props): ReactNode {"
+			"	const {className = ''} = props;"
+			""
+			"	const {t} = useTranslation();"
+			""
+			"	return <div className={classNames(cls.${1}, {}, [className])}>{t('')}</div>;"
+			"}"
+		],
+		"description": "Create custom component"
+	}
+}

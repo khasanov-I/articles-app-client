@@ -1,4 +1,6 @@
 {
     "Ой": "Uh...oh",
-    "Не найдено": "The page you are looking for may have been moved, deleted or possibly never existed"
+    "Не найдено": "The page you are looking for may have been moved, deleted or possibly never existed",
+    "Ошибка": "An unexpected error has occurred. Try to reload the page or come back later",
+    "Обновить": "Reload Page"
 }

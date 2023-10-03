@@ -35,7 +35,7 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
     };
 
     const cssLoader = {
-        test: /\.s[ac]ss$/i,
+        test: /\.(sa|sc|c)ss$/i,
         use: [
             options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             {

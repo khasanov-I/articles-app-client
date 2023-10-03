@@ -1,0 +1,17 @@
+.PageError {
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+    background-color: black;
+    color: white;
+}
+
+.button {
+    margin: 20px;
+}
