@@ -21,10 +21,10 @@ export function Sidebar(props: SidebarProps): ReactNode {
     }
 
     return (
-        <div
+        <div data-testid='sidebar'
             className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
         >
-            <Button theme={ButtonTheme.IMAGE_BUTTON} onClick={toggle}>
+            <Button data-testid='sidebar-toggle' theme={ButtonTheme.IMAGE_BUTTON} onClick={toggle}>
                 <img src={MenuLogo as string}></img>
             </Button>
             <ThemeSwitcher />

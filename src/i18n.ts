@@ -3,6 +3,7 @@ import I18nextBrowserLanguageDetector from 'i18next-browser-languagedetector';
 import I18NextHttpBackend from 'i18next-http-backend';
 import {initReactI18next} from 'react-i18next';
 
+// eslint-disable-next-line
 i18next
     .use(I18NextHttpBackend)
     .use(I18nextBrowserLanguageDetector)
@@ -15,8 +16,6 @@ i18next
             // I remove all detectors to make sure it will use the i18nOptions.fallbackLng
             order: [],
         },
-    }).catch(err => {
-        console.log(err.message);
     });
 
 export default i18next;

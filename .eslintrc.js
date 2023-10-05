@@ -11,6 +11,12 @@ module.exports = {
 	],
 	overrides: [
 		{
+			files: ['**/src/**/*.test.{ts,tsx}'],
+			rules: {
+				'i18next/no-literal-string': 'off',
+			},
+		},
+		{
 			env: {
 				node: true,
 			},
@@ -35,7 +41,7 @@ module.exports = {
 				'@typescript-eslint/indent': [2, 4],
 				'@typescript-eslint/naming-convention': 'warn',
 				'react/react-in-jsx-scope': 'off',
-				'i18next/no-literal-string': ['error', {markupOnly: true}],
+				'i18next/no-literal-string': ['error', {markupOnly: true, ignoreAttribute: ['data-testid']}],
 			},
 		},
 	],
