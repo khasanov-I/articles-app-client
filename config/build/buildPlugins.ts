@@ -26,8 +26,8 @@ export function buildPlugins({
         ...(isDev ? [new HotModuleReplacementPlugin()] : []),
         ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
         new ForkTsCheckerWebpackPlugin(),
-        new BundleAnalyzerPlugin({
+        ...(isDev ? [new BundleAnalyzerPlugin({
             openAnalyzer: false,
-        }),
+        })] : []),
     ];
 }
