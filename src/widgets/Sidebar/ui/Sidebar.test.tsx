@@ -1,15 +1,18 @@
-import {renderWithTranslations} from 'shared/lib/renderWithTranslations';
-import {Sidebar} from './Sidebar';
+/* eslint-disable @typescript-eslint/no-floating-promises */
+
 import {fireEvent, screen} from '@testing-library/react';
+import {componentRender} from 'shared/lib/componentRender';
+import {Sidebar} from './Sidebar';
+import {describe} from 'node:test';
 
 describe('Sidebar', () => {
     test('with only first param', () => {
-        renderWithTranslations(<Sidebar />);
+        componentRender(<Sidebar />);
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();
     });
 
     test('test toggle', () => {
-        renderWithTranslations(<Sidebar />);
+        componentRender(<Sidebar />);
         const toggleBtn = screen.getByTestId('sidebar-toggle');
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();
         fireEvent.click(toggleBtn);
