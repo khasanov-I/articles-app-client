@@ -4,6 +4,9 @@
     display: flex;
     height: var(--navbar-height);
     align-items: center;
+    border: 0.5px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--border-color);
 }
 
 .links {

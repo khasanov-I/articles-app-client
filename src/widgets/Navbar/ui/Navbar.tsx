@@ -1,18 +1,51 @@
-import {useEffect, type ReactNode} from 'react';
+import {type ReactNode, useState, useCallback} from 'react';
 import cls from './Navbar.module.scss';
-import {pagePaths} from 'shared/lib/routeConfig';
-import {AppLink} from 'shared/ui/AppLink';
 import {useTranslation} from 'react-i18next';
-import {BugButton} from 'app/providers/ErrorBoundary';
+import {Button} from 'shared/ui/Button';
+import {ButtonTheme} from 'shared/ui/Button/Button';
+import {LoginModal} from 'features/AuthByUsername';
+import {useDispatch, useSelector} from 'react-redux';
+import {getUserAuthData, userActions} from 'entities/User';
 
 export function Navbar(): ReactNode {
     const {t} = useTranslation('bars');
+
+    const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+    const dispatch = useDispatch();
+
+    const authData = useSelector(getUserAuthData);
+
+    const onShowModal = useCallback(() => {
+        setIsAuthModalOpen(true);
+    }, []);
+
+    const onCloseModal = useCallback(() => {
+        setIsAuthModalOpen(false);
+    }, []);
+
+    const onLogout = useCallback(() => {
+        onCloseModal();
+        dispatch(userActions.logout());
+    }, [dispatch, onCloseModal]);
+
+    if (authData) {
+        return <div className={cls.navbar}>
+            <div className={cls.links}>
+                <Button theme={ButtonTheme.CLEAR} onClick={onLogout}>
+                    {t('Выход')}
+                </Button>
+            </div>
+        </div>;
+    }
+
     return (
         <div className={cls.navbar}>
-
             <div className={cls.links}>
-                <AppLink to={pagePaths.main}>{t('Главная')}</AppLink>
-                <AppLink to={pagePaths.about}>{t('О сайте')}</AppLink>
+                <Button theme={ButtonTheme.CLEAR} onClick={onShowModal}>
+                    {t('Вход')}
+                </Button>
+                <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModal} />
             </div>
         </div>
     );

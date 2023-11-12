@@ -38,6 +38,9 @@ module.exports = {
 				'@typescript-eslint/naming-convention': 'warn',
 				'react/react-in-jsx-scope': 'off',
 				'i18next/no-literal-string': ['error', {markupOnly: true, ignoreAttribute: ['data-testid']}],
+				'react-hooks/rules-of-hooks': 'error',
+				'react-hooks/exhaustive-deps': 'error',
+				'react/display-name': 'off',
 			},
 		},
 	],
@@ -48,6 +51,7 @@ module.exports = {
 	plugins: [
 		'react',
 		'i18next',
+		'react-hooks',
 	],
 	rules: {
 	},

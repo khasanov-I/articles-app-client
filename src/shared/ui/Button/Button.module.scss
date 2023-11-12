@@ -1,7 +1,11 @@
 .Button {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
 }
 
 .clear {
+    border: none
 }
 
 .image-button {

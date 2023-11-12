@@ -1,4 +1,5 @@
 :root {
+    // шрифты
     --font-family-main: verdana;
     --font-size-m: 16px;
     --font-line-m: 24px;
@@ -6,8 +7,24 @@
     --font-size-l: 24px;
     --font-line-l: 36px;
     --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
-    --sidebar-width: 200px;  
+    
+    // параметры sidebar
+    --sidebar-width: 200px;
+    
+    // параметры navbar
     --navbar-height: 50px;
+
+    // параметры кнопок с изображениями
     --button-width: 50px;
     --button-height: 50px;
+
+    // z - индексы
+    --modal-z-index: 10;
+
+    // цвета
+    --overlay-color: rgb(0 0 0 / 60%);
+
+    // границы
+    --border-width: 1.5px;
+    --border-color: rgb(154 154 154);
 }

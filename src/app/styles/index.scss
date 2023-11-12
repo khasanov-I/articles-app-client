@@ -3,12 +3,14 @@
 @import './themes/light';
 @import './variables/variables';
 
+body {
+    font: var(--font-m);
+}
+
 .app {
     background-color: var(--bg-color);
-    font: var(--font-m);
     color: var(--secondary-color);
     height: 100vh;
-    transition: 0.3s;
 }
 
 .content-page {
@@ -20,8 +22,9 @@
     flex-grow: 1;
 }
 
-img {
-    height: 100%;
-    width: 100%;
+.img {
+    fill: var(--primary-color);
+    height: var(--button-height);
+    width: var(--button-width);
     object-fit: cover;
 }

@@ -1,10 +1,17 @@
 .Sidebar {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     width: var(--sidebar-width);
     display: flex;
     flex-direction: column;
+    border: 0.5px;
+    border-right-style: solid;
+    border-right-color: var(--border-color);
 }
 
 .collapsed {
-    width: var(--button-width);
+    width: calc(var(--button-width) + var(--border-width));
+}
+
+.text {
+    margin-left: 10px;
 }

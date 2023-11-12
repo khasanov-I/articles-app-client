@@ -3,8 +3,9 @@ import {Link, type LinkProps} from 'react-router-dom';
 import {classNames} from 'shared/lib/classNames';
 import cls from './AppLink.module.scss';
 
-enum LinkTheme {
+export enum LinkTheme {
     CLEAR = 'clear',
+    SIDEBAR_LINK = 'sidebar-link',
 }
 
 type AppLinkProps = {

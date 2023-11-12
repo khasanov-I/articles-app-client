@@ -10,7 +10,7 @@ export function ThemeSwitcher(): ReactNode {
 
     return (
         <Button theme={ButtonTheme.IMAGE_BUTTON} onClick={toggleTheme}>
-            <img src={theme === Theme.DARK ? MoonLogo as string : SunLogo as string}></img>
+            {theme === Theme.DARK ? <MoonLogo className='img'/> : <SunLogo className='img'/>}
         </Button>
     );
 }

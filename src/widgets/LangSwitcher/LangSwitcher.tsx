@@ -19,5 +19,5 @@ export function LangSwitcher(props: LangSwitcherProps) {
     };
 
     return <Button className={classNames(cls.LangSwitcher, {}, [className])}
-        theme={ButtonTheme.CLEAR} onClick={toggle}>{t('Язык')}</Button>;
+        theme={ButtonTheme.IMAGE_BUTTON} onClick={toggle}>{t('Язык')}</Button>;
 }
