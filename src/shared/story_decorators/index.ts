@@ -1,5 +1,6 @@
+import {reduxDecorator} from './ReduxDecorator';
 import {routerDecorator} from './RouterDecorator';
 import {styleDecorator} from './StyleDecorator';
 import {themeDecorator} from './ThemeDecorator';
 
-export {styleDecorator, themeDecorator, routerDecorator};
+export {styleDecorator, themeDecorator, routerDecorator, reduxDecorator};

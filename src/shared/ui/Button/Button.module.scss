@@ -5,7 +5,11 @@
 }
 
 .clear {
-    border: none
+    border-style: solid;
+    background: none;
+    border-width: 1px;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .image-button {

@@ -1,7 +1,7 @@
 
 import {type BuildPaths} from '../../config/build/types/config';
 import path from 'path';
-import {type Configuration, type RuleSetRule} from 'webpack';
+import {DefinePlugin, type Configuration, type RuleSetRule} from 'webpack';
 
 export default ({config}: {config: Configuration}) => {
     const paths: BuildPaths = {
@@ -12,7 +12,7 @@ export default ({config}: {config: Configuration}) => {
     };
 
     const cssLoader = {
-        test: /\.(scss|css|sass)$/i,
+        test: /\.s[ac]ss$/i,
         use: [
             'style-loader',
             {
@@ -32,20 +32,23 @@ export default ({config}: {config: Configuration}) => {
     config.resolve?.extensions?.push('.ts', '.tsx');
     config.module?.rules?.push(cssLoader);
 
-    // If (config.module?.rules) {
-    //     config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-    //         if (/svg/.test(rule.test as string)) {
-    //             return {...rule, exclude: /\.svg$/i};
-    //         }
+    if (config.module?.rules) {
+        config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+            // eslint-disable-next-line @typescript-eslint/prefer-includes
+            if (/svg/.test(rule.test as string)) {
+                return {...rule, exclude: /\.svg$/i};
+            }
 
-    //         return rule;
-    //     });
-    // }
+            return rule;
+        });
+    }
 
-    // config.module?.rules?.push(
-    //     {test: /\.svg$/,
-    //         use: ['@svgr/webpack']},
-    // );
+    config.module?.rules?.push(
+        {test: /\.svg$/,
+            use: ['@svgr/webpack']},
+    );
+
+    config.plugins?.push(new DefinePlugin({__IS_DEV__: true}));
 
     return config;
 };

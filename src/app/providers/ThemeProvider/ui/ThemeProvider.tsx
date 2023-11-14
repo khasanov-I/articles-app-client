@@ -1,13 +1,16 @@
 import {type ReactNode, useState} from 'react';
 import {LOCAL_STORAGE_THEME, Theme, ThemeContext} from '../lib/ThemeContext';
 
-export function ThemeProvider({
-    children,
-}: {
-    children: ReactNode;
-}): ReactNode {
-    const [theme, setTheme] = useState(
-        (localStorage.getItem(LOCAL_STORAGE_THEME) as Theme) || Theme.LIGHT,
+type ThemeProviderProps = {
+    children?: ReactNode;
+    initialTheme?: Theme;
+};
+
+export function ThemeProvider(props: ThemeProviderProps): ReactNode {
+    const {children, initialTheme} = props;
+
+    const [theme, setTheme] = useState(initialTheme ? initialTheme
+        : (localStorage.getItem(LOCAL_STORAGE_THEME) as Theme) || Theme.LIGHT,
     );
 
     return (
