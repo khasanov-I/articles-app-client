@@ -1,4 +1,4 @@
-import {type ReactNode, useState, useCallback} from 'react';
+import {type ReactNode, useState, useCallback, memo} from 'react';
 import cls from './Navbar.module.scss';
 import {useTranslation} from 'react-i18next';
 import {Button} from 'shared/ui/Button';
@@ -7,7 +7,7 @@ import {LoginModal} from 'features/AuthByUsername';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUserAuthData, userActions} from 'entities/User';
 
-export function Navbar(): ReactNode {
+export const Navbar = memo((): ReactNode => {
     const {t} = useTranslation('bars');
 
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -49,4 +49,4 @@ export function Navbar(): ReactNode {
             </div>
         </div>
     );
-}
+});

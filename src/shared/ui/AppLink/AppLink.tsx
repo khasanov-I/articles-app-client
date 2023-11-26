@@ -1,11 +1,10 @@
-import {type ReactNode} from 'react';
+import {memo, type ReactNode} from 'react';
 import {Link, type LinkProps} from 'react-router-dom';
 import {classNames} from 'shared/lib/classNames';
 import cls from './AppLink.module.scss';
 
 export enum LinkTheme {
     CLEAR = 'clear',
-    SIDEBAR_LINK = 'sidebar-link',
 }
 
 type AppLinkProps = {
@@ -13,7 +12,7 @@ type AppLinkProps = {
     theme?: LinkTheme;
 } & LinkProps;
 
-export function AppLink(props: AppLinkProps): ReactNode {
+export const AppLink = memo((props: AppLinkProps): ReactNode => {
     const {theme = LinkTheme.CLEAR, className = '', children, ...otherProps} = props;
 
     return (
@@ -24,4 +23,4 @@ export function AppLink(props: AppLinkProps): ReactNode {
             {children}
         </Link>
     );
-}
+});

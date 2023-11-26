@@ -8,7 +8,7 @@ import cls from './LoginForm.module.scss';
 import {loginActions, loginReducer} from 'features/AuthByUsername/model/slice/loginSlice';
 import {Text, TextTheme} from 'shared/ui/Text';
 import {loginByUsername} from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
-import {useAppDispatch} from 'app/providers/StoreProvider';
+import {type AppDispatch} from 'app/providers/StoreProvider';
 import {getLoginUsername} from 'features/AuthByUsername/model/selectors/getLoginState/getLoginUsername';
 import {getLoginPassword} from 'features/AuthByUsername/model/selectors/getLoginState/getLoginPassword';
 import {getLoginError} from 'features/AuthByUsername/model/selectors/getLoginState/getLoginError';
@@ -26,9 +26,7 @@ const LoginForm = memo((props: LoginFormProps) => {
         loginForm: loginReducer,
     };
 
-    const dispatch = useDispatch();
-
-    const appDispatch = useAppDispatch();
+    const dispatch: AppDispatch = useDispatch();
 
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
@@ -46,8 +44,9 @@ const LoginForm = memo((props: LoginFormProps) => {
     }, [dispatch]);
 
     const onLoginClick = useCallback(() => {
-        void appDispatch(loginByUsername({username, password}));
-    }, [appDispatch, username, password]);
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        dispatch(loginByUsername({username, password}));
+    }, [dispatch, username, password]);
 
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>

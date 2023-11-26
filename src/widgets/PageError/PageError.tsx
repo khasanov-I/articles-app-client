@@ -1,4 +1,4 @@
-import {type ReactNode} from 'react';
+import {memo, type ReactNode} from 'react';
 import {useTranslation} from 'react-i18next';
 import cls from './PageError.module.scss';
 import {classNames} from 'shared/lib/classNames';
@@ -8,7 +8,7 @@ type PageErrorProps = {
     className?: string;
 };
 
-export function PageError(props: PageErrorProps): ReactNode {
+export const PageError = memo((props: PageErrorProps): ReactNode => {
     function reloadPage() {
         location.reload();
     }
@@ -21,4 +21,4 @@ export function PageError(props: PageErrorProps): ReactNode {
         {t('Ошибка')}
         <Button className={cls.button} onClick={reloadPage}>{t('Обновить')}</Button>
     </div>;
-}
+});

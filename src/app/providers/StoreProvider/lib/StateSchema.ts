@@ -1,4 +1,5 @@
 import {type Reducer, type AnyAction, type CombinedState, type ReducersMapObject, type EnhancedStore} from '@reduxjs/toolkit';
+import {type ProfileSchema} from 'entities/Profile';
 import {type UserSchema} from 'entities/User';
 import {type LoginSchema} from 'features/AuthByUsername';
 
@@ -6,6 +7,7 @@ export type StateSchema = {
     user: UserSchema;
 
     // Async
+    profile?: ProfileSchema;
     loginForm?: LoginSchema;
 };
 

@@ -1,8 +1,10 @@
-import {configureStore} from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
+import {type createReduxStore} from './store';
+import {configureStore} from '@reduxjs/toolkit';
 
+// Infer the `RootState` and `AppDispatch` types from the store itself
 const store = configureStore({
     reducer: {},
 });
-type AppDispatch = typeof store.dispatch; // You can use this Dispatch type in your thunks
-export const useAppDispatch: () => AppDispatch = useDispatch; // Export a hook that can be reused to resolve types
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;

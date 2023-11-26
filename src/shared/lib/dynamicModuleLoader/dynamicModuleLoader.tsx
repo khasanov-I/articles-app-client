@@ -3,7 +3,7 @@ import {type ReduxStoreWithManager, type StateSchemaKey} from 'app/providers/Sto
 import {useEffect, type ReactNode} from 'react';
 import {useDispatch, useStore} from 'react-redux';
 
-type ReducersList = {
+export type ReducersList = {
     [name in StateSchemaKey]?: Reducer
 };
 

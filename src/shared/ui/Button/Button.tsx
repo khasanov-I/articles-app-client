@@ -1,4 +1,4 @@
-import {type ButtonHTMLAttributes, type ReactNode} from 'react';
+import {memo, type ButtonHTMLAttributes, type ReactNode} from 'react';
 import {classNames} from 'shared/lib/classNames';
 import cls from './Button.module.scss';
 
@@ -12,7 +12,7 @@ type ButtonProps = {
     theme?: ButtonTheme;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export function Button(props: ButtonProps): ReactNode {
+export const Button = memo((props: ButtonProps): ReactNode => {
     const {className = '', theme = ButtonTheme.CLEAR, children, ...otherProps} = props;
 
     return (
@@ -23,4 +23,4 @@ export function Button(props: ButtonProps): ReactNode {
             {children}
         </button>
     );
-}
+});

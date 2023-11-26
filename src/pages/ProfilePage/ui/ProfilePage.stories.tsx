@@ -1,11 +1,11 @@
 import {type Meta, type StoryObj} from '@storybook/react';
-import {AppLink, LinkTheme} from './AppLink';
-import {themeDecorator} from 'shared/story_decorators';
+import {reduxDecorator, themeDecorator} from 'shared/story_decorators';
 import {Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
+import ProfilePage from './ProfilePage';
 
 const meta = {
-    title: 'shared/AppLink',
-    component: AppLink,
+    title: 'pages/ProfilePage',
+    component: ProfilePage,
     parameters: {
         layout: 'centered',
     },
@@ -13,23 +13,20 @@ const meta = {
     argTypes: {
     },
     args: {
-        to: '/',
-        children: 'Link',
     },
-} satisfies Meta<typeof AppLink>;
+} satisfies Meta<typeof ProfilePage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Clear: Story = {
     args: {
-        theme: LinkTheme.CLEAR,
     },
+    decorators: [reduxDecorator({})],
 };
 
 export const ClearLight: Story = {
     args: {
-        theme: LinkTheme.CLEAR,
     },
-    decorators: [themeDecorator(Theme.LIGHT)],
+    decorators: [themeDecorator(Theme.LIGHT), reduxDecorator({})],
 };
