@@ -30,3 +30,23 @@ export const ClearLight: Story = {
     },
     decorators: [themeDecorator(Theme.LIGHT), reduxDecorator({})],
 };
+
+export const ClearWithError: Story = {
+    args: {
+    },
+    decorators: [reduxDecorator({
+        loginForm: {
+            error: 'error',
+        },
+    })],
+};
+
+export const ClearWithLoading: Story = {
+    args: {
+    },
+    decorators: [reduxDecorator({
+        loginForm: {
+            isLoading: true,
+        },
+    })],
+};

@@ -47,3 +47,17 @@ export const ImageButtonLight: Story = {
     },
     decorators: [themeDecorator(Theme.LIGHT)],
 };
+
+export const ClearDisabled: Story = {
+    args: {
+        theme: ButtonTheme.CLEAR,
+        disabled: true,
+    },
+};
+
+export const ImageButtonDisabled: Story = {
+    args: {
+        theme: ButtonTheme.IMAGE_BUTTON,
+        disabled: true,
+    },
+};

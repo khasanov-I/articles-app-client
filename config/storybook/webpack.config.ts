@@ -33,8 +33,9 @@ export default ({config}: {config: Configuration}) => {
     config.module?.rules?.push(cssLoader);
 
     if (config.module?.rules) {
+        // @ts-expect-error next-line
         config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-            // eslint-disable-next-line @typescript-eslint/prefer-includes
+        // eslint-disable-next-line @typescript-eslint/prefer-includes
             if (/svg/.test(rule.test as string)) {
                 return {...rule, exclude: /\.svg$/i};
             }
@@ -48,7 +49,10 @@ export default ({config}: {config: Configuration}) => {
             use: ['@svgr/webpack']},
     );
 
-    config.plugins?.push(new DefinePlugin({__IS_DEV__: true}));
+    config.plugins?.push(new DefinePlugin({
+        __IS_DEV__: JSON.stringify(true),
+        __API__: JSON.stringify(''),
+    }));
 
     return config;
 };

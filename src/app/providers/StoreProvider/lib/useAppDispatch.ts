@@ -1,10 +1,9 @@
 import {useDispatch} from 'react-redux';
 import {type createReduxStore} from './store';
-import {configureStore} from '@reduxjs/toolkit';
+import {type ThunkDispatch, type AnyAction, type CombinedState, type Dispatch} from '@reduxjs/toolkit';
+import {type StateSchema, type ThunkExtraArg} from './StateSchema';
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-const store = configureStore({
-    reducer: {},
-});
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;
+type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+
+export const useAppDispatch = () =>
+    useDispatch<ThunkDispatch<CombinedState<StateSchema>, ThunkExtraArg, AnyAction> & Dispatch>();

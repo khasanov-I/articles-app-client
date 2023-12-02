@@ -1,6 +1,6 @@
-import {type StateSchema} from './lib/StateSchema';
-import {type AppDispatch} from './lib/useAppDispatch';
+import {type StateSchema, type ThunkExtraArg} from './lib/StateSchema';
+import {useAppDispatch} from './lib/useAppDispatch';
 import {StoreProvider} from './ui/StoreProvider';
-
+import {type ThunkConfig} from './lib/StateSchema';
 export type {StateSchema};
-export {StoreProvider, type AppDispatch};
+export {StoreProvider, useAppDispatch, type ThunkExtraArg, type ThunkConfig};

@@ -14,6 +14,7 @@ import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 export function buildPlugins({
     paths,
     isDev,
+    apiUrl,
 }: BuildOptions): WebpackPluginInstance[] {
     return [
         new ProgressPlugin(),
@@ -22,7 +23,9 @@ export function buildPlugins({
             filename: 'css/[name].[contenthash].css',
             chunkFilename: 'css/[name].[contenthash].css',
         })]),
-        new DefinePlugin({__IS_DEV__: JSON.stringify(isDev)}),
+        new DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev),
+            __API__: JSON.stringify(apiUrl)}),
         ...(isDev ? [new HotModuleReplacementPlugin()] : []),
         ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
         new ForkTsCheckerWebpackPlugin(),

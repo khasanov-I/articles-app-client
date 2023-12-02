@@ -2,6 +2,7 @@
     background: var(--secondary-color);
     color: var(--primary-color);
     border: none;
+    cursor: pointer;
 }
 
 .clear {
@@ -15,4 +16,9 @@
 .image-button {
     width: var(--button-width);
     height: var(--button-height);
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }

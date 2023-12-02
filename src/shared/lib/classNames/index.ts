@@ -1,3 +1,3 @@
-import {classNames} from './classNames';
+import {classNames, type Mods} from './classNames';
 
-export {classNames};
+export {classNames, type Mods};

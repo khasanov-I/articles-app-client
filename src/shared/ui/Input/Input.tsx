@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import React, {type InputHTMLAttributes, memo} from 'react';
 import {classNames} from 'shared/lib/classNames';
 import cls from './Input.module.scss';

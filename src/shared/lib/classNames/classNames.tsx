@@ -1,6 +1,8 @@
+export type Mods = Record<string, boolean | undefined>;
+
 export function classNames(
     main: string,
-    mods: Record<string, boolean>,
+    mods: Mods,
     additional: string[],
 ): string {
     return [

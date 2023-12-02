@@ -1,4 +1,3 @@
-import {useMemo} from 'react';
 import {AboutLogo, HomeLogo, UserLogo} from 'shared/assets/icons';
 import {pagePaths} from 'shared/lib/routeConfig';
 

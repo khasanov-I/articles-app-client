@@ -1,4 +1,4 @@
-import {classNames} from 'shared/lib/classNames';
+import {type Mods, classNames} from 'shared/lib/classNames';
 import cls from './Modal.module.scss';
 import {useCallback, type ReactNode, useEffect, useState} from 'react';
 import {Portal} from '../Portal';
@@ -7,8 +7,8 @@ import {useTheme} from 'app/providers/ThemeProvider';
 type ModalProps = {
     className?: string;
     children?: ReactNode;
-    isOpen: boolean;
-    onClose: () => void;
+    isOpen?: boolean;
+    onClose?: () => void;
     lazy?: boolean;
 };
 
@@ -41,7 +41,7 @@ export function Modal(props: ModalProps): ReactNode {
         };
     }, [isOpen, onKeyDown]);
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [cls.opened]: isOpen,
     };
 
