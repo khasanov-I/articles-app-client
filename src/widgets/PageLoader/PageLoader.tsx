@@ -1,5 +1,5 @@
 import {memo, type ReactNode} from 'react';
-import {Loader} from 'shared/ui/Loader';
+import {Loader} from 'shared/ui/Loader/Loader';
 import cls from './PageLoader.module.scss';
 import {classNames} from 'shared/lib/classNames';
 

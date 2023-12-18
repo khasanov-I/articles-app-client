@@ -1,7 +1,7 @@
 import {type ReactNode, useState, useCallback, memo} from 'react';
 import cls from './Navbar.module.scss';
 import {useTranslation} from 'react-i18next';
-import {Button} from 'shared/ui/Button';
+import {Button} from 'shared/ui/Button/Button';
 import {ButtonTheme} from 'shared/ui/Button/Button';
 import {LoginModal} from 'features/AuthByUsername';
 import {useDispatch, useSelector} from 'react-redux';

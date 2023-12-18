@@ -1,7 +1,7 @@
 import {type ReactNode, useState, useMemo, memo} from 'react';
 import {classNames} from 'shared/lib/classNames';
 import cls from './Sidebar.module.scss';
-import {Button} from 'shared/ui/Button';
+import {Button} from 'shared/ui/Button/Button';
 import {MenuLogo} from 'shared/assets/icons';
 import {ButtonTheme} from 'shared/ui/Button/Button';
 import {ThemeSwitcher} from 'widgets/ThemeSwitcher/ui/ThemeSwitcher';
@@ -32,13 +32,14 @@ export const Sidebar = memo((props: SidebarProps): ReactNode => {
         <div data-testid='sidebar'
             className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
         >
-
             <Button data-testid='sidebar-toggle' theme={ButtonTheme.IMAGE_BUTTON} onClick={toggle}>
                 <MenuLogo className='img'/>
             </Button>
             {itemsList}
-            <ThemeSwitcher />
-            <LangSwitcher />
+            <div className={cls.switchers}>
+                <ThemeSwitcher />
+                <LangSwitcher />
+            </div>
         </div>
     );
 });

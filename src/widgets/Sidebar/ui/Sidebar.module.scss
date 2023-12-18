@@ -1,5 +1,6 @@
 .Sidebar {
     background-color: var(--secondary-color);
+    transition: width 0.2s, var(--transition-color);
     width: var(--sidebar-width);
     display: flex;
     flex-direction: column;
@@ -12,6 +13,7 @@
     width: calc(var(--button-width) + var(--border-width));
 }
 
-.text {
-    margin-left: 10px;
+.switchers {
+    position: absolute;
+    bottom: 5px;
 }

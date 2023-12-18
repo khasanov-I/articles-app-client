@@ -1,0 +1,29 @@
+.item {
+    margin-top: 20px;
+}
+
+.item:hover {
+    transition: box-shadow 0.4s;
+    box-shadow: 0 2px 0;
+}
+
+.text {
+    opacity: 1;
+    text-wrap: nowrap;
+    margin-left: 10px;
+    animation: visible 0.4s; 
+}
+
+.collapsed {
+    opacity: 0;
+}
+
+@keyframes visible {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

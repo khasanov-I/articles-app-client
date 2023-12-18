@@ -3,5 +3,19 @@
 }
 
 .input {
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
     width: 100%;
+    outline: none;
+    transition: border 0.4s ease-in-out;
+}
+
+.readonly {
+    opacity: 0.7;
+}
+
+.input:focus {
+    border-color: rgb(0 242 255)
 }

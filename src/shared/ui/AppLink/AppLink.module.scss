@@ -2,16 +2,11 @@
     font-weight: bolder;
     text-decoration: none;
     color: var(--primary-color);
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
     align-items: center;
 }
 
 .clear {
-    display: inline;
-    padding: 5px;
-    border-style: solid;
-    border-radius: 15px;
-    border-color: var(--border-color);
-    border-width: var(--border-width);
+
 }

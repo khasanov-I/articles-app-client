@@ -34,4 +34,5 @@ export type ThunkExtraArg = {
 export type ThunkConfig<T> = {
     rejectValue: T;
     extra: ThunkExtraArg;
+    state: StateSchema;
 };

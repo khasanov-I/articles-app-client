@@ -11,6 +11,10 @@ enum Pages {
     NOT_FOUND = 'not-found',
 }
 
+type AppRouterProps = RouteProps & {
+    authOnly?: boolean;
+};
+
 export const pagePaths: Record<Pages, string> = {
     [Pages.MAIN]: '/',
     [Pages.ABOUT]: '/about',
@@ -18,7 +22,7 @@ export const pagePaths: Record<Pages, string> = {
     [Pages.NOT_FOUND]: '*',
 };
 
-export const routeConfig: Record<Pages, RouteProps> = {
+export const routeConfig: Record<Pages, AppRouterProps> = {
     [Pages.MAIN]: {
         path: pagePaths.main,
         element: <MainPageAsync />,
@@ -30,6 +34,7 @@ export const routeConfig: Record<Pages, RouteProps> = {
     [Pages.PROFILE]: {
         path: pagePaths.profile,
         element: <ProfilePageAsync />,
+        authOnly: true,
     },
     [Pages.NOT_FOUND]: {
         path: pagePaths['not-found'],

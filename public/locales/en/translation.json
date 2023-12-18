@@ -6,5 +6,7 @@
     "Введите username": "Enter username",
     "Введите password": "Enter password",
     "Войти": "Login",
-    "Неверный логин или пароль": "Incorrect username or password"
+    "Неверный логин или пароль": "Incorrect username or password",
+    "Укажите валюту": "Choose currency",
+    "Укажите страну": "Choose your country"
 }

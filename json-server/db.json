@@ -1,19 +1,19 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "username": "admin",
-            "password": "123"
-        }
-    ],
-    "profile": {
-        "first": "Ilshat",
-        "lastname": "Khasanov",
-        "age": 21,
-        "currency": "RUB",
-        "country": "Russia",
-        "city": "Ufa",
-        "username": "admin",
-        "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123"
     }
+  ],
+  "profile": {
+    "avatar": "https://s.yimg.com/ny/api/res/1.2/mEOjhyfQix78uhN1FmNbEA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTY5Mg--/https://media.zenfs.com/en/one37pm_956/00b2892be88a8587677cfe92e04c4dc7",
+    "username": "admin",
+    "city": "Ufa",
+    "age": 21,
+    "lastname": "Khasanov",
+    "firstname": "Ilshat",
+    "currency": "RUB",
+    "country": "Russia"
+  }
 }

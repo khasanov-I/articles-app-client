@@ -1,4 +1,4 @@
-import {type ReactNode, Suspense, Component, FC, useEffect} from 'react';
+import {type ReactNode, Suspense, useEffect} from 'react';
 import {AppRouter} from './providers/AppRouter';
 import {Navbar} from 'widgets/Navbar';
 import {useTheme} from './providers/ThemeProvider';

@@ -5,6 +5,7 @@ import cls from './Button.module.scss';
 export enum ButtonTheme {
     CLEAR = 'clear',
     IMAGE_BUTTON = 'image-button',
+    RED = 'red-button',
 }
 
 type ButtonProps = {
