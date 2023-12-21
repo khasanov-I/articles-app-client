@@ -1,5 +1,5 @@
 import {useAppDispatch} from 'app/providers/StoreProvider';
-import {ProfileCard, fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadOnly, profileActions, profileReducer} from 'entities/Profile';
+import {ProfileCard, fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadOnly, getProfileValidateErrors, profileActions, profileReducer} from 'entities/Profile';
 import {useEffect, type ReactNode, useCallback} from 'react';
 import {useSelector} from 'react-redux';
 import {classNames} from 'shared/lib/classNames';
@@ -7,6 +7,9 @@ import {DynamicModuleLoader, type ReducersList} from 'shared/lib/dynamicModuleLo
 import {ProfilePageHeader} from './ProfilePageHeader/ProfilePageHeader';
 import {Currency} from 'entities/Currency';
 import {Country} from 'entities/Country';
+import {Text, TextTheme} from 'shared/ui/Text/Text';
+import {ValidateProfileError} from 'entities/Profile/model/types/profile';
+import {useTranslation} from 'react-i18next';
 
 type ProfilePageProps = {
     className?: string;
@@ -19,6 +22,8 @@ const reducers: ReducersList = {
 function ProfilePage(props: ProfilePageProps): ReactNode {
     const {className = ''} = props;
 
+    const {t} = useTranslation('profile');
+
     const dispatch = useAppDispatch();
 
     const formData = useSelector(getProfileForm);
@@ -28,6 +33,16 @@ function ProfilePage(props: ProfilePageProps): ReactNode {
     const isLoading = useSelector(getProfileIsLoading);
 
     const readOnly = useSelector(getProfileReadOnly);
+
+    const validateErrors = useSelector(getProfileValidateErrors);
+
+    const validateErrorTranslates = {
+        [ValidateProfileError.SERVER_ERROR]: 'Серверная ошибка при сохранении',
+        [ValidateProfileError.INCORRECT_COUNTRY]: 'Некорректный регион',
+        [ValidateProfileError.NO_DATA]: 'Данные не указаны',
+        [ValidateProfileError.INCORRECT_USER_DATA]: 'Имя и фамилия обязательны',
+        [ValidateProfileError.INCORRECT_AGE]: 'Некорректный возраст',
+    };
 
     useEffect(() => {
         void dispatch(fetchProfileData());
@@ -42,7 +57,7 @@ function ProfilePage(props: ProfilePageProps): ReactNode {
     }, [dispatch]);
 
     const onChangeAge = useCallback((value: string) => {
-        dispatch(profileActions.updateProfile({age: Number(value || 0)}));
+        dispatch(profileActions.updateProfile({age: Number(value || '')}));
     }, [dispatch]);
 
     const onChangeCity = useCallback((value: string) => {
@@ -67,6 +82,9 @@ function ProfilePage(props: ProfilePageProps): ReactNode {
 
     return <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
         <ProfilePageHeader />
+        {validateErrors?.length && validateErrors.map(err => (
+            <Text theme={TextTheme.ERROR} text={t(validateErrorTranslates[err])} key={err}/>
+        ))}
         <div className={classNames('', {}, [className])}>
             <ProfileCard
                 data={formData}
