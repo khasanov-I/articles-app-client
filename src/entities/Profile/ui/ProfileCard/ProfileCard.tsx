@@ -58,7 +58,7 @@ export function ProfileCard(props: ProfileCardProps): ReactNode {
     return <div className={classNames(cls.ProfileCard, {}, [className])}>
         <div className={cls.data}>
             <div className={cls.avatar}>
-                <Avatar src={data?.avatar} alt={t('Загрузка')} size={300}/>
+                <Avatar src={data?.avatar} alt={t('Загрузка')} size={150}/>
             </div>
             <Input
                 className={cls.input}

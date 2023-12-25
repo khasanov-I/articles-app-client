@@ -26,5 +26,5 @@ export type ProfileSchema = {
     form?: Profile;
     error?: string;
     readonly: boolean;
-    validateError?: ValidateProfileError[];
+    validateErrors?: ValidateProfileError[];
 };

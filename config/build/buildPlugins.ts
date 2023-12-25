@@ -15,6 +15,7 @@ export function buildPlugins({
     paths,
     isDev,
     apiUrl,
+    project,
 }: BuildOptions): WebpackPluginInstance[] {
     return [
         new ProgressPlugin(),
@@ -25,7 +26,8 @@ export function buildPlugins({
         })]),
         new DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
-            __API__: JSON.stringify(apiUrl)}),
+            __API__: JSON.stringify(apiUrl),
+            __PROJECT__: JSON.stringify(project)}),
         ...(isDev ? [new HotModuleReplacementPlugin()] : []),
         ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
         new ForkTsCheckerWebpackPlugin(),
