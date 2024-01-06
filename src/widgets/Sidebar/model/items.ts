@@ -1,4 +1,4 @@
-import {AboutLogo, HomeLogo, UserLogo} from 'shared/assets/icons';
+import {AboutLogo, ArticleLogo, HomeLogo, UserLogo} from 'shared/assets/icons';
 import {pagePaths} from 'shared/lib/routeConfig';
 
 export type SidebarItemType = {
@@ -23,6 +23,12 @@ export const SidebarItemsList: SidebarItemType[] = [
         path: pagePaths.profile,
         icon: UserLogo,
         text: 'Моя страница',
+        authOnly: true,
+    },
+    {
+        path: pagePaths.articles,
+        icon: ArticleLogo,
+        text: 'Статьи',
         authOnly: true,
     },
 ];

@@ -1,11 +1,11 @@
 import {memo, type ReactNode} from 'react';
 import {useTranslation} from 'react-i18next';
+import {useSelector} from 'react-redux';
 import {AppLink} from 'shared/ui/AppLink/AppLink';
 import {Text} from 'shared/ui/Text/Text';
 import {type SidebarItemType} from '../model/items';
 import cls from './SidebarItem.module.scss';
 import {classNames} from 'shared/lib/classNames';
-import {useSelector} from 'react-redux';
 import {getUserAuthData} from 'entities/User';
 
 type SidebarItemProps = {

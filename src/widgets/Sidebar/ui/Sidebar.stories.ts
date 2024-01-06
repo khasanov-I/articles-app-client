@@ -1,7 +1,7 @@
 
 import type {Meta, StoryObj} from '@storybook/react';
 import {Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
-import {themeDecorator} from 'shared/story_decorators';
+import {reduxDecorator, themeDecorator} from 'shared/story_decorators';
 import {Sidebar} from './Sidebar';
 
 const meta = {
@@ -14,8 +14,8 @@ const meta = {
     argTypes: {
     },
     args: {
-
     },
+    decorators: [reduxDecorator({})],
 } satisfies Meta<typeof Sidebar>;
 
 export default meta;

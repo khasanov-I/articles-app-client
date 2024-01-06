@@ -3,11 +3,13 @@
 		"scope": "",
 		"prefix": "ui",
 		"body": [
+			"import cls from './${1}.module.scss'"
+			""
 			"type ${1}Props = {"
 			"	className?: string;"
 			"};"
 			""
-			"export function ${1}(props: ${1}Props): ReactNode {"
+			"export const ${1} = (props: ${1}Props): ReactNode => {"
 			"	const {className = ''} = props;"
 			""
 			"	const {t} = useTranslation();"

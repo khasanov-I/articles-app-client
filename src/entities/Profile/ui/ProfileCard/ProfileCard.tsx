@@ -9,6 +9,8 @@ import {Loader} from 'shared/ui/Loader/Loader';
 import {Avatar} from 'shared/ui/Avatar/Avatar';
 import {type Currency, CurrencySelect} from 'entities/Currency';
 import {CountrySelect, type Country} from 'entities/Country';
+import {useSelector} from 'react-redux';
+import {getUserAuthData} from 'entities/User';
 
 type ProfileCardProps = {
     className?: string;

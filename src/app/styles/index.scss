@@ -29,3 +29,10 @@ body {
     width: var(--button-width);
     object-fit: cover;
 }
+
+.page-wrapper {
+    padding: 20px;
+    flex-grow: 1;
+    height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+}
