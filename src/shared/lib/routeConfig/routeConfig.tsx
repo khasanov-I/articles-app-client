@@ -22,7 +22,7 @@ export type AppRouterProps = RouteProps & {
 export const pagePaths: Record<Pages, string> = {
     [Pages.MAIN]: '/',
     [Pages.ABOUT]: '/about',
-    [Pages.PROFILE]: '/profile',
+    [Pages.PROFILE]: '/profile/',
     [Pages.ARTICLES]: '/articles',
     [Pages.ARTICLE_DETAILS]: '/articles/',
     [Pages.NOT_FOUND]: '*',
@@ -38,7 +38,7 @@ export const routeConfig: Record<Pages, AppRouterProps> = {
         element: <AboutPageAsync />,
     },
     [Pages.PROFILE]: {
-        path: pagePaths.profile,
+        path: `${pagePaths.profile}:id`,
         element: <ProfilePageAsync />,
         authOnly: true,
     },

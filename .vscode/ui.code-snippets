@@ -3,19 +3,20 @@
 		"scope": "",
 		"prefix": "ui",
 		"body": [
+			"import {memo, type ReactNode} from 'react'"
 			"import cls from './${1}.module.scss'"
 			""
 			"type ${1}Props = {"
 			"	className?: string;"
 			"};"
 			""
-			"export const ${1} = (props: ${1}Props): ReactNode => {"
+			"export const ${1} = memo((props: ${1}Props): ReactNode => {"
 			"	const {className = ''} = props;"
 			""
 			"	const {t} = useTranslation();"
 			""
 			"	return <div className={classNames(cls.${1}, {}, [className])}>{t('')}</div>;"
-			"}"
+			"})"
 		],
 		"description": "Create custom component"
 	}

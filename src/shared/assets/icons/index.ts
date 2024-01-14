@@ -5,4 +5,7 @@ import HomeLogo from './home.svg';
 import AboutLogo from './about.svg';
 import UserLogo from './user.svg';
 import ArticleLogo from './article.svg';
-export {MenuLogo, MoonLogo, SunLogo, HomeLogo, AboutLogo, UserLogo, ArticleLogo};
+import EyeLogo from './eye.svg';
+import CalendarLogo from './calendar.svg';
+import GridLogo from './grid.svg';
+export {GridLogo, EyeLogo, CalendarLogo, MenuLogo, MoonLogo, SunLogo, HomeLogo, AboutLogo, UserLogo, ArticleLogo};

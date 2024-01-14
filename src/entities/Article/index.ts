@@ -1,9 +1,8 @@
-import {type ArticleBlock, type Article} from './model/types/article';
+import {type Article, ArticleView} from './model/types/article';
 import {ArticleDetails} from './ui/ArticleDetails/ArticleDetails';
 import {type ArticleDetailsSchema} from './model/types/articleDetailsSchema';
-import {articleDetailsActions, articleDetailsReducer} from './model/slice/articleDetailsSlice';
-import {getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading} from './model/selectors/articleDetails';
+import {ArticleList} from './ui/ArticleList/ArticleList';
+import {ArticleViewSelector} from './ui/ArticleViewSelector/ArticleViewSelector';
 
-export type {ArticleBlock, Article, ArticleDetailsSchema};
-export {ArticleDetails, articleDetailsActions, articleDetailsReducer,
-    getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading};
+export type {Article, ArticleDetailsSchema};
+export {ArticleViewSelector, ArticleDetails, ArticleView, ArticleList};

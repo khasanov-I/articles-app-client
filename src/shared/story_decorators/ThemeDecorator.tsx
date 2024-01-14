@@ -4,7 +4,7 @@ import {type Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
 
 export const themeDecorator = ((theme: Theme) => (Comp: StoryFn) =>
     <ThemeProvider initialTheme={theme}>
-        <div className={`app ${theme}`} style={{width: '1366px'}}>
+        <div className={`app ${theme}`} style={{width: '1366px', height: '100%'}}>
             <Comp />
-        </div>;
+        </div>
     </ThemeProvider>);

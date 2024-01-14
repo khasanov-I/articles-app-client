@@ -1,23 +1,25 @@
-enum ArticleBlockType {
+import {type User} from 'entities/User';
+
+export enum ArticleBlockType {
     TEXT = 'TEXT',
     CODE = 'CODE',
     IMAGE = 'IMAGE',
 }
 
-type ArticleImageBlock = {
+export type ArticleImageBlock = {
     id: string;
     type: ArticleBlockType.IMAGE;
     src: string;
     title: string;
 };
 
-type ArticleCodeBlock = {
+export type ArticleCodeBlock = {
     id: string;
     type: ArticleBlockType.CODE;
     code: string;
 };
 
-type ArticleTextBlock = {
+export type ArticleTextBlock = {
     id: string;
     type: ArticleBlockType.TEXT;
     title: string;
@@ -26,10 +28,15 @@ type ArticleTextBlock = {
 
 export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock;
 
-enum ArticleType {
+export enum ArticleType {
     IT = 'IT',
     SCIENCE = 'SCIENCE',
     ECONOMICS = 'ECONOMICS',
+}
+
+export enum ArticleView {
+    BIG = 'BIG',
+    SMALL = 'SMALL',
 }
 
 export type Article = {
@@ -39,6 +46,7 @@ export type Article = {
     img: string;
     views: number;
     createdAt: string;
+    user: User;
     type: ArticleType[];
     blocks: ArticleBlock[];
 };

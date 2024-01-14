@@ -6,8 +6,9 @@ import {MenuLogo} from 'shared/assets/icons';
 import {ButtonTheme} from 'shared/ui/Button/Button';
 import {ThemeSwitcher} from 'widgets/ThemeSwitcher/ui/ThemeSwitcher';
 import {LangSwitcher} from 'widgets/LangSwitcher/LangSwitcher';
-import {SidebarItemsList} from '../model/items';
 import {SidebarItem} from './SidebarItem';
+import {useSelector} from 'react-redux';
+import {getSidebarItems} from '../model/selectors/getSidebarItems';
 
 type SidebarProps = {
     className?: string;
@@ -16,13 +17,15 @@ type SidebarProps = {
 export const Sidebar = memo((props: SidebarProps): ReactNode => {
     const {className = ''} = props;
 
+    const SidebarItemsList = useSelector(getSidebarItems);
+
     const [collapsed, setCollapsed] = useState(false);
 
     const itemsList = useMemo(() => SidebarItemsList.map(item =>
         <SidebarItem
             item={item}
             key={item.path}
-            collapsed={collapsed}/>), [collapsed]);
+            collapsed={collapsed}/>), [collapsed, SidebarItemsList]);
 
     function toggle() {
         setCollapsed(prev => !prev);

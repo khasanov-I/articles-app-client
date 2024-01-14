@@ -33,7 +33,7 @@ module.exports = {
 				'*.tsx',
 			],
 			rules: {
-				indent: [2, 4],
+				indent: ['error', 4, {SwitchCase: 1}],
 				'@typescript-eslint/indent': [2, 4],
 				'@typescript-eslint/naming-convention': 'warn',
 				'react/react-in-jsx-scope': 'off',
@@ -41,6 +41,7 @@ module.exports = {
 				'react-hooks/rules-of-hooks': 'error',
 				'react-hooks/exhaustive-deps': 'error',
 				'react/display-name': 'off',
+				'no-unsafe-optional-chaining': 'off',
 			},
 		},
 	],

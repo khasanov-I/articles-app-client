@@ -8,5 +8,9 @@
     "Войти": "Login",
     "Неверный логин или пароль": "Incorrect username or password",
     "Укажите валюту": "Choose currency",
-    "Укажите страну": "Choose your country"
+    "Укажите страну": "Choose your country",
+    "Комментарии отсутствуют": "There are no comments",
+    "Введите текст комментария": "Enter the comment text",
+    "Отправить": "Send",
+    "Читать далее": "Read more"
 }

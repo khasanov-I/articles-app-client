@@ -1,11 +1,11 @@
 import {type Meta, type StoryObj} from '@storybook/react';
-import {ArticleImageBlockComponent} from './ArticleImageBlockComponent';
+import {Code} from './Code';
 import {themeDecorator} from 'shared/story_decorators';
 import {Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
 
 const meta = {
-    title: 'entities/ArticleImageBlockComponent',
-    component: ArticleImageBlockComponent,
+    title: 'shared/Code',
+    component: Code,
     parameters: {
         layout: 'centered',
     },
@@ -13,8 +13,13 @@ const meta = {
     argTypes: {
     },
     args: {
+        text: 'export const ClearLight: Story = {\n'
+        + '   args: {\n'
+        + '    },\n'
+        + '    decorators: [themeDecorator(Theme.LIGHT)],\n'
+        + '};',
     },
-} satisfies Meta<typeof ArticleImageBlockComponent>;
+} satisfies Meta<typeof Code>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 

@@ -1,6 +1,6 @@
 import {useAppDispatch} from 'app/providers/StoreProvider';
 import {ProfileCard, fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadOnly, getProfileValidateErrors, profileActions, profileReducer} from 'entities/Profile';
-import {useEffect, type ReactNode, useCallback} from 'react';
+import {type ReactNode, useCallback} from 'react';
 import {useSelector} from 'react-redux';
 import {classNames} from 'shared/lib/classNames';
 import {DynamicModuleLoader, type ReducersList} from 'shared/lib/dynamicModuleLoader/dynamicModuleLoader';
@@ -10,6 +10,8 @@ import {Country} from 'entities/Country';
 import {Text, TextTheme} from 'shared/ui/Text/Text';
 import {ValidateProfileError} from 'entities/Profile/model/types/profile';
 import {useTranslation} from 'react-i18next';
+import {useInitialEffect} from 'shared/lib/hooks/useInitialEffect';
+import {useParams} from 'react-router-dom';
 
 type ProfilePageProps = {
     className?: string;
@@ -36,6 +38,8 @@ function ProfilePage(props: ProfilePageProps): ReactNode {
 
     const validateErrors = useSelector(getProfileValidateErrors);
 
+    const {id} = useParams<{id: string}>();
+
     const validateErrorTranslates = {
         [ValidateProfileError.SERVER_ERROR]: 'Серверная ошибка при сохранении',
         [ValidateProfileError.INCORRECT_COUNTRY]: 'Некорректный регион',
@@ -44,11 +48,11 @@ function ProfilePage(props: ProfilePageProps): ReactNode {
         [ValidateProfileError.INCORRECT_AGE]: 'Некорректный возраст',
     };
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            void dispatch(fetchProfileData());
+    useInitialEffect(() => {
+        if (id) {
+            void dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
 
     const onChangeFirstname = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({firstname: value || ''}));
