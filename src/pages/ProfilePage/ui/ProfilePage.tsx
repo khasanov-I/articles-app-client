@@ -12,6 +12,7 @@ import {ValidateProfileError} from 'entities/Profile/model/types/profile';
 import {useTranslation} from 'react-i18next';
 import {useInitialEffect} from 'shared/lib/hooks/useInitialEffect';
 import {useParams} from 'react-router-dom';
+import {Page} from 'widgets/Page/ui/Page';
 
 type ProfilePageProps = {
     className?: string;
@@ -87,11 +88,11 @@ function ProfilePage(props: ProfilePageProps): ReactNode {
     }, [dispatch]);
 
     return <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-        <ProfilePageHeader />
-        {validateErrors?.length && validateErrors.map(err => (
-            <Text theme={TextTheme.ERROR} text={t(validateErrorTranslates[err])} key={err}/>
-        ))}
-        <div className={classNames('', {}, [className])}>
+        <Page className={classNames('', {}, [className])}>
+            <ProfilePageHeader />
+            {validateErrors?.length && validateErrors.map(err => (
+                <Text theme={TextTheme.ERROR} text={t(validateErrorTranslates[err])} key={err}/>
+            ))}
             <ProfileCard
                 data={formData}
                 error={error}
@@ -105,7 +106,7 @@ function ProfilePage(props: ProfilePageProps): ReactNode {
                 onChangeCurrency={onChangeCurrency}
                 onChangeCountry={onChangeCountry}
                 readOnly={readOnly}/>
-        </div>
+        </Page>
     </DynamicModuleLoader>;
 }
 

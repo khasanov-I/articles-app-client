@@ -17,6 +17,7 @@ import {AddCommentFormAsync} from 'features/AddComment';
 import {addCommentForArticle} from 'pages/ArticlesDetailsPage/model/services/addCommentForArticle';
 import {pagePaths} from 'shared/lib/routeConfig';
 import {Button} from 'shared/ui/Button/Button';
+import {Page} from 'widgets/Page/ui/Page';
 
 type ArticleDetailsPageProps = {
     className?: string;
@@ -60,7 +61,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps): ReactNode => {
     }
 
     return <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-        <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+        <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
             <Button onClick={onBackToList}>
                 {t('Назад к списку')}
             </Button>
@@ -68,7 +69,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps): ReactNode => {
             <Text title={t('Комментарии')} className={cls.commentTitle}/>
             <AddCommentFormAsync onSendComment={onSendComment}/>
             <CommentList comments={comments} isLoading={commentsIsLoading}/>
-        </div>
+        </Page>
     </DynamicModuleLoader>;
 };
 

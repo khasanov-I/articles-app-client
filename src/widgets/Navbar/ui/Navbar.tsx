@@ -40,13 +40,13 @@ export const Navbar = memo((): ReactNode => {
     }
 
     return (
-        <div className={cls.navbar}>
+        <header className={cls.navbar}>
             <div className={cls.links}>
                 <Button theme={ButtonTheme.CLEAR} onClick={onShowModal}>
                     {t('Вход')}
                 </Button>
                 <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModal} />
             </div>
-        </div>
+        </header>
     );
 });

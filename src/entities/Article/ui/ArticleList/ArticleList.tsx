@@ -1,10 +1,11 @@
-import {memo, useCallback, type ReactNode} from 'react';
+import {memo, type ReactNode} from 'react';
 import {ArticleView, type Article} from 'entities/Article/model/types/article';
-import {useTranslation} from 'react-i18next';
 import {classNames} from 'shared/lib/classNames';
 import {ArticleListItem} from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
 import {ArticleListItemSkeleton} from '../ArticleListItem/ArticleListItemSkeleton';
+import {Text} from 'shared/ui/Text/Text';
+import {useTranslation} from 'react-i18next';
 
 type ArticleListProps = {
     className?: string;
@@ -21,14 +22,14 @@ const getSkeletons = (view: ArticleView) =>
 export const ArticleList = memo((props: ArticleListProps): ReactNode => {
     const {className = '', articles, isLoading, view = ArticleView.SMALL} = props;
 
+    const {t} = useTranslation();
+
     const renderArticle = (article: Article) =>
         <ArticleListItem key={article.id} className={cls.card} article={article} view={view}/>;
 
-    const {t} = useTranslation();
-
-    if (isLoading) {
+    if (!isLoading && !articles.length) {
         return <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-            {getSkeletons(view)}
+            <Text title={t('Статьи не найдены')}/>
         </div>;
     }
 
@@ -36,5 +37,6 @@ export const ArticleList = memo((props: ArticleListProps): ReactNode => {
         {articles.length > 0
             ? articles.map(renderArticle)
             : undefined}
+        {isLoading && getSkeletons(view)}
     </div>;
 });

@@ -32,7 +32,7 @@ export const Sidebar = memo((props: SidebarProps): ReactNode => {
     }
 
     return (
-        <div data-testid='sidebar'
+        <menu data-testid='sidebar'
             className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
         >
             <Button data-testid='sidebar-toggle' theme={ButtonTheme.IMAGE_BUTTON} onClick={toggle}>
@@ -43,6 +43,6 @@ export const Sidebar = memo((props: SidebarProps): ReactNode => {
                 <ThemeSwitcher />
                 <LangSwitcher />
             </div>
-        </div>
+        </menu>
     );
 });

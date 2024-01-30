@@ -29,6 +29,7 @@ export type ArticleTextBlock = {
 export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock;
 
 export enum ArticleType {
+    ALL = 'ALL',
     IT = 'IT',
     SCIENCE = 'SCIENCE',
     ECONOMICS = 'ECONOMICS',
@@ -50,3 +51,14 @@ export type Article = {
     type: ArticleType[];
     blocks: ArticleBlock[];
 };
+
+export enum ArticleSort {
+    VIEWS = 'views',
+    TITLE = 'title',
+    CREATEDAT = 'createdAt',
+}
+
+export enum ArticleOrder {
+    ASC = 'asc',
+    DESC = 'desc',
+}

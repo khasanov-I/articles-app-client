@@ -11,7 +11,7 @@ type CountrySelectProps = {
     readOnly?: boolean;
 };
 
-const options: SelectOption[] = [
+const options: Array<SelectOption<Country>> = [
     {value: Country.Armenia, content: Country.Armenia},
     {value: Country.Belarus, content: Country.Belarus},
     {value: Country.Kazahstan, content: Country.Kazahstan},

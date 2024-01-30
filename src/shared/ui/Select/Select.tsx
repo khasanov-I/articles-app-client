@@ -3,25 +3,25 @@ import {useTranslation} from 'react-i18next';
 import {type Mods, classNames} from 'shared/lib/classNames';
 import cls from './Select.module.scss';
 
-export type SelectOption = {
-    value: string;
+export type SelectOption<T extends string> = {
+    value: T;
     content: string;
 };
 
-export type SelectProps = {
+export type SelectProps<T extends string> = {
     className?: string;
     label?: string;
-    options?: SelectOption[];
-    value?: string;
-    onChange?: (value: string) => void;
+    options?: Array<SelectOption<T>>;
+    value?: T;
+    onChange?: (value: T) => void;
     readOnly?: boolean;
 };
 
-export const Select = memo((props: SelectProps): ReactNode => {
+export const Select = <T extends string>(props: SelectProps<T>): ReactNode => {
     const {className = '', label, options, value, onChange, readOnly} = props;
 
     const optionsList
-    = useMemo(() => options?.map((opt: SelectOption) =>
+    = useMemo(() => options?.map((opt: SelectOption<T>) =>
         (<option className={cls.option} value={opt.value} key={opt.value}>
             {opt.content}
         </option>)), [options]);
@@ -31,7 +31,7 @@ export const Select = memo((props: SelectProps): ReactNode => {
     const {t} = useTranslation();
 
     const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        onChange?.(e.target.value);
+        onChange?.(e.target.value as T);
     };
 
     return <div className={classNames(cls.Wrapper, mods, [className])}>
@@ -46,4 +46,4 @@ export const Select = memo((props: SelectProps): ReactNode => {
             {optionsList}
         </select>
     </div>;
-});
+};

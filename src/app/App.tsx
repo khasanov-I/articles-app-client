@@ -23,7 +23,7 @@ export function App(): ReactNode {
                 <Navbar />
                 <div className='content-page'>
                     <Sidebar />
-                    {inited ? <AppRouter /> : undefined}
+                    {inited && <AppRouter />}
                 </div>
             </Suspense>
         </div>

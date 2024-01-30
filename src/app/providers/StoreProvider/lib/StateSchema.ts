@@ -7,11 +7,11 @@ import {type AddCommentSchema} from 'features/AddComment';
 import {type LoginSchema} from 'features/AuthByUsername';
 import {type ArticleDetailsCommentsSchema} from 'pages/ArticlesDetailsPage';
 import {type ArticlesPageSchema} from 'pages/ArticlesPage';
-import {type NavigateOptions, type To} from 'react-router-dom';
+import {type ScrollRestorationSchema} from 'widgets/Page';
 
 export type StateSchema = {
     user: UserSchema;
-
+    scrollRestoration: ScrollRestorationSchema;
     // Async
     profile?: ProfileSchema;
     loginForm?: LoginSchema;
@@ -36,7 +36,6 @@ export type ReduxStoreWithManager = {
 
 export type ThunkExtraArg = {
     api: AxiosInstance;
-    navigate?: (to: To, options?: NavigateOptions) => void;
 };
 
 export type ThunkConfig<T> = {
