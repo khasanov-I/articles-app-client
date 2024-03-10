@@ -25,5 +25,6 @@
     "Айти": "IT",
     "Экономика": "Economics",
     "Наука": "Science",
-    "Статьи не найдены": "Articles not found"
+    "Статьи не найдены": "Articles not found",
+    "Ошибка при загрузке статей": "Error while loading articles"
 }

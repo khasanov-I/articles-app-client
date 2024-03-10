@@ -9,6 +9,7 @@ import {LangSwitcher} from 'widgets/LangSwitcher/LangSwitcher';
 import {SidebarItem} from './SidebarItem';
 import {useSelector} from 'react-redux';
 import {getSidebarItems} from '../model/selectors/getSidebarItems';
+import {VStack} from 'shared/ui/Stack/VStack/VStack';
 
 type SidebarProps = {
     className?: string;
@@ -32,17 +33,19 @@ export const Sidebar = memo((props: SidebarProps): ReactNode => {
     }
 
     return (
-        <menu data-testid='sidebar'
+        <aside data-testid='sidebar'
             className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
         >
             <Button data-testid='sidebar-toggle' theme={ButtonTheme.IMAGE_BUTTON} onClick={toggle}>
                 <MenuLogo className='img'/>
             </Button>
-            {itemsList}
+            <VStack role='navigation' gap='32'>
+                {itemsList}
+            </VStack>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher />
             </div>
-        </menu>
+        </aside>
     );
 });

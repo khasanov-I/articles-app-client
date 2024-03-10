@@ -4,28 +4,3 @@
     border-right: none;
     border-left: none;
 }
-
-.header {
-    display: flex;
-}
-
-.editBtn {
-    margin-left: auto;
-}
-
-.data {
-    width: 50%;
-    margin-top: 10px;
-}
-
-.input {
-    margin: 10px;
-}
-
-.avatar,
-.error,
-.loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}

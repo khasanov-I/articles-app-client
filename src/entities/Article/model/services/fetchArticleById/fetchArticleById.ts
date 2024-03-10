@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {type ThunkConfig} from 'app/providers/StoreProvider';
 import {type Article} from '../../types/article';
@@ -11,7 +12,11 @@ export const fetchArticleById
         try {
             const response = await extra
                 .api
-                .get<Article>('/articles/' + articleId);
+                .get<Article>('/articles/' + articleId, {
+                    params: {
+                        _expand: 'user',
+                    },
+                });
 
             if (!response.data) {
                 throw new Error();

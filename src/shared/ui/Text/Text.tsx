@@ -7,18 +7,46 @@ export enum TextTheme {
     ERROR = 'error',
 }
 
+export enum TextAlign {
+    RIGHT = 'right',
+    LEFT = 'left',
+    CENTER = 'center',
+}
+
+export enum TextSize {
+    S = 'size_s',
+    M = 'size_m',
+    L = 'size_l',
+}
+
+type HeaderTag = 'h1' | 'h2' | 'h3';
+
+const mapSizeToHeaderTag: Record<TextSize, HeaderTag> = {
+    [TextSize.S]: 'h3',
+    [TextSize.M]: 'h2',
+    [TextSize.L]: 'h1',
+};
+
 type TextProps = {
     title?: string;
     className?: string;
     theme?: TextTheme;
     text?: string;
+    align?: TextAlign;
+    size?: TextSize;
 };
 
 export const Text = memo((props: TextProps) => {
-    const {className = '', theme = TextTheme.PRIMARY, title, text} = props;
+    const {className = '', theme = TextTheme.PRIMARY, title, text,
+        size = TextSize.M, align = TextAlign.CENTER} = props;
 
-    return <div className={classNames(cls.Text, {}, [className, cls[theme]])}>
-        {title ? <p className={cls.title}>{title}</p> : undefined}
+    const HeaderTag = mapSizeToHeaderTag[size];
+
+    return <div className={classNames(cls.Text, {}, [className,
+        cls[theme],
+        cls[size],
+        cls[align]])}>
+        {title ? <HeaderTag className={cls.title}>{title}</HeaderTag> : undefined}
         {text ? <p className={cls.text}>{text}</p> : undefined}
     </div>;
 });

@@ -6,6 +6,10 @@ import {ButtonTheme} from 'shared/ui/Button/Button';
 import {LoginModal} from 'features/AuthByUsername';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUserAuthData, userActions} from 'entities/User';
+import {AppLink} from 'shared/ui/AppLink/AppLink';
+import {pagePaths} from 'shared/lib/routeConfig';
+import {Dropdown} from 'shared/ui/Dropdown/Dropdown';
+import {Avatar} from 'shared/ui/Avatar/Avatar';
 
 export const Navbar = memo((): ReactNode => {
     const {t} = useTranslation('bars');
@@ -30,13 +34,28 @@ export const Navbar = memo((): ReactNode => {
     }, [dispatch, onCloseModal]);
 
     if (authData) {
-        return <div className={cls.navbar}>
+        return <header className={cls.navbar}>
+            <AppLink
+                to={pagePaths.article_create}>
+                {'Создать статью'}
+            </AppLink>
             <div className={cls.links}>
-                <Button theme={ButtonTheme.CLEAR} onClick={onLogout}>
-                    {t('Выход')}
-                </Button>
+                <Dropdown
+                    trigger={<Avatar size={30} src={authData.avatar}/>}
+                    direction='bottom left'
+                    items={[
+                        {
+                            content: t('Моя страница'),
+                            href: pagePaths.profile + authData.id,
+                        },
+                        {
+                            content: t('Выход'),
+                            onClick: onLogout,
+                        },
+                    ]}
+                />
             </div>
-        </div>;
+        </header>;
     }
 
     return (

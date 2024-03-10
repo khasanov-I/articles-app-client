@@ -13,6 +13,12 @@ module.exports = {
 			},
 		},
 		{
+			files: ['**/src/**/*.{ts,tsx}'],
+			rules: {
+				'kh-i-start-plugin/path-checker': 'error',
+			},
+		},
+		{
 			env: {
 				node: true,
 			},
@@ -53,6 +59,7 @@ module.exports = {
 		'react',
 		'i18next',
 		'react-hooks',
+		'kh-i-start-plugin',
 	],
 	rules: {
 	},

@@ -3,5 +3,7 @@ import {type ArticleDetailsCommentsSchema} from './model/types/ArticleDetailsCom
 import {articleDetailsCommentsReducer, getArticleComments} from './model/slices/articleDetailsCommentsSlice';
 import {fetchCommentsArticleById} from './model/services/fetchCommentsByArticleId';
 import {getArticleCommentsError, getArticleCommentsIsLoading} from './model/selectors/comments';
-export {getArticleCommentsError, fetchCommentsArticleById, getArticleComments, articleDetailsCommentsReducer,
-    ArticleDetailsPageAsync, type ArticleDetailsCommentsSchema, getArticleCommentsIsLoading};
+import {type ArticleDetailsPageRecommendationSchema} from './model/types/ArticleDetailsPageRecommendationSchema';
+import {type ArticleDetailsPageSchema} from './model/types';
+export {getArticleCommentsError, type ArticleDetailsPageSchema, fetchCommentsArticleById, getArticleComments, articleDetailsCommentsReducer,
+    ArticleDetailsPageAsync, type ArticleDetailsPageRecommendationSchema, type ArticleDetailsCommentsSchema, getArticleCommentsIsLoading};

@@ -5,6 +5,7 @@ import {NotFoundPage} from 'pages/NotFoundPage';
 import {ProfilePageAsync} from 'pages/ProfilePage';
 import {ArticlesPageAsync} from 'pages/ArticlesPage';
 import {ArticleDetailsPageAsync} from 'pages/ArticlesDetailsPage';
+import {ArticleEditPageAsync} from 'pages/ArticleEditPage/ui/ArticleEditPage/ArticleEditPage.async';
 
 export enum Pages {
     MAIN = 'main',
@@ -12,6 +13,10 @@ export enum Pages {
     PROFILE = 'profile',
     ARTICLES = 'articles',
     ARTICLE_DETAILS = 'article_details',
+    ARTICLE_CREATE = 'article_create',
+    ARTICLE_EDIT = 'article_edit',
+
+    // LAST
     NOT_FOUND = 'not-found',
 }
 
@@ -25,6 +30,10 @@ export const pagePaths: Record<Pages, string> = {
     [Pages.PROFILE]: '/profile/',
     [Pages.ARTICLES]: '/articles',
     [Pages.ARTICLE_DETAILS]: '/articles/',
+    [Pages.ARTICLE_CREATE]: '/articles/new',
+    [Pages.ARTICLE_EDIT]: '/articles/:id/edit',
+
+    // LAST
     [Pages.NOT_FOUND]: '*',
 };
 
@@ -52,6 +61,17 @@ export const routeConfig: Record<Pages, AppRouterProps> = {
         element: <ArticleDetailsPageAsync />,
         authOnly: true,
     },
+    [Pages.ARTICLE_CREATE]: {
+        path: pagePaths.article_create,
+        element: <ArticleEditPageAsync />,
+        authOnly: true,
+    },
+    [Pages.ARTICLE_EDIT]: {
+        path: pagePaths.article_edit,
+        element: <ArticleEditPageAsync />,
+        authOnly: true,
+    },
+    // LAST
     [Pages.NOT_FOUND]: {
         path: pagePaths['not-found'],
         element: <NotFoundPage />,

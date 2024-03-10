@@ -24,7 +24,7 @@ export const SidebarItem = memo((props: SidebarItemProps): ReactNode => {
         return undefined;
     }
 
-    return <AppLink className={cls.item} to={item?.path}>
+    return <AppLink to={item?.path}>
         <item.icon className='img'/>
         {collapsed ? undefined : <Text className={classNames(cls.text, {[cls.collapsed]: collapsed}, [])} text={t(item.text)} />}
     </AppLink>;

@@ -1,24 +1,26 @@
 import {type Reducer, type AnyAction, type CombinedState, type ReducersMapObject, type EnhancedStore} from '@reduxjs/toolkit';
 import {type AxiosInstance} from 'axios';
 import {type ArticleDetailsSchema} from 'entities/Article';
-import {type ProfileSchema} from 'entities/Profile';
 import {type UserSchema} from 'entities/User';
 import {type AddCommentSchema} from 'features/AddComment';
 import {type LoginSchema} from 'features/AuthByUsername';
-import {type ArticleDetailsCommentsSchema} from 'pages/ArticlesDetailsPage';
+import {type ProfileSchema} from 'features/editableProfileCard/model/types/editableProfileCardSchema';
+import {type ArticleDetailsPageSchema} from 'pages/ArticlesDetailsPage';
 import {type ArticlesPageSchema} from 'pages/ArticlesPage';
+import {type rtkApi} from 'shared/api/rtkApi';
 import {type ScrollRestorationSchema} from 'widgets/Page';
 
 export type StateSchema = {
     user: UserSchema;
     scrollRestoration: ScrollRestorationSchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
     // Async
     profile?: ProfileSchema;
     loginForm?: LoginSchema;
     articleDetails?: ArticleDetailsSchema;
-    articleDetailsComments?: ArticleDetailsCommentsSchema;
     addComment?: AddCommentSchema;
     articlesPage?: ArticlesPageSchema;
+    articleDetailsPage?: ArticleDetailsPageSchema;
 };
 
 export type StateSchemaKey = keyof StateSchema;

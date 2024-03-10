@@ -16,6 +16,8 @@ export type PageProps = {
     onScrollEnd?: () => void;
 };
 
+export const PAGE_ID = 'PAGE_ID';
+
 export const Page = memo(((props: PageProps): ReactNode => {
     const {className = '', children, onScrollEnd} = props;
 
@@ -50,10 +52,12 @@ export const Page = memo(((props: PageProps): ReactNode => {
         }));
     }, 500);
 
-    return <section className={classNames(cls.Page, {}, [className])}
+    return <main
+        id={PAGE_ID}
+        className={classNames(cls.Page, {}, [className])}
         ref={wrapperRef}
         onScroll={onScroll}>
         {children}
-        <div ref={ref} />
-    </section>;
+        <div className={cls.scrollTrigger} ref={ref} />
+    </main>;
 }));
