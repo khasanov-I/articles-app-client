@@ -8,10 +8,10 @@ import {useAppDispatch} from 'app/providers/StoreProvider';
 import {ButtonTheme} from 'shared/ui/Button/Button';
 import {getUserAuthData} from 'entities/User';
 import {HStack} from 'shared/ui/Stack/HStack/HStack';
-import {getProfileReadOnly} from 'features/editableProfileCard/model/selectors/getProfileReadOnly/getProfileReadOnly';
-import {getProfileData} from 'features/editableProfileCard/model/selectors/getProfileData/getProfileData';
-import {profileActions} from 'features/editableProfileCard/model/slice/profileSlice';
-import {updateProfileData} from 'features/editableProfileCard/model/services/updateProfileData/updateProfileData';
+import {getProfileReadOnly} from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
+import {getProfileData} from '../../model/selectors/getProfileData/getProfileData';
+import {profileActions} from '../../model/slice/profileSlice';
+import {updateProfileData} from '../../model/services/updateProfileData/updateProfileData';
 
 type EditableProfileCardHeaderProps = {
     className?: string;
@@ -44,17 +44,23 @@ export function EditableProfileCardHeader(props: EditableProfileCardHeaderProps)
         <Text title={t('Профиль')}/>
         {canEdit && <div>
             {readonly ? (
-                <Button onClick={onEdit}>
+                <Button onClick={onEdit}
+                    data-testid='EditableProfileCardHeader.EditButton'>
                     {t('Редактировать')}
                 </Button>
             )
                 : (
                     <>
                         <HStack gap='8'>
-                            <Button theme={ButtonTheme.RED} onClick={onCancelEdit}>
+                            <Button
+                                theme={ButtonTheme.RED}
+                                onClick={onCancelEdit}
+                                data-testid='EditableProfileCardHeader.CancelButton'>
                                 {t('Отменить')}
                             </Button>
-                            <Button onClick={onSave}>
+                            <Button
+                                onClick={onSave}
+                                data-testid='EditableProfileCardHeader.SaveButton'>
                                 {t('Сохранить')}
                             </Button>
                         </HStack>

@@ -34,11 +34,13 @@ type TextProps = {
     text?: string;
     align?: TextAlign;
     size?: TextSize;
+    'data-testid'?: string;
 };
 
 export const Text = memo((props: TextProps) => {
     const {className = '', theme = TextTheme.PRIMARY, title, text,
-        size = TextSize.M, align = TextAlign.CENTER} = props;
+        size = TextSize.M, align = TextAlign.CENTER,
+        'data-testid': dataTestId} = props;
 
     const HeaderTag = mapSizeToHeaderTag[size];
 
@@ -46,7 +48,15 @@ export const Text = memo((props: TextProps) => {
         cls[theme],
         cls[size],
         cls[align]])}>
-        {title ? <HeaderTag className={cls.title}>{title}</HeaderTag> : undefined}
-        {text ? <p className={cls.text}>{text}</p> : undefined}
+        {title ? <HeaderTag
+            className={cls.title}
+            data-testid={`${dataTestId}.Header`}>
+            {title}
+        </HeaderTag> : undefined}
+        {text ? <p
+            className={cls.text}
+            data-testid={`${dataTestId}.Paragraph`}>
+            {text}
+        </p> : undefined}
     </div>;
 });

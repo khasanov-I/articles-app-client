@@ -4,7 +4,7 @@ import {classNames} from 'shared/lib/classNames';
 import cls from './ProfileCard.module.scss';
 import {Text, TextTheme} from 'shared/ui/Text/Text';
 import {Input} from 'shared/ui/Input/Input';
-import {type Profile} from 'entities/Profile/model/types/profile';
+import {type Profile} from '../../model/types/profile';
 import {Loader} from 'shared/ui/Loader/Loader';
 import {Avatar} from 'shared/ui/Avatar/Avatar';
 import {type Currency, CurrencySelect} from 'entities/Currency';
@@ -60,12 +60,14 @@ export function ProfileCard(props: ProfileCardProps): ReactNode {
             value={data?.firstname}
             placeholder={t('Ваше имя')}
             onChange={onChangeFirstname}
-            readonly={readOnly}/>
+            readonly={readOnly}
+            data-testid='ProfileCard.firstname'/>
         <Input
             value={data?.lastname}
             placeholder={t('Ваша фамилия')}
             onChange={onChangeLastname}
-            readonly={readOnly}/>
+            readonly={readOnly}
+            data-testid='ProfileCard.lastname'/>
         <Input
             value={data?.age}
             placeholder={t('Ваш возраст')}

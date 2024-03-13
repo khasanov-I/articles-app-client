@@ -4,15 +4,15 @@ import cls from './EditableProfileCard.module.scss';
 import {memo, useCallback} from 'react';
 import {useAppDispatch} from 'app/providers/StoreProvider';
 import {useSelector} from 'react-redux';
-import {ValidateProfileError} from 'features/editableProfileCard/model/types/editableProfileCardSchema';
+import {ValidateProfileError} from '../../model/types/editableProfileCardSchema';
 import {useInitialEffect} from 'shared/lib/hooks/useInitialEffect';
-import {getProfileError} from 'features/editableProfileCard/model/selectors/getProfileError/getProfileError';
-import {getProfileIsLoading} from 'features/editableProfileCard/model/selectors/getProfileIsLoading/getProfileIsLoading';
-import {getProfileReadOnly} from 'features/editableProfileCard/model/selectors/getProfileReadOnly/getProfileReadOnly';
-import {getProfileForm} from 'features/editableProfileCard/model/selectors/getProfileForm/getProfileForm';
-import {getProfileValidateErrors} from 'features/editableProfileCard/model/selectors/getProfileValidateErrors/getProfileValidateErrors';
-import {fetchProfileData} from 'features/editableProfileCard/model/services/fetchProfileData/fetchProfileData';
-import {profileActions, profileReducer} from 'features/editableProfileCard/model/slice/profileSlice';
+import {getProfileError} from '../../model/selectors/getProfileError/getProfileError';
+import {getProfileIsLoading} from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import {getProfileReadOnly} from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
+import {getProfileForm} from '../../model/selectors/getProfileForm/getProfileForm';
+import {getProfileValidateErrors} from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
+import {fetchProfileData} from '../../model/services/fetchProfileData/fetchProfileData';
+import {profileActions, profileReducer} from '../../model/slice/profileSlice';
 import {Currency} from 'entities/Currency';
 import {Country} from 'entities/Country';
 import {Text, TextTheme} from 'shared/ui/Text/Text';
@@ -101,7 +101,10 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                 className={classNames(cls.EditableProfileCard, {}, [className])}>
                 <EditableProfileCardHeader />
                 {validateErrors?.length && validateErrors.map(err => (
-                    <Text theme={TextTheme.ERROR} text={t(validateErrorTranslates[err])} key={err}/>
+                    <Text theme={TextTheme.ERROR}
+                        text={t(validateErrorTranslates[err])}
+                        key={err}
+                        data-testid='EditableProfileCard.Error'/>
                 ))}
                 <ProfileCard
                     data={formData}

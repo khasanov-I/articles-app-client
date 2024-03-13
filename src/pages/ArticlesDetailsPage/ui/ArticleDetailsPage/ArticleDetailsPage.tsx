@@ -6,7 +6,7 @@ import cls from './ArticleDetailsPage.module.scss';
 import {ArticleDetails} from 'entities/Article';
 import {DynamicModuleLoader, type ReducersList} from 'shared/lib/dynamicModuleLoader/dynamicModuleLoader';
 import {Page} from 'widgets/Page/ui/Page';
-import {articleDetailsPageReducer} from 'pages/ArticlesDetailsPage/model/slices';
+import {articleDetailsPageReducer} from '../../model/slices';
 import {ArticleDetailsPageHeader} from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import {ArticleRecommendationsList} from 'features/articleRecommendationsList';
 import {ArticleDetailsComments} from '../ArticleDetailsComments/ArticleDetailsComments';
