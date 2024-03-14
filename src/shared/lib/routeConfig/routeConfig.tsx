@@ -6,6 +6,9 @@ import {ProfilePageAsync} from 'pages/ProfilePage';
 import {ArticlesPageAsync} from 'pages/ArticlesPage';
 import {ArticleDetailsPageAsync} from 'pages/ArticlesDetailsPage';
 import {ArticleEditPageAsync} from 'pages/ArticleEditPage/ui/ArticleEditPage/ArticleEditPage.async';
+import {AdminPanelPageAsync} from 'pages/AdminPanelPage';
+import {UserRole} from 'entities/User/model/types/user';
+import {ForbiddenPage} from 'pages/ForbiddenPage';
 
 export enum Pages {
     MAIN = 'main',
@@ -15,6 +18,8 @@ export enum Pages {
     ARTICLE_DETAILS = 'article_details',
     ARTICLE_CREATE = 'article_create',
     ARTICLE_EDIT = 'article_edit',
+    ADMIN_PANEL = 'admin_panel',
+    FORBIDDEN = 'forbidden',
 
     // LAST
     NOT_FOUND = 'not-found',
@@ -22,6 +27,7 @@ export enum Pages {
 
 export type AppRouterProps = RouteProps & {
     authOnly?: boolean;
+    roles?: UserRole[];
 };
 
 export const pagePaths: Record<Pages, string> = {
@@ -32,6 +38,8 @@ export const pagePaths: Record<Pages, string> = {
     [Pages.ARTICLE_DETAILS]: '/articles/',
     [Pages.ARTICLE_CREATE]: '/articles/new',
     [Pages.ARTICLE_EDIT]: '/articles/:id/edit',
+    [Pages.ADMIN_PANEL]: '/admin',
+    [Pages.FORBIDDEN]: '/forbidden',
 
     // LAST
     [Pages.NOT_FOUND]: '*',
@@ -71,6 +79,17 @@ export const routeConfig: Record<Pages, AppRouterProps> = {
         element: <ArticleEditPageAsync />,
         authOnly: true,
     },
+    [Pages.ADMIN_PANEL]: {
+        path: pagePaths.admin_panel,
+        element: <AdminPanelPageAsync />,
+        authOnly: true,
+        roles: [UserRole.MANAGER, UserRole.ADMIN],
+    },
+    [Pages.FORBIDDEN]: {
+        path: pagePaths.forbidden,
+        element: <ForbiddenPage />,
+    },
+
     // LAST
     [Pages.NOT_FOUND]: {
         path: pagePaths['not-found'],

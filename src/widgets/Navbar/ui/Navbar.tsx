@@ -5,7 +5,7 @@ import {Button} from 'shared/ui/Button/Button';
 import {ButtonTheme} from 'shared/ui/Button/Button';
 import {LoginModal} from 'features/AuthByUsername';
 import {useDispatch, useSelector} from 'react-redux';
-import {getUserAuthData, userActions} from 'entities/User';
+import {getUserAuthData, isUserAdmin, isUserManager, userActions} from 'entities/User';
 import {AppLink} from 'shared/ui/AppLink/AppLink';
 import {pagePaths} from 'shared/lib/routeConfig';
 import {Dropdown} from 'shared/ui/Dropdown/Dropdown';
@@ -20,6 +20,9 @@ export const Navbar = memo((): ReactNode => {
 
     const authData = useSelector(getUserAuthData);
 
+    const isAdmin = useSelector(isUserAdmin);
+    const isManager = useSelector(isUserManager);
+
     const onShowModal = useCallback(() => {
         setIsAuthModalOpen(true);
     }, []);
@@ -33,6 +36,8 @@ export const Navbar = memo((): ReactNode => {
         dispatch(userActions.logout());
     }, [dispatch, onCloseModal]);
 
+    const isAdminPanelAvailable = isAdmin ?? isManager;
+
     if (authData) {
         return <header className={cls.navbar}>
             <AppLink
@@ -44,6 +49,12 @@ export const Navbar = memo((): ReactNode => {
                     trigger={<Avatar size={30} src={authData.avatar}/>}
                     direction='bottom left'
                     items={[
+                        ...(isAdminPanelAvailable ? [
+                            {
+                                content: t('Админка'),
+                                href: pagePaths.admin_panel,
+                            },
+                        ] : []),
                         {
                             content: t('Моя страница'),
                             href: pagePaths.profile + authData.id,
