@@ -7,7 +7,7 @@ import {ArticlesPageAsync} from 'pages/ArticlesPage';
 import {ArticleDetailsPageAsync} from 'pages/ArticlesDetailsPage';
 import {ArticleEditPageAsync} from 'pages/ArticleEditPage/ui/ArticleEditPage/ArticleEditPage.async';
 import {AdminPanelPageAsync} from 'pages/AdminPanelPage';
-import {UserRole} from 'entities/User/model/types/user';
+import {UserRole} from 'entities/User/model/consts/consts';
 import {ForbiddenPage} from 'pages/ForbiddenPage';
 
 export enum Pages {

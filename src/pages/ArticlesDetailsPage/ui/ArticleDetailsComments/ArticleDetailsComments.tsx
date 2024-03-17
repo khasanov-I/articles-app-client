@@ -1,20 +1,21 @@
-import {memo, useCallback, type ReactNode} from 'react';
+import {memo, useCallback, type ReactNode, Suspense} from 'react';
 import {classNames} from 'shared/lib/classNames';
 import {useTranslation} from 'react-i18next';
 import {Text} from 'shared/ui/Text/Text';
 import {AddCommentFormAsync} from 'features/AddComment';
 import {CommentList} from 'entities/Comment';
 import {useSelector} from 'react-redux';
-import {getArticleComments} from 'pages/ArticlesDetailsPage/model/slices/articleDetailsCommentsSlice';
-import {getArticleCommentsIsLoading} from 'pages/ArticlesDetailsPage/model/selectors/comments';
-import {addCommentForArticle} from 'pages/ArticlesDetailsPage/model/services/addCommentForArticle';
+import {getArticleComments} from '../../model/slices/articleDetailsCommentsSlice';
+import {getArticleCommentsIsLoading} from '../../model/selectors/comments';
+import {addCommentForArticle} from '../../model/services/addCommentForArticle';
 import {useAppDispatch} from 'app/providers/StoreProvider';
 import {useInitialEffect} from 'shared/lib/hooks/useInitialEffect';
-import {fetchCommentsArticleById} from 'pages/ArticlesDetailsPage/model/services/fetchCommentsByArticleId';
+import {fetchCommentsArticleById} from '../../model/services/fetchCommentsByArticleId';
+import {Loader} from 'shared/ui/Loader/Loader';
 
 type ArticleDetailsCommentsProps = {
     className?: string;
-    id: string;
+    id?: string;
 };
 
 export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps): ReactNode => {
@@ -37,7 +38,9 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps):
 
     return <div className={classNames('', {}, [className])}>
         <Text title={t('Комментарии')} />
-        <AddCommentFormAsync onSendComment={onSendComment}/>
+        <Suspense fallback={<Loader />}>
+            <AddCommentFormAsync onSendComment={onSendComment}/>
+        </Suspense>
         <CommentList comments={comments} isLoading={commentsIsLoading}/>
     </div>;
 });

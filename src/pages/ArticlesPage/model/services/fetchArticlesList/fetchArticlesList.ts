@@ -4,7 +4,7 @@ import {type ThunkConfig} from 'app/providers/StoreProvider';
 import {type Article} from 'entities/Article';
 import {getArticlesPageLimit, getArticlesPageNum, getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, getArticlesPageType} from '../../selectors/articlesPageSelector';
 import {addQueryParams} from 'shared/lib/url/addQueryParams/addQueryParams';
-import {ArticleType} from 'entities/Article/model/types/article';
+import {ArticleType} from 'entities/Article/model/consts/consts';
 
 export type FetchArticlesListProps = {
     replace?: boolean;

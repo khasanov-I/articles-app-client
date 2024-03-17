@@ -4,7 +4,6 @@ import {type ScrollRestorationSchema} from '../types/ScrollRestorationSchema';
 const initialState: ScrollRestorationSchema = {
     scroll: {},
 };
-
 const ScrollRestorationSlice = createSlice({
     name: 'ScrollRestoration',
     initialState,

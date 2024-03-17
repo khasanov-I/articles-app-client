@@ -1,4 +1,5 @@
-import {type Article, ArticleView} from './model/types/article';
+import {type Article} from './model/types/article';
+import {ArticleView} from './model/consts/consts';
 import {ArticleDetails} from './ui/ArticleDetails/ArticleDetails';
 import {type ArticleDetailsSchema} from './model/types/articleDetailsSchema';
 import {ArticleList} from './ui/ArticleList/ArticleList';

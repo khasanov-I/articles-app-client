@@ -1,4 +1,4 @@
-import {Currency} from 'entities/Currency/model/types/currency';
+import { Currency } from "entities/Currency/model/consts/consts";
 import {memo, useCallback, type ReactNode} from 'react';
 import {useTranslation} from 'react-i18next';
 import {classNames} from 'shared/lib/classNames';

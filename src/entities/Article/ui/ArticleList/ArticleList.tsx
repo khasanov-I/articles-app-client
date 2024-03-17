@@ -1,5 +1,6 @@
 import {type HTMLAttributeAnchorTarget, memo, type ReactNode} from 'react';
-import {ArticleView, type Article} from '../../model/types/article';
+import {type Article} from '../../model/types/article';
+import { ArticleView } from 'entities/Article/model/consts/consts';
 import {classNames} from 'shared/lib/classNames';
 import {ArticleListItem} from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';

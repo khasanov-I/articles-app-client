@@ -4,10 +4,10 @@ import {classNames} from 'shared/lib/classNames';
 import {Input} from 'shared/ui/Input/Input';
 import {Button} from 'shared/ui/Button/Button';
 import {useTranslation} from 'react-i18next';
-import {getAddCommentError, getAddCommentText} from 'features/AddComment/model/selectors/addCommentSelectors';
+import {getAddCommentError, getAddCommentText} from '../../model/selectors/addCommentSelectors';
 import {useSelector} from 'react-redux';
 import {useAppDispatch} from 'app/providers/StoreProvider';
-import {addCommentActions, addCommentReducer} from 'features/AddComment/model/slice/addCommentSlice';
+import {addCommentActions, addCommentReducer} from '../../model/slice/addCommentSlice';
 import {DynamicModuleLoader, type ReducersList} from 'shared/lib/dynamicModuleLoader/dynamicModuleLoader';
 
 export type AddCommentFormProps = {

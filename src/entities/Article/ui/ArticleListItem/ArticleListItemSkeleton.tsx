@@ -1,6 +1,6 @@
 import {memo, type ReactNode} from 'react';
 import cls from './ArticleListItem.module.scss';
-import {ArticleView} from 'entities/Article/model/types/article';
+import { ArticleView } from 'entities/Article/model/consts/consts';
 import {classNames} from 'shared/lib/classNames';
 import {Text} from 'shared/ui/Text/Text';
 import {EyeLogo} from 'shared/assets/icons';

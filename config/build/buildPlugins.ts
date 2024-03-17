@@ -10,6 +10,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import {type BuildOptions} from './types/config';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
 
 export function buildPlugins({
     paths,
@@ -34,5 +35,9 @@ export function buildPlugins({
         ...(isDev ? [new BundleAnalyzerPlugin({
             openAnalyzer: false,
         })] : []),
+        new CircularDependencyPlugin({
+            exclude: /node_modules/,
+            failOnError: true,
+        }),
     ];
 }

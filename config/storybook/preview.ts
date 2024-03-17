@@ -1,6 +1,6 @@
 import type {Preview} from '@storybook/react';
 import {Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
-import {routerDecorator, styleDecorator, themeDecorator} from 'shared/story_decorators';
+import {SuspenseDecorator, routerDecorator, styleDecorator, themeDecorator} from 'shared/story_decorators';
 
 const preview: Preview = {
     parameters: {
@@ -12,7 +12,10 @@ const preview: Preview = {
             },
         },
     },
-    decorators: [styleDecorator, themeDecorator(Theme.DARK), routerDecorator],
+    decorators: [styleDecorator,
+        themeDecorator(Theme.DARK),
+        routerDecorator,
+        SuspenseDecorator],
 };
 
 export default preview;
