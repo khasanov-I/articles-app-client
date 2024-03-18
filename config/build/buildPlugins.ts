@@ -31,7 +31,15 @@ export function buildPlugins({
             __PROJECT__: JSON.stringify(project)}),
         ...(isDev ? [new HotModuleReplacementPlugin()] : []),
         ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
-        new ForkTsCheckerWebpackPlugin(),
+        new ForkTsCheckerWebpackPlugin({
+            typescript: {
+                diagnosticOptions: {
+                    semantic: true,
+                    syntactic: true,
+                },
+                mode: 'write-references',
+            },
+        }),
         ...(isDev ? [new BundleAnalyzerPlugin({
             openAnalyzer: false,
         })] : []),

@@ -1,9 +1,9 @@
-import { Country } from "entities/Country/model/consts/consts";
+import {Country} from '../../model/consts/consts';
 import {memo, useCallback, type ReactNode} from 'react';
 import {useTranslation} from 'react-i18next';
 import {classNames} from 'shared/lib/classNames';
-import {Listbox} from 'shared/ui/ListBox/ListBox';
-import {Select, type SelectOption} from 'shared/ui/Select/Select';
+import {ListBox} from 'shared/ui/Popups';
+import {type SelectOption} from 'shared/ui/Select/Select';
 
 type CountrySelectProps = {
     className?: string;
@@ -29,7 +29,7 @@ export const CountrySelect = memo((props: CountrySelectProps): ReactNode => {
 
     const {t} = useTranslation('translation');
 
-    return <Listbox
+    return <ListBox
         className={classNames('', {}, [className])}
         defaultValue={t('Укажите страну')}
         label={t('Укажите страну')}

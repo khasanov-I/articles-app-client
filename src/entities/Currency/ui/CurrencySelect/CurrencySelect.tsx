@@ -1,8 +1,8 @@
-import { Currency } from "entities/Currency/model/consts/consts";
+import {Currency} from '../../model/consts/consts';
 import {memo, useCallback, type ReactNode} from 'react';
 import {useTranslation} from 'react-i18next';
 import {classNames} from 'shared/lib/classNames';
-import {Listbox} from 'shared/ui/ListBox/ListBox';
+import {ListBox} from 'shared/ui/Popups';
 import {type SelectOption} from 'shared/ui/Select/Select';
 
 type CurrencySelectProps = {
@@ -27,7 +27,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps): ReactNode => {
 
     const {t} = useTranslation('translation');
 
-    return <Listbox
+    return <ListBox
         className={classNames('', {}, [className])}
         onChange={onChangeHandler}
         defaultValue={t('Укажите валюту')}

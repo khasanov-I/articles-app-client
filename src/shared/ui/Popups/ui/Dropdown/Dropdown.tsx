@@ -1,9 +1,11 @@
 import {Menu} from '@headlessui/react';
-import {classNames} from 'shared/lib/classNames';
-import cls from './Dropdown.module.scss';
 import {Fragment, type ReactNode} from 'react';
+import {classNames} from 'shared/lib/classNames';
 import {type DropdownDirection} from 'shared/types/ui';
-import {AppLink} from '../AppLink/AppLink';
+import {AppLink} from 'shared/ui/AppLink/AppLink';
+import cls from './Dropdown.module.scss';
+import generalCls from '../../styles/styles.module.scss';
+import {mapDirectionClass} from '../../styles/const';
 
 export type DropdownItem = {
     disabled?: boolean;
@@ -11,19 +13,11 @@ export type DropdownItem = {
     onClick?: () => void;
     href?: string;
 };
-
 type DropdownProps = {
     className?: string;
     items: DropdownItem[];
     trigger: ReactNode;
     direction?: DropdownDirection;
-};
-
-const mapDirectionClass: Record<DropdownDirection, string> = {
-    'bottom left': cls.optionsBottomLeft,
-    'bottom right': cls.optionsBottomRight,
-    'top left': cls.optionsTopLeft,
-    'top right': cls.optionsTopRight,
 };
 
 export function Dropdown(props: DropdownProps) {
@@ -33,16 +27,16 @@ export function Dropdown(props: DropdownProps) {
 
     return (
         <Menu as='div' className={classNames(cls.Dropdown, {}, [className])}>
-            <Menu.Button className={cls.btn}>
+            <Menu.Button className={generalCls.trigger}>
                 {trigger}
             </Menu.Button>
-            <Menu.Items className={classNames(cls.menu, {}, optionsClasses)}>
+            <Menu.Items className={classNames(generalCls.options, {}, optionsClasses)}>
                 {items.map(({onClick, disabled, content, href}, index) => {
                     const item = ({active}: {active: boolean}) => (
                         <button
                             disabled={disabled}
                             onClick={onClick}
-                            className={classNames(cls.item, {
+                            className={classNames(generalCls.item, {
                                 [cls.active]: active,
                             }, [])}>
                             {content}

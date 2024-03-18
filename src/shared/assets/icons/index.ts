@@ -8,4 +8,5 @@ import ArticleLogo from './article.svg';
 import EyeLogo from './eye.svg';
 import CalendarLogo from './calendar.svg';
 import GridLogo from './grid.svg';
-export {GridLogo, EyeLogo, CalendarLogo, MenuLogo, MoonLogo, SunLogo, HomeLogo, AboutLogo, UserLogo, ArticleLogo};
+import NotificationLogo from './notification.svg';
+export {NotificationLogo, GridLogo, EyeLogo, CalendarLogo, MenuLogo, MoonLogo, SunLogo, HomeLogo, AboutLogo, UserLogo, ArticleLogo};

@@ -1,0 +1,11 @@
+.ListBox {
+    position: relative
+}
+
+.active {
+    background: var(--listbox-active-bg-color);
+}
+
+.disabled {
+    opacity: 0.7;
+}
