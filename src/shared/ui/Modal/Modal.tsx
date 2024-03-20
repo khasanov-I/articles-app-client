@@ -4,6 +4,7 @@ import {useCallback, type ReactNode, useEffect, useState} from 'react';
 import {Portal} from '../Portal/Portal';
 import {useTheme} from 'app/providers/ThemeProvider';
 import {Overlay} from '../Overlay/Overlay';
+import {useModal} from 'shared/lib/hooks/useModal';
 
 type ModalProps = {
     className?: string;
@@ -16,41 +17,16 @@ type ModalProps = {
 export function Modal(props: ModalProps): ReactNode {
     const {className = '', children, isOpen, onClose, lazy} = props;
 
-    const closeHandler = useCallback(() => {
-        if (onClose) {
-            onClose();
-        }
-    }, [onClose]);
-
-    const onKeyDown = useCallback((e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-            closeHandler();
-        }
-    }, [closeHandler]);
-
-    useEffect(() => {
-        if (isOpen) {
-            window.addEventListener('keydown', onKeyDown);
-        }
-
-        return () => {
-            window.removeEventListener('keydown', onKeyDown);
-        };
-    }, [isOpen, onKeyDown]);
-
     const mods: Mods = {
         [cls.opened]: isOpen,
     };
 
+    const {isMounted, closeHandler} = useModal({
+        isOpen,
+        onClose,
+    });
+
     const {theme} = useTheme();
-
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        if (isOpen) {
-            setIsMounted(true);
-        }
-    }, [isOpen]);
 
     if (lazy && !isMounted) {
         return null;
