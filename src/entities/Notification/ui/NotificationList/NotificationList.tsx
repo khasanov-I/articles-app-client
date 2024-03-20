@@ -1,10 +1,10 @@
 import {memo, type ReactNode} from 'react';
 import cls from './NotificationList.module.scss';
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from '@/shared/lib/classNames';
 import {useNotifications} from '../../api/notificationApi';
-import {VStack} from 'shared/ui/Stack/VStack/VStack';
+import {VStack} from '@/shared/ui/Stack/VStack/VStack';
 import {NotificationItem} from '../NotificationItem/NotificationItem';
-import {Skeleton} from 'shared/ui/Skeleton/Skeleton';
+import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
 
 type NotificationListProps = {
     className?: string;

@@ -1,9 +1,9 @@
 import {Country} from '../../model/consts/consts';
 import {memo, useCallback, type ReactNode} from 'react';
 import {useTranslation} from 'react-i18next';
-import {classNames} from 'shared/lib/classNames';
-import {ListBox} from 'shared/ui/Popups';
-import {type SelectOption} from 'shared/ui/Select/Select';
+import {classNames} from '@/shared/lib/classNames';
+import {ListBox} from '@/shared/ui/Popups';
+import {type SelectOption} from '@/shared/ui/Select/Select';
 
 type CountrySelectProps = {
     className?: string;

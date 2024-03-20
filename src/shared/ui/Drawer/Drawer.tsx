@@ -1,10 +1,10 @@
 import {memo, type ReactNode} from 'react';
 import cls from './Drawer.module.scss';
-import {classNames, type Mods} from 'shared/lib/classNames';
+import {classNames, type Mods} from '@/shared/lib/classNames';
 import {Portal} from '../Portal/Portal';
 import {Overlay} from '../Overlay/Overlay';
-import {useTheme} from 'app/providers/ThemeProvider';
-import {useModal} from 'shared/lib/hooks/useModal';
+import {useTheme} from '@/app/providers/ThemeProvider';
+import {useModal} from '@/shared/lib/hooks/useModal';
 
 type DrawerProps = {
     className?: string;

@@ -1,14 +1,14 @@
 import {type RouteProps} from 'react-router-dom';
-import {AboutPageAsync} from 'pages/AboutPage';
-import {MainPageAsync} from 'pages/MainPage';
-import {NotFoundPage} from 'pages/NotFoundPage';
-import {ProfilePageAsync} from 'pages/ProfilePage';
-import {ArticlesPageAsync} from 'pages/ArticlesPage';
-import {ArticleDetailsPageAsync} from 'pages/ArticlesDetailsPage';
-import {ArticleEditPageAsync} from 'pages/ArticleEditPage/ui/ArticleEditPage/ArticleEditPage.async';
-import {AdminPanelPageAsync} from 'pages/AdminPanelPage';
-import {UserRole} from 'entities/User/model/consts/consts';
-import {ForbiddenPage} from 'pages/ForbiddenPage';
+import {AboutPageAsync} from '@/pages/AboutPage';
+import {MainPageAsync} from '@/pages/MainPage';
+import {NotFoundPage} from '@/pages/NotFoundPage';
+import {ProfilePageAsync} from '@/pages/ProfilePage';
+import {ArticlesPageAsync} from '@/pages/ArticlesPage';
+import {ArticleDetailsPageAsync} from '@/pages/ArticlesDetailsPage';
+import {ArticleEditPageAsync} from '@/pages/ArticleEditPage/ui/ArticleEditPage/ArticleEditPage.async';
+import {AdminPanelPageAsync} from '@/pages/AdminPanelPage';
+import {UserRole} from '@/entities/User/model/consts/consts';
+import {ForbiddenPage} from '@/pages/ForbiddenPage';
 
 export enum Pages {
     MAIN = 'main',

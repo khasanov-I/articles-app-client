@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/indent */
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {type ThunkConfig} from 'app/providers/StoreProvider';
-import {type Article} from 'entities/Article';
+import {type ThunkConfig} from '@/app/providers/StoreProvider';
+import {type Article} from '@/entities/Article';
 import {getArticlesPageLimit, getArticlesPageNum, getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, getArticlesPageType} from '../../selectors/articlesPageSelector';
-import {addQueryParams} from 'shared/lib/url/addQueryParams/addQueryParams';
-import {ArticleType} from 'entities/Article/model/consts/consts';
+import {addQueryParams} from '@/shared/lib/url/addQueryParams/addQueryParams';
+import {ArticleType} from '@/entities/Article/model/consts/consts';
 
 export type FetchArticlesListProps = {
     replace?: boolean;

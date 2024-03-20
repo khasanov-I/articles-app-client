@@ -1,11 +1,11 @@
-import {classNames} from 'shared/lib/classNames/classNames';
+import {classNames} from '@/shared/lib/classNames/classNames';
 import {useTranslation} from 'react-i18next';
 import cls from './EditableProfileCard.module.scss';
 import {memo, useCallback} from 'react';
-import {useAppDispatch} from 'app/providers/StoreProvider';
+import {useAppDispatch} from '@/app/providers/StoreProvider';
 import {useSelector} from 'react-redux';
-import {ValidateProfileError} from 'features/editableProfileCard/model/consts/consts';
-import {useInitialEffect} from 'shared/lib/hooks/useInitialEffect';
+import {ValidateProfileError} from '@/features/editableProfileCard/model/consts/consts';
+import {useInitialEffect} from '@/shared/lib/hooks/useInitialEffect';
 import {getProfileError} from '../../model/selectors/getProfileError/getProfileError';
 import {getProfileIsLoading} from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import {getProfileReadOnly} from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
@@ -13,13 +13,13 @@ import {getProfileForm} from '../../model/selectors/getProfileForm/getProfileFor
 import {getProfileValidateErrors} from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import {fetchProfileData} from '../../model/services/fetchProfileData/fetchProfileData';
 import {profileActions, profileReducer} from '../../model/slice/profileSlice';
-import {Currency} from 'entities/Currency';
-import {Country} from 'entities/Country';
-import {Text, TextTheme} from 'shared/ui/Text/Text';
-import {ProfileCard} from 'entities/Profile';
-import {DynamicModuleLoader, type ReducersList} from 'shared/lib/dynamicModuleLoader/dynamicModuleLoader';
+import {Currency} from '@/entities/Currency';
+import {Country} from '@/entities/Country';
+import {Text, TextTheme} from '@/shared/ui/Text/Text';
+import {ProfileCard} from '@/entities/Profile';
+import {DynamicModuleLoader, type ReducersList} from '@/shared/lib/dynamicModuleLoader/dynamicModuleLoader';
 import {EditableProfileCardHeader} from '../EditableProfileCardHeader/EditableProfileCardHeader';
-import {VStack} from 'shared/ui/Stack/VStack/VStack';
+import {VStack} from '@/shared/ui/Stack/VStack/VStack';
 
 type EditableProfileCardProps = {
     className?: string;

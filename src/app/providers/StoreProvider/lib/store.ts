@@ -1,10 +1,10 @@
 import {type ReducersMapObject, configureStore, type Reducer, type CombinedState} from '@reduxjs/toolkit';
 import {type ThunkExtraArg, type ReduxStoreWithManager, type StateSchema} from './StateSchema';
-import {userReducer} from 'entities/User';
+import {userReducer} from '@/entities/User';
 import {createReducerManager} from './reducerManager';
-import {$api} from 'shared/api/api';
-import {rtkApi} from 'shared/api/rtkApi';
-import {ScrollRestorationReducer} from 'features/UI';
+import {$api} from '@/shared/api/api';
+import {rtkApi} from '@/shared/api/rtkApi';
+import {ScrollRestorationReducer} from '@/features/UI';
 
 export function createReduxStore(initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>) {

@@ -1,6 +1,6 @@
 import type {Preview} from '@storybook/react';
-import {Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
-import {SuspenseDecorator, routerDecorator, styleDecorator, themeDecorator} from 'shared/story_decorators';
+import {Theme} from '@/app/providers/ThemeProvider/lib/ThemeContext';
+import {SuspenseDecorator, routerDecorator, styleDecorator, themeDecorator} from '@/shared/story_decorators';
 
 const preview: Preview = {
     parameters: {

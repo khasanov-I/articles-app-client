@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import {fireEvent, screen} from '@testing-library/react';
-import {componentRender} from 'shared/lib/componentRender';
+import {componentRender} from '@/shared/lib/componentRender';
 import {Sidebar} from './Sidebar';
 import {describe} from 'node:test';
 

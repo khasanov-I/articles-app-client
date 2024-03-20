@@ -1,10 +1,10 @@
 import {memo, type ReactNode} from 'react';
 import {useSelector} from 'react-redux';
-import {getArticles} from 'pages/ArticlesPage/model/slice/articlesPageSlice';
-import {getArticlesPageError, getArticlesPageIsLoading, getArticlesPageView} from 'pages/ArticlesPage/model/selectors/articlesPageSelector';
-import {classNames} from 'shared/lib/classNames';
-import {ArticleList} from 'entities/Article';
-import {Text, TextTheme} from 'shared/ui/Text/Text';
+import {getArticles} from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
+import {getArticlesPageError, getArticlesPageIsLoading, getArticlesPageView} from '@/pages/ArticlesPage/model/selectors/articlesPageSelector';
+import {classNames} from '@/shared/lib/classNames';
+import {ArticleList} from '@/entities/Article';
+import {Text, TextTheme} from '@/shared/ui/Text/Text';
 import {useTranslation} from 'react-i18next';
 
 type ArticlesInfiniteListProps = {
@@ -33,6 +33,7 @@ export const ArticlesInfiniteList = memo((props: ArticlesInfiniteListProps): Rea
             className={className}
             articles={articles}
             view={view}
-            isLoading={isLoading}/>
+            isLoading={isLoading}
+            virtualized={true}/>
     </div>;
 });

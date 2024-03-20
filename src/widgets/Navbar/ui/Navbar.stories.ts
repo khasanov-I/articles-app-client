@@ -1,7 +1,7 @@
 
 import type {Meta, StoryObj} from '@storybook/react';
-import {Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
-import {reduxDecorator, themeDecorator} from 'shared/story_decorators';
+import {Theme} from '@/app/providers/ThemeProvider/lib/ThemeContext';
+import {reduxDecorator, themeDecorator} from '@/shared/story_decorators';
 import {Navbar} from './Navbar';
 
 const meta = {

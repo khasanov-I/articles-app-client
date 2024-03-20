@@ -1,8 +1,8 @@
 import {memo, type ReactNode} from 'react';
 import {useTranslation} from 'react-i18next';
 import cls from './PageError.module.scss';
-import {classNames} from 'shared/lib/classNames';
-import {Button} from 'shared/ui/Button/Button';
+import {classNames} from '@/shared/lib/classNames';
+import {Button} from '@/shared/ui/Button/Button';
 
 type PageErrorProps = {
     className?: string;

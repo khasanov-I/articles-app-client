@@ -1,5 +1,5 @@
 import {memo, type ReactNode} from 'react';
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from '@/shared/lib/classNames';
 import './Loader.css';
 
 type LoaderProps = {

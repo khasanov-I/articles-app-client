@@ -1,9 +1,9 @@
 import {memo, type ReactNode} from 'react';
 import cls from './ArticleViewSelector.module.scss';
-import {classNames} from 'shared/lib/classNames';
-import { ArticleView } from 'entities/Article/model/consts/consts';
-import {GridLogo, MenuLogo} from 'shared/assets/icons';
-import {Button, ButtonTheme} from 'shared/ui/Button/Button';
+import {classNames} from '@/shared/lib/classNames';
+import { ArticleView } from '@/entities/Article/model/consts/consts';
+import {GridLogo, MenuLogo} from '@/shared/assets/icons';
+import {Button, ButtonTheme} from '@/shared/ui/Button/Button';
 
 type ArticleViewSelectorProps = {
     className?: string;

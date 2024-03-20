@@ -1,19 +1,19 @@
 import {useTranslation} from 'react-i18next';
 import {memo, useCallback} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {classNames} from 'shared/lib/classNames';
-import {Button} from 'shared/ui/Button/Button';
-import {Input} from 'shared/ui/Input/Input';
+import {classNames} from '@/shared/lib/classNames';
+import {Button} from '@/shared/ui/Button/Button';
+import {Input} from '@/shared/ui/Input/Input';
 import cls from './LoginForm.module.scss';
-import {loginActions, loginReducer} from 'features/AuthByUsername/model/slice/loginSlice';
-import {Text, TextTheme} from 'shared/ui/Text/Text';
-import {loginByUsername} from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
-import {useAppDispatch} from 'app/providers/StoreProvider';
-import {getLoginUsername} from 'features/AuthByUsername/model/selectors/getLoginState/getLoginUsername';
-import {getLoginPassword} from 'features/AuthByUsername/model/selectors/getLoginState/getLoginPassword';
-import {getLoginError} from 'features/AuthByUsername/model/selectors/getLoginState/getLoginError';
-import {getLoginIsLoading} from 'features/AuthByUsername/model/selectors/getLoginState/getLoginIsLoading';
-import {DynamicModuleLoader} from 'shared/lib/dynamicModuleLoader/dynamicModuleLoader';
+import {loginActions, loginReducer} from '@/features/AuthByUsername/model/slice/loginSlice';
+import {Text, TextTheme} from '@/shared/ui/Text/Text';
+import {loginByUsername} from '@/features/AuthByUsername/model/services/loginByUsername/loginByUsername';
+import {useAppDispatch} from '@/app/providers/StoreProvider';
+import {getLoginUsername} from '@/features/AuthByUsername/model/selectors/getLoginState/getLoginUsername';
+import {getLoginPassword} from '@/features/AuthByUsername/model/selectors/getLoginState/getLoginPassword';
+import {getLoginError} from '@/features/AuthByUsername/model/selectors/getLoginState/getLoginError';
+import {getLoginIsLoading} from '@/features/AuthByUsername/model/selectors/getLoginState/getLoginIsLoading';
+import {DynamicModuleLoader} from '@/shared/lib/dynamicModuleLoader/dynamicModuleLoader';
 
 export type LoginFormProps = {
     className?: string;

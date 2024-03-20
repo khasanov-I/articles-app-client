@@ -1,16 +1,16 @@
 import {type ReactNode} from 'react';
 import {useTranslation} from 'react-i18next';
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from '@/shared/lib/classNames';
 import cls from './ProfileCard.module.scss';
-import {Text, TextTheme} from 'shared/ui/Text/Text';
-import {Input} from 'shared/ui/Input/Input';
+import {Text, TextTheme} from '@/shared/ui/Text/Text';
+import {Input} from '@/shared/ui/Input/Input';
 import {type Profile} from '../../model/types/profile';
-import {Loader} from 'shared/ui/Loader/Loader';
-import {Avatar} from 'shared/ui/Avatar/Avatar';
-import {type Currency, CurrencySelect} from 'entities/Currency';
-import {CountrySelect, type Country} from 'entities/Country';
-import {VStack} from 'shared/ui/Stack/VStack/VStack';
-import {HStack} from 'shared/ui/Stack/HStack/HStack';
+import {Loader} from '@/shared/ui/Loader/Loader';
+import {Avatar} from '@/shared/ui/Avatar/Avatar';
+import {type Currency, CurrencySelect} from '@/entities/Currency';
+import {CountrySelect, type Country} from '@/entities/Country';
+import {VStack} from '@/shared/ui/Stack/VStack/VStack';
+import {HStack} from '@/shared/ui/Stack/HStack/HStack';
 
 type ProfileCardProps = {
     className?: string;

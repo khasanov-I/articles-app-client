@@ -1,7 +1,7 @@
 import {type Meta, type StoryObj} from '@storybook/react';
 import {CurrencySelect} from './CurrencySelect';
-import {themeDecorator} from 'shared/story_decorators';
-import {Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
+import {themeDecorator} from '@/shared/story_decorators';
+import {Theme} from '@/app/providers/ThemeProvider/lib/ThemeContext';
 
 const meta = {
     title: 'entities/CurrencySelect',

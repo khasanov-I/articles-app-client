@@ -1,6 +1,6 @@
 import {useMemo, type ReactNode, type CSSProperties} from 'react';
 import {useTranslation} from 'react-i18next';
-import {type Mods, classNames} from 'shared/lib/classNames';
+import {type Mods, classNames} from '@/shared/lib/classNames';
 import cls from './Avatar.module.scss';
 
 type AvatarProps = {

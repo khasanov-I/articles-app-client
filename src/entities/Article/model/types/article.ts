@@ -1,4 +1,4 @@
-import {type User} from 'entities/User';
+import {type User} from '@/entities/User';
 import {type ArticleBlockType} from '../consts/consts';
 import {type ArticleType} from '../consts/consts';
 

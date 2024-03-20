@@ -1,8 +1,8 @@
 import {type Meta, type StoryObj} from '@storybook/react';
-import {reduxDecorator, themeDecorator} from 'shared/story_decorators';
-import {Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
+import {reduxDecorator, themeDecorator} from '@/shared/story_decorators';
+import {Theme} from '@/app/providers/ThemeProvider/lib/ThemeContext';
 import {ArticleRecommendationsList} from './ArticleRecommendationsList';
-import {type Article} from 'entities/Article';
+import {type Article} from '@/entities/Article';
 
 const article: Article = {
     id: '1',

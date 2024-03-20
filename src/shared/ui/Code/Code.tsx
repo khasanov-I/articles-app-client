@@ -1,7 +1,7 @@
 import {memo, useCallback, type ReactNode} from 'react';
 import {useTranslation} from 'react-i18next';
 import cls from './Code.module.scss';
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from '@/shared/lib/classNames';
 import {Button} from '../Button/Button';
 
 type CodeProps = {

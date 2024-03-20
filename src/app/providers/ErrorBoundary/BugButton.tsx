@@ -1,5 +1,5 @@
 import {useState, type ReactNode, useEffect} from 'react';
-import {Button} from 'shared/ui/Button/Button';
+import {Button} from '@/shared/ui/Button/Button';
 
 export function BugButton(): ReactNode {
     const [error, setError] = useState(false);

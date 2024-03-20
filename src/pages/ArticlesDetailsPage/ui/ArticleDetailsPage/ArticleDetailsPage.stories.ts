@@ -1,10 +1,10 @@
 import {type Meta, type StoryObj} from '@storybook/react';
 import ArticleDetailsPage from './ArticleDetailsPage';
-import {reduxDecorator, themeDecorator} from 'shared/story_decorators';
-import {Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
-import {type Article} from 'entities/Article';
-import { ArticleType } from 'entities/Article/model/consts/consts';
-import { ArticleBlockType } from 'entities/Article/model/consts/consts';
+import {reduxDecorator, themeDecorator} from '@/shared/story_decorators';
+import {Theme} from '@/app/providers/ThemeProvider/lib/ThemeContext';
+import {type Article} from '@/entities/Article';
+import { ArticleType } from '@/entities/Article/model/consts/consts';
+import { ArticleBlockType } from '@/entities/Article/model/consts/consts';
 
 const article: Article = {
     id: '1',

@@ -1,8 +1,8 @@
 import cls from './ArticleImageBlockComponent.module.scss';
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from '@/shared/lib/classNames';
 import {memo, type ReactNode} from 'react';
-import {type ArticleImageBlock} from 'entities/Article/model/types/article';
-import {Text} from 'shared/ui/Text/Text';
+import {type ArticleImageBlock} from '@/entities/Article/model/types/article';
+import {Text} from '@/shared/ui/Text/Text';
 
 type ArticleImageBlockComponentProps = {
     className?: string;

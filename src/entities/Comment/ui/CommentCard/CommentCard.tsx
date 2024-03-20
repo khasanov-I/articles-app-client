@@ -1,12 +1,12 @@
 import {memo, type ReactNode} from 'react';
 import cls from './CommentCard.module.scss';
-import {classNames} from 'shared/lib/classNames';
-import {type Comment} from 'entities/Comment/model/types/comment';
-import {Skeleton} from 'shared/ui/Skeleton/Skeleton';
-import {Avatar} from 'shared/ui/Avatar/Avatar';
-import {Text} from 'shared/ui/Text/Text';
-import {AppLink} from 'shared/ui/AppLink/AppLink';
-import {pagePaths} from 'shared/lib/routeConfig';
+import {classNames} from '@/shared/lib/classNames';
+import {type Comment} from '@/entities/Comment/model/types/comment';
+import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
+import {Avatar} from '@/shared/ui/Avatar/Avatar';
+import {Text} from '@/shared/ui/Text/Text';
+import {AppLink} from '@/shared/ui/AppLink/AppLink';
+import {pagePaths} from '@/shared/lib/routeConfig';
 
 type CommentCardProps = {
     className?: string;

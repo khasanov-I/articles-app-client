@@ -1,8 +1,8 @@
 import {useTranslation} from 'react-i18next';
-import {classNames} from 'shared/lib/classNames';
-import {Button} from 'shared/ui/Button/Button';
+import {classNames} from '@/shared/lib/classNames';
+import {Button} from '@/shared/ui/Button/Button';
 import cls from './LangSwitcher.module.scss';
-import {ButtonTheme} from 'shared/ui/Button/Button';
+import {ButtonTheme} from '@/shared/ui/Button/Button';
 import {type ReactNode, memo} from 'react';
 
 type LangSwitcherProps = {

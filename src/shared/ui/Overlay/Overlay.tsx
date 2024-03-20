@@ -1,6 +1,6 @@
 import {memo, type ReactNode} from 'react';
 import cls from './Overlay.module.scss';
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from '@/shared/lib/classNames';
 
 type OverlayProps = {
     className?: string;

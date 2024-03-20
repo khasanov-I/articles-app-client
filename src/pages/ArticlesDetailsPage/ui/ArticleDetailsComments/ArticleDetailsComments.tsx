@@ -1,17 +1,17 @@
 import {memo, useCallback, type ReactNode, Suspense} from 'react';
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from '@/shared/lib/classNames';
 import {useTranslation} from 'react-i18next';
-import {Text} from 'shared/ui/Text/Text';
-import {AddCommentFormAsync} from 'features/AddComment';
-import {CommentList} from 'entities/Comment';
+import {Text} from '@/shared/ui/Text/Text';
+import {AddCommentFormAsync} from '@/features/AddComment';
+import {CommentList} from '@/entities/Comment';
 import {useSelector} from 'react-redux';
 import {getArticleComments} from '../../model/slices/articleDetailsCommentsSlice';
 import {getArticleCommentsIsLoading} from '../../model/selectors/comments';
 import {addCommentForArticle} from '../../model/services/addCommentForArticle';
-import {useAppDispatch} from 'app/providers/StoreProvider';
-import {useInitialEffect} from 'shared/lib/hooks/useInitialEffect';
+import {useAppDispatch} from '@/app/providers/StoreProvider';
+import {useInitialEffect} from '@/shared/lib/hooks/useInitialEffect';
 import {fetchCommentsArticleById} from '../../model/services/fetchCommentsByArticleId';
-import {Loader} from 'shared/ui/Loader/Loader';
+import {Loader} from '@/shared/ui/Loader/Loader';
 
 type ArticleDetailsCommentsProps = {
     className?: string;

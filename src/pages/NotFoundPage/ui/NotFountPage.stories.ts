@@ -1,7 +1,7 @@
 import {type Meta, type StoryObj} from '@storybook/react';
 import {NotFoundPage} from './NotFoundPage';
-import {themeDecorator} from 'shared/story_decorators';
-import {Theme} from 'app/providers/ThemeProvider/lib/ThemeContext';
+import {themeDecorator} from '@/shared/story_decorators';
+import {Theme} from '@/app/providers/ThemeProvider/lib/ThemeContext';
 
 const meta = {
     title: 'pages/NotFoundPage',

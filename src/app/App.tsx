@@ -1,10 +1,10 @@
 import {type ReactNode, Suspense, useEffect} from 'react';
 import {AppRouter} from './providers/AppRouter';
-import {Navbar} from 'widgets/Navbar';
+import {Navbar} from '@/widgets/Navbar';
 import {useTheme} from './providers/ThemeProvider';
-import {Sidebar} from 'widgets/Sidebar';
+import {Sidebar} from '@/widgets/Sidebar';
 import {useDispatch, useSelector} from 'react-redux';
-import {getUserInited, userActions} from 'entities/User';
+import {getUserInited, userActions} from '@/entities/User';
 
 export function App(): ReactNode {
     const {theme} = useTheme();

@@ -1,16 +1,16 @@
 import {type ReactNode, useState, useCallback, memo} from 'react';
 import cls from './Navbar.module.scss';
 import {useTranslation} from 'react-i18next';
-import {Button} from 'shared/ui/Button/Button';
-import {ButtonTheme} from 'shared/ui/Button/Button';
-import {LoginModal} from 'features/AuthByUsername';
+import {Button} from '@/shared/ui/Button/Button';
+import {ButtonTheme} from '@/shared/ui/Button/Button';
+import {LoginModal} from '@/features/AuthByUsername';
 import {useSelector} from 'react-redux';
-import {getUserAuthData} from 'entities/User';
-import {AppLink} from 'shared/ui/AppLink/AppLink';
-import {pagePaths} from 'shared/lib/routeConfig';
-import {HStack} from 'shared/ui/Stack/HStack/HStack';
-import {NotificationButton} from 'features/notificationButton';
-import {AvatarDropdown} from 'features/avatarDropdown';
+import {getUserAuthData} from '@/entities/User';
+import {AppLink} from '@/shared/ui/AppLink/AppLink';
+import {pagePaths} from '@/shared/lib/routeConfig';
+import {HStack} from '@/shared/ui/Stack/HStack/HStack';
+import {NotificationButton} from '@/features/notificationButton';
+import {AvatarDropdown} from '@/features/avatarDropdown';
 
 export const Navbar = memo((): ReactNode => {
     const {t} = useTranslation('bars');

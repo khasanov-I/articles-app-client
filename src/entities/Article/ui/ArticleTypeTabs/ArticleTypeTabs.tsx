@@ -1,8 +1,8 @@
 import {memo, useMemo, type ReactNode} from 'react';
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from '@/shared/lib/classNames';
 import {useTranslation} from 'react-i18next';
-import {Tabs, type TabItem} from 'shared/ui/Tabs/Tabs';
-import { ArticleType } from 'entities/Article/model/consts/consts';
+import {Tabs, type TabItem} from '@/shared/ui/Tabs/Tabs';
+import { ArticleType } from '@/entities/Article/model/consts/consts';
 
 type ArticleTypeTabsProps = {
     className?: string;

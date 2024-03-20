@@ -1,4 +1,4 @@
-import {type DropdownDirection} from 'shared/types/ui';
+import {type DropdownDirection} from '@/shared/types/ui';
 import cls from './styles.module.scss';
 
 export const mapDirectionClass: Record<DropdownDirection, string> = {

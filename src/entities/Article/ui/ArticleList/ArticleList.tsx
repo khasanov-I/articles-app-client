@@ -1,14 +1,14 @@
 import {type HTMLAttributeAnchorTarget, memo, type ReactNode} from 'react';
 import {type Article} from '../../model/types/article';
-import { ArticleView } from 'entities/Article/model/consts/consts';
-import {classNames} from 'shared/lib/classNames';
+import {ArticleView} from '@/entities/Article/model/consts/consts';
+import {classNames} from '@/shared/lib/classNames';
 import {ArticleListItem} from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
 import {ArticleListItemSkeleton} from '../ArticleListItem/ArticleListItemSkeleton';
-import {Text} from 'shared/ui/Text/Text';
+import {Text} from '@/shared/ui/Text/Text';
 import {useTranslation} from 'react-i18next';
 import {List, type ListRowProps, WindowScroller} from 'react-virtualized';
-import {PAGE_ID} from 'widgets/Page/ui/Page';
+import {PAGE_ID} from '@/widgets/Page/ui/Page';
 
 type ArticleListProps = {
     className?: string;

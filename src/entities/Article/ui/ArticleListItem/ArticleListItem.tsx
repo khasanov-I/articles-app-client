@@ -1,18 +1,18 @@
 import {memo, type ReactNode, type HTMLAttributeAnchorTarget} from 'react';
 import cls from './ArticleListItem.module.scss';
-import {type Article, type ArticleTextBlock} from 'entities/Article/model/types/article';
-import { ArticleView } from 'entities/Article/model/consts/consts';
-import {ArticleBlockType} from 'entities/Article/model/consts/consts';
+import {type Article, type ArticleTextBlock} from '@/entities/Article/model/types/article';
+import { ArticleView } from '@/entities/Article/model/consts/consts';
+import {ArticleBlockType} from '@/entities/Article/model/consts/consts';
 import {useTranslation} from 'react-i18next';
-import {classNames} from 'shared/lib/classNames';
-import {Text} from 'shared/ui/Text/Text';
-import {EyeLogo} from 'shared/assets/icons';
-import {Card} from 'shared/ui/Card/Card';
-import {Avatar} from 'shared/ui/Avatar/Avatar';
-import {Button} from 'shared/ui/Button/Button';
+import {classNames} from '@/shared/lib/classNames';
+import {Text} from '@/shared/ui/Text/Text';
+import {EyeLogo} from '@/shared/assets/icons';
+import {Card} from '@/shared/ui/Card/Card';
+import {Avatar} from '@/shared/ui/Avatar/Avatar';
+import {Button} from '@/shared/ui/Button/Button';
 import {ArticleTextBlockComponent} from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import {pagePaths} from 'shared/lib/routeConfig';
-import {AppLink} from 'shared/ui/AppLink/AppLink';
+import {pagePaths} from '@/shared/lib/routeConfig';
+import {AppLink} from '@/shared/ui/AppLink/AppLink';
 
 type ArticleListItemProps = {
     className?: string;
