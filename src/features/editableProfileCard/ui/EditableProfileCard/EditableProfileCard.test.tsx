@@ -6,7 +6,7 @@ import {profileReducer} from '../../model/slice/profileSlice';
 import {componentRender} from '@/shared/lib/componentRender';
 import {EditableProfileCard} from './EditableProfileCard';
 import {screen} from '@testing-library/react';
-import {$api} from '@/shared/api/api';
+import $api from '@/shared/api/api';
 import {type ComponentRenderOptions} from '@/shared/lib/componentRender/componentRender';
 
 const profile: Profile = {

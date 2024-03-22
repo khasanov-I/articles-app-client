@@ -2,7 +2,7 @@ import {type ReducersMapObject, configureStore, type Reducer, type CombinedState
 import {type ThunkExtraArg, type ReduxStoreWithManager, type StateSchema} from './StateSchema';
 import {userReducer} from '@/entities/User';
 import {createReducerManager} from './reducerManager';
-import {$api} from '@/shared/api/api';
+import $api from '@/shared/api/api';
 import {rtkApi} from '@/shared/api/rtkApi';
 import {ScrollRestorationReducer} from '@/features/UI';
 
