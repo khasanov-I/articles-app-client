@@ -10,4 +10,6 @@ import EyeLogo from './eye.svg?react';
 import CalendarLogo from './calendar.svg?react';
 import GridLogo from './grid.svg?react';
 import NotificationLogo from './notification.svg?react';
-export {NotificationLogo, GridLogo, EyeLogo, CalendarLogo, MenuLogo, MoonLogo, SunLogo, HomeLogo, AboutLogo, UserLogo, ArticleLogo};
+import WhiteStarLogo from './whitestar.svg?react';
+import BlackStarLogo from './blackstar.svg?react';
+export {WhiteStarLogo, BlackStarLogo, NotificationLogo, GridLogo, EyeLogo, CalendarLogo, MenuLogo, MoonLogo, SunLogo, HomeLogo, AboutLogo, UserLogo, ArticleLogo};
