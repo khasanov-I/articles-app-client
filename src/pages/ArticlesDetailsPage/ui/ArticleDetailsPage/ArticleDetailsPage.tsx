@@ -11,6 +11,7 @@ import {ArticleDetailsPageHeader} from '../ArticleDetailsPageHeader/ArticleDetai
 import {ArticleRecommendationsList} from '@/features/articleRecommendationsList';
 import {ArticleDetailsComments} from '../ArticleDetailsComments/ArticleDetailsComments';
 import {VStack} from '@/shared/ui/Stack/VStack/VStack';
+import {ArticleRatingAsync} from '@/features/articleRating';
 
 type ArticleDetailsPageProps = {
     className?: string;
@@ -27,11 +28,16 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps): ReactNode => {
 
     const {id} = useParams<{id: string}>();
 
+    if (!id) {
+        return null;
+    }
+
     return <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
         <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
             <VStack gap='16' max>
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id}/>
+                <ArticleRatingAsync articleId={id}/>
                 <ArticleRecommendationsList />
                 <ArticleDetailsComments id={id}/>
             </VStack>
