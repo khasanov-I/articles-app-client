@@ -30,6 +30,14 @@ export default ({config}: {config: Configuration}) => {
 
     config.resolve?.modules?.push(paths.src);
     config.resolve?.extensions?.push('.ts', '.tsx');
+
+    if (config.resolve) {
+        config.resolve.alias = {
+            ...config.resolve.alias,
+            '@': paths.src,
+        };
+    }
+
     config.module?.rules?.push(cssLoader);
 
     if (config.module?.rules) {

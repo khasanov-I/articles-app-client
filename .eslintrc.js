@@ -15,7 +15,9 @@ module.exports = {
 		{
 			files: ['**/src/**/*.{ts,tsx}'],
 			rules: {
-				'kh-i-start-plugin/path-checker': 'error',
+				'kh-i-start-plugin/path-checker': ['error', {
+					alias: '@',
+				}],
 			},
 		},
 		{
