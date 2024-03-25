@@ -11,8 +11,8 @@ import {Card} from '@/shared/ui/Card/Card';
 import {Avatar} from '@/shared/ui/Avatar/Avatar';
 import {Button} from '@/shared/ui/Button/Button';
 import {ArticleTextBlockComponent} from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import {pagePaths} from '@/shared/lib/routeConfig';
 import {AppLink} from '@/shared/ui/AppLink/AppLink';
+import {pagePaths} from '@/shared/const/router';
 
 type ArticleListItemProps = {
     className?: string;

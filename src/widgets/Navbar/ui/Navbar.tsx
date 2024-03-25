@@ -7,10 +7,10 @@ import {LoginModal} from '@/features/AuthByUsername';
 import {useSelector} from 'react-redux';
 import {getUserAuthData} from '@/entities/User';
 import {AppLink} from '@/shared/ui/AppLink/AppLink';
-import {pagePaths} from '@/shared/lib/routeConfig';
 import {HStack} from '@/shared/ui/Stack/HStack/HStack';
 import {NotificationButton} from '@/features/notificationButton';
 import {AvatarDropdown} from '@/features/avatarDropdown';
+import {pagePaths} from '@/shared/const/router';
 
 export const Navbar = memo((): ReactNode => {
     const {t} = useTranslation('bars');

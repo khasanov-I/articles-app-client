@@ -6,7 +6,7 @@ import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
 import {Avatar} from '@/shared/ui/Avatar/Avatar';
 import {Text} from '@/shared/ui/Text/Text';
 import {AppLink} from '@/shared/ui/AppLink/AppLink';
-import {pagePaths} from '@/shared/lib/routeConfig';
+import {pagePaths} from '@/shared/const/router';
 
 type CommentCardProps = {
     className?: string;
