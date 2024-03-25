@@ -18,6 +18,10 @@ module.exports = {
 				'kh-i-start-plugin/path-checker': ['error', {
 					alias: '@',
 				}],
+				'kh-i-start-plugin/public-api-imports': ['error', {
+					alias: '@',
+					testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/ReduxDecorator.tsx'],
+				}],
 			},
 		},
 		{

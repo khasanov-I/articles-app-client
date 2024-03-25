@@ -1,6 +1,6 @@
 import {type StateSchema} from '@/app/providers/StoreProvider';
 import {type Article} from '../types/article';
-import { ArticleType } from '../consts/consts';
+import {ArticleType} from '../consts/consts';
 import {ArticleBlockType} from '../consts/consts';
 import {getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading} from './articleDetails';
 
