@@ -2,7 +2,7 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
 import {Button, ButtonTheme} from './Button';
-import {Theme} from '@/app/providers/ThemeProvider/lib/ThemeContext';
+import {Theme} from '@/shared/const/theme';
 import {themeDecorator} from '@/shared/story_decorators';
 
 const meta = {

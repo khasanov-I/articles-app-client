@@ -1,6 +1,5 @@
-
 import type {Meta, StoryObj} from '@storybook/react';
-import {Theme} from '@/app/providers/ThemeProvider/lib/ThemeContext';
+import {Theme} from '@/shared/const/theme';
 import {reduxDecorator, themeDecorator} from '@/shared/story_decorators';
 import {Sidebar} from './Sidebar';
 

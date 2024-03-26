@@ -5,9 +5,9 @@ import {classNames} from '@/shared/lib/classNames';
 import {Button} from '@/shared/ui/Button/Button';
 import {useNavigate} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import {getCanEditArticle} from '@/pages/ArticlesDetailsPage/model/selectors/article';
-import {getArticleDetailsData} from '@/entities/Article/model/selectors/articleDetails';
+import {getCanEditArticle} from '../../model/selectors/article';
 import {pagePaths} from '@/shared/const/router';
+import {getArticleDetailsData} from '@/entities/Article';
 
 type ArticleDetailsPageHeaderProps = {
     className?: string;

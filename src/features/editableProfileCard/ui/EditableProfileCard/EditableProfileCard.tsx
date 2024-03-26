@@ -4,7 +4,7 @@ import cls from './EditableProfileCard.module.scss';
 import {memo, useCallback} from 'react';
 import {useAppDispatch} from '@/app/providers/StoreProvider';
 import {useSelector} from 'react-redux';
-import {ValidateProfileError} from '@/features/editableProfileCard/model/consts/consts';
+import {ValidateProfileError} from '../../model/consts/consts';
 import {useInitialEffect} from '@/shared/lib/hooks/useInitialEffect';
 import {getProfileError} from '../../model/selectors/getProfileError/getProfileError';
 import {getProfileIsLoading} from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';

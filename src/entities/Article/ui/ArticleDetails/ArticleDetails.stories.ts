@@ -1,7 +1,7 @@
 import {type Meta, type StoryObj} from '@storybook/react';
 import {ArticleDetails} from './ArticleDetails';
 import {reduxDecorator, themeDecorator} from '@/shared/story_decorators';
-import {Theme} from '@/app/providers/ThemeProvider/lib/ThemeContext';
+import {Theme} from '@/shared/const/theme';
 import {type Article} from '../../model/types/article';
 import {ArticleType} from '../../model/consts/consts';
 import {ArticleBlockType} from '../../model/consts/consts';

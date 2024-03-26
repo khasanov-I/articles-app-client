@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference types="vite-plugin-svgr/client" />
 import MenuLogo from './menu.svg?react';
 import MoonLogo from './moon.svg?react';

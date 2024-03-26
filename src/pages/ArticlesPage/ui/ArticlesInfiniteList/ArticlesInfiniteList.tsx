@@ -1,7 +1,7 @@
 import {memo, type ReactNode} from 'react';
 import {useSelector} from 'react-redux';
-import {getArticles} from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
-import {getArticlesPageError, getArticlesPageIsLoading, getArticlesPageView} from '@/pages/ArticlesPage/model/selectors/articlesPageSelector';
+import {getArticles} from '../../model/slice/articlesPageSlice';
+import {getArticlesPageError, getArticlesPageIsLoading, getArticlesPageView} from '../../model/selectors/articlesPageSelector';
 import {classNames} from '@/shared/lib/classNames';
 import {ArticleList} from '@/entities/Article';
 import {Text, TextTheme} from '@/shared/ui/Text/Text';

@@ -5,10 +5,10 @@ import {type UserSchema} from '@/entities/User';
 import {type AddCommentSchema} from '@/features/AddComment';
 import {type LoginSchema} from '@/features/AuthByUsername';
 import {type ScrollRestorationSchema} from '@/features/UI';
-import {type ProfileSchema} from '@/features/editableProfileCard/model/types/editableProfileCardSchema';
 import {type ArticleDetailsPageSchema} from '@/pages/ArticlesDetailsPage';
 import {type ArticlesPageSchema} from '@/pages/ArticlesPage';
 import {type rtkApi} from '@/shared/api/rtkApi';
+import {type ProfileSchema} from '@/features/editableProfileCard';
 
 export type StateSchema = {
     user: UserSchema;

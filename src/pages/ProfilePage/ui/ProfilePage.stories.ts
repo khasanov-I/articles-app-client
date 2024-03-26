@@ -1,6 +1,6 @@
 import {type Meta, type StoryObj} from '@storybook/react';
 import {reduxDecorator, themeDecorator} from '@/shared/story_decorators';
-import {Theme} from '@/app/providers/ThemeProvider/lib/ThemeContext';
+import {Theme} from '@/shared/const/theme';
 import {Currency} from '@/entities/Currency';
 import {Country} from '@/entities/Country';
 import {storyImg} from '@/shared/assets/img';

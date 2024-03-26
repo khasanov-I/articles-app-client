@@ -3,12 +3,11 @@ import {useInView} from 'react-intersection-observer';
 import {classNames} from '@/shared/lib/classNames';
 import cls from './Page.module.scss';
 import {type StateSchema, useAppDispatch} from '@/app/providers/StoreProvider';
-import {ScrollRestorationActions} from '@/features/UI/model/slice/ScrollRestorationSlice';
 import {useLocation} from 'react-router-dom';
 import {useInitialEffect} from '@/shared/lib/hooks/useInitialEffect';
 import {useSelector} from 'react-redux';
 import {useThrottle} from '@/shared/lib/hooks/useThrottle';
-import {getScrollRestorationByPath} from '@/features/UI';
+import {ScrollRestorationActions, getScrollRestorationByPath} from '@/features/UI';
 
 export type PageProps = {
     className?: string;

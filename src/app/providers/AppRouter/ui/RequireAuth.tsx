@@ -1,5 +1,5 @@
 import {getUserAuthData, getUserRoles} from '@/entities/User';
-import {type UserRole} from '@/entities/User/model/consts/consts';
+import {type UserRole} from '@/shared/const/user';
 import {pagePaths} from '@/shared/const/router';
 import {useMemo} from 'react';
 import {useSelector} from 'react-redux';

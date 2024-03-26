@@ -22,6 +22,10 @@ module.exports = {
 					alias: '@',
 					testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/ReduxDecorator.tsx'],
 				}],
+				'kh-i-start-plugin/layer-imports': ['error', {
+					alias: '@',
+					ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+				}],
 			},
 		},
 		{

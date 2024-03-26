@@ -1,3 +1,3 @@
-import ArticleEditPage from './ui/ArticleEditPage/ArticleEditPage';
+import {ArticleEditPageAsync} from './ui/ArticleEditPage/ArticleEditPage.async';
 
-export {ArticleEditPage};
+export {ArticleEditPageAsync};

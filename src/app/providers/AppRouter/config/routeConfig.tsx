@@ -4,13 +4,13 @@ import {NotFoundPage} from '@/pages/NotFoundPage';
 import {ProfilePageAsync} from '@/pages/ProfilePage';
 import {ArticlesPageAsync} from '@/pages/ArticlesPage';
 import {ArticleDetailsPageAsync} from '@/pages/ArticlesDetailsPage';
-import {ArticleEditPageAsync} from '@/pages/ArticleEditPage/ui/ArticleEditPage/ArticleEditPage.async';
 import {AdminPanelPageAsync} from '@/pages/AdminPanelPage';
-import {UserRole} from '@/entities/User/model/consts/consts';
+import {UserRole} from '@/shared/const/user';
 import {ForbiddenPage} from '@/pages/ForbiddenPage';
 import {Pages} from '@/shared/const/router';
 import {pagePaths} from '@/shared/const/router';
 import {type AppRouterProps} from '@/shared/types/router';
+import {ArticleEditPageAsync} from '@/pages/ArticleEditPage';
 
 export const routeConfig: Record<Pages, AppRouterProps> = {
     [Pages.MAIN]: {

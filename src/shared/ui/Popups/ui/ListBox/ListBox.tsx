@@ -1,8 +1,8 @@
-import {HStack} from '@/shared/ui/Stack/HStack/HStack';
+import {HStack} from '../../../Stack/HStack/HStack';
 import cls from './ListBox.module.scss';
 import generalCls from '../../styles/styles.module.scss';
 import {classNames} from '@/shared/lib/classNames';
-import {Button} from '@/shared/ui/Button/Button';
+import {Button} from '../../../Button/Button';
 import {Fragment, type ReactNode} from 'react';
 import {type DropdownDirection} from '@/shared/types/ui';
 import {Listbox as HListBox} from '@headlessui/react';

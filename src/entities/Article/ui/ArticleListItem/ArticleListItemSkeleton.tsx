@@ -1,13 +1,8 @@
 import {memo, type ReactNode} from 'react';
 import cls from './ArticleListItem.module.scss';
-import { ArticleView } from '@/entities/Article/model/consts/consts';
+import {ArticleView} from '../../model/consts/consts';
 import {classNames} from '@/shared/lib/classNames';
-import {Text} from '@/shared/ui/Text/Text';
-import {EyeLogo} from '@/shared/assets/icons';
 import {Card} from '@/shared/ui/Card/Card';
-import {Avatar} from '@/shared/ui/Avatar/Avatar';
-import {Button} from '@/shared/ui/Button/Button';
-import {ArticleTextBlockComponent} from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
 
 type ArticleListItemSkeletonProps = {

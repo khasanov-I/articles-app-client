@@ -1,4 +1,4 @@
-import {type UserRole} from '../consts/consts';
+import {type UserRole} from '@/shared/const/user';
 
 export type User = {
     id: string;

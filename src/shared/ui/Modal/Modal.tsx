@@ -2,9 +2,9 @@ import {type Mods, classNames} from '@/shared/lib/classNames';
 import cls from './Modal.module.scss';
 import {useCallback, type ReactNode, useEffect, useState} from 'react';
 import {Portal} from '../Portal/Portal';
-import {useTheme} from '@/app/providers/ThemeProvider';
 import {Overlay} from '../Overlay/Overlay';
 import {useModal} from '@/shared/lib/hooks/useModal';
+import {useTheme} from '@/shared/lib/hooks/useTheme';
 
 type ModalProps = {
     className?: string;

@@ -1,6 +1,6 @@
 import {type HTMLAttributeAnchorTarget, memo, type ReactNode} from 'react';
 import {type Article} from '../../model/types/article';
-import {ArticleView} from '@/entities/Article/model/consts/consts';
+import {ArticleView} from '../../model/consts/consts';
 import {classNames} from '@/shared/lib/classNames';
 import {ArticleListItem} from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
@@ -8,7 +8,8 @@ import {ArticleListItemSkeleton} from '../ArticleListItem/ArticleListItemSkeleto
 import {Text} from '@/shared/ui/Text/Text';
 import {useTranslation} from 'react-i18next';
 import {List, type ListRowProps, WindowScroller} from 'react-virtualized';
-import {PAGE_ID} from '@/widgets/Page/ui/Page';
+// eslint-disable-next-line kh-i-start-plugin/layer-imports
+import {PAGE_ID} from '@/widgets/Page';
 
 type ArticleListProps = {
     className?: string;

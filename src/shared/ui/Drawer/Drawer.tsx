@@ -3,8 +3,8 @@ import cls from './Drawer.module.scss';
 import {classNames, type Mods} from '@/shared/lib/classNames';
 import {Portal} from '../Portal/Portal';
 import {Overlay} from '../Overlay/Overlay';
-import {useTheme} from '@/app/providers/ThemeProvider';
 import {useModal} from '@/shared/lib/hooks/useModal';
+import {useTheme} from '@/shared/lib/hooks/useTheme';
 
 type DrawerProps = {
     className?: string;

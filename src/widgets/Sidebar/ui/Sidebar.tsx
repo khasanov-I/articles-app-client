@@ -4,12 +4,12 @@ import cls from './Sidebar.module.scss';
 import {Button} from '@/shared/ui/Button/Button';
 import {MenuLogo} from '@/shared/assets/icons';
 import {ButtonTheme} from '@/shared/ui/Button/Button';
-import {ThemeSwitcher} from '@/widgets/ThemeSwitcher/ui/ThemeSwitcher';
-import {LangSwitcher} from '@/widgets/LangSwitcher/LangSwitcher';
 import {SidebarItem} from './SidebarItem';
 import {useSelector} from 'react-redux';
 import {getSidebarItems} from '../model/selectors/getSidebarItems';
 import {VStack} from '@/shared/ui/Stack/VStack/VStack';
+import {ThemeSwitcher} from '@/features/ThemeSwitcher';
+import {LangSwitcher} from '@/features/LangSwitcher';
 
 type SidebarProps = {
     className?: string;

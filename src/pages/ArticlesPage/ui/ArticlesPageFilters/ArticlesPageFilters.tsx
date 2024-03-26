@@ -2,18 +2,25 @@ import {memo, useCallback, type ReactNode} from 'react';
 import {useTranslation} from 'react-i18next';
 import cls from './ArticlesPageFilters.module.scss';
 import {classNames} from '@/shared/lib/classNames';
-import {type ArticleView, ArticleViewSelector, ArticleTypeTabs} from '@/entities/Article';
+import {type ArticleView,
+    ArticleViewSelector,
+    ArticleTypeTabs,
+    type ArticleSort,
+    type ArticleOrder,
+    type ArticleType,
+    ArticleSortSelect} from '@/entities/Article';
 import {useSelector} from 'react-redux';
-import {getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, getArticlesPageType, getArticlesPageView} from '@/pages/ArticlesPage/model/selectors/articlesPageSelector';
-import {articlesPageActions} from '@/pages/ArticlesPage/model/slice/articlesPageSlice';
+import {
+    getArticlesPageOrder,
+    getArticlesPageSearch,
+    getArticlesPageSort,
+    getArticlesPageType,
+    getArticlesPageView} from '../../model/selectors/articlesPageSelector';
+import {articlesPageActions} from '../../model/slice/articlesPageSlice';
 import {useAppDispatch} from '@/app/providers/StoreProvider';
 import {Card} from '@/shared/ui/Card/Card';
 import {Input} from '@/shared/ui/Input/Input';
-import {ArticleSortSelect} from '@/entities/Article/ui/ArticleSortSelector/ArticleSortSelect';
-import { type ArticleOrder } from '@/entities/Article/model/consts/consts';
-import { type ArticleSort } from '@/entities/Article/model/consts/consts';
-import { type ArticleType } from '@/entities/Article/model/consts/consts';
-import {fetchArticlesList} from '@/pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
+import {fetchArticlesList} from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {useDebounce} from '@/shared/lib/hooks/useDebounce';
 import {type TabItem} from '@/shared/ui/Tabs/Tabs';
 

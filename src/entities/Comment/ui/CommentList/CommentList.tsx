@@ -1,7 +1,7 @@
 import {memo, type ReactNode} from 'react';
 import cls from './CommentList.module.scss';
 import {classNames} from '@/shared/lib/classNames';
-import {type Comment} from '@/entities/Comment/model/types/comment';
+import {type Comment} from '../../model/types/comment';
 import {Text} from '@/shared/ui/Text/Text';
 import {useTranslation} from 'react-i18next';
 import {CommentCard} from '../CommentCard/CommentCard';
