@@ -58,6 +58,7 @@ module.exports = {
 				'react-hooks/exhaustive-deps': 'error',
 				'react/display-name': 'off',
 				'no-unsafe-optional-chaining': 'off',
+				'unused-imports/no-unused-imports': 'error',
 			},
 		},
 	],
@@ -70,6 +71,7 @@ module.exports = {
 		'i18next',
 		'react-hooks',
 		'kh-i-start-plugin',
+		'unused-imports',
 	],
 	rules: {
 	},

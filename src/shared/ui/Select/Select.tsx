@@ -1,4 +1,4 @@
-import {useMemo, type ReactNode, memo, type ChangeEvent} from 'react';
+import {useMemo, type ReactNode, type ChangeEvent} from 'react';
 import {useTranslation} from 'react-i18next';
 import {type Mods, classNames} from '@/shared/lib/classNames';
 import cls from './Select.module.scss';

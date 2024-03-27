@@ -1,7 +1,7 @@
 
 import type {Meta, StoryObj} from '@storybook/react';
 import {Theme} from '@/shared/const/theme';
-import {reduxDecorator, themeDecorator} from '@/shared/story_decorators';
+import {themeDecorator} from '@/shared/story_decorators';
 import {PageError} from './PageError';
 
 const meta = {

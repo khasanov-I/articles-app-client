@@ -1,7 +1,7 @@
 import {classNames} from '@/shared/lib/classNames/classNames';
 import {useTranslation} from 'react-i18next';
 import {memo} from 'react';
-import {type Article, ArticleList} from '@/entities/Article';
+import {ArticleList} from '@/entities/Article';
 import {Text} from '@/shared/ui/Text/Text';
 import {VStack} from '@/shared/ui/Stack/VStack/VStack';
 import {useArticleRecommendationsList} from '../../api/articleRecommendationsApi';

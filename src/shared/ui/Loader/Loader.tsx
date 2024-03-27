@@ -1,4 +1,4 @@
-import {memo, type ReactNode} from 'react';
+import {type ReactNode} from 'react';
 import {classNames} from '@/shared/lib/classNames';
 import './Loader.css';
 
