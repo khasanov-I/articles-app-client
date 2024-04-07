@@ -17,6 +17,7 @@ declare module '*.svg' {
     export default content;
 }
 
-type DeepPartial<T> = T extends Record<string, unknown> ? {
+// eslint-disable-next-line @typescript-eslint/ban-types
+type DeepPartial<T> = T extends object ? {
     [P in keyof T]?: DeepPartial<T[P]>;
 } : T;
