@@ -12,7 +12,7 @@ import {Avatar} from '@/shared/ui/Avatar/Avatar';
 import {Button} from '@/shared/ui/Button/Button';
 import {ArticleTextBlockComponent} from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import {AppLink} from '@/shared/ui/AppLink/AppLink';
-import {pagePaths} from '@/shared/const/router';
+import {getRouteArticleDetails} from '@/shared/const/router';
 
 type ArticleListItemProps = {
     className?: string;
@@ -44,7 +44,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps): ReactNode => 
                 <div className={cls.footer}>
                     <AppLink
                         target={target}
-                        to={pagePaths.article_details + article.id}>
+                        to={getRouteArticleDetails(article.id)}>
                         <Button>
                             {t('Читать далее')}
                         </Button>
@@ -59,7 +59,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps): ReactNode => 
     return <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
         <AppLink
             target={target}
-            to={pagePaths.article_details + article.id}>
+            to={getRouteArticleDetails(article.id)}>
             <Card>
                 <div className={cls.imageWrapper}>
                     <img src={article.img} className={cls.img}/>

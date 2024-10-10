@@ -8,6 +8,7 @@ import {useTheme} from '@/shared/lib/hooks/useTheme';
 
 type ModalProps = {
     className?: string;
+    contentClassName?: string;
     children?: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
@@ -15,7 +16,7 @@ type ModalProps = {
 };
 
 export function Modal(props: ModalProps): ReactNode {
-    const {className = '', children, isOpen, onClose, lazy} = props;
+    const {className = '', children, isOpen, onClose, lazy, contentClassName} = props;
 
     const mods: Mods = {
         [cls.opened]: isOpen,
@@ -35,7 +36,7 @@ export function Modal(props: ModalProps): ReactNode {
     return <Portal>
         <div className={classNames(cls.Modal, mods, [className, theme])}>
             <Overlay onClick={closeHandler}/>
-            <div className={classNames(cls.content, {}, [])}>
+            <div className={classNames(cls.content, {}, [contentClassName])}>
                 {children}
             </div>
         </div>

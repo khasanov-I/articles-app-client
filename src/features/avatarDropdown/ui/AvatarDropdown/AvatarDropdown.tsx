@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getUserAuthData, isUserAdmin, isUserManager, userActions} from '@/entities/User';
 import {useTranslation} from 'react-i18next';
 import {classNames} from '@/shared/lib/classNames';
-import {pagePaths} from '@/shared/const/router';
+import {getRouteAdmin, getRouteProfile} from '@/shared/const/router';
 
 type AvatarDropdowmProps = {
     className?: string;
@@ -35,12 +35,12 @@ export const AvatarDropdown = memo((props: AvatarDropdowmProps): ReactNode => {
             ...(isAdminPanelAvailable ? [
                 {
                     content: t('Админка'),
-                    href: pagePaths.admin_panel,
+                    href: getRouteAdmin(),
                 },
             ] : []),
             {
                 content: t('Моя страница'),
-                href: pagePaths.profile + authData?.id,
+                href: authData ? getRouteProfile(authData?.id) : undefined,
             },
             {
                 content: t('Выход'),

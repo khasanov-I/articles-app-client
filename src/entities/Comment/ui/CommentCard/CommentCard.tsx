@@ -6,7 +6,7 @@ import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
 import {Avatar} from '@/shared/ui/Avatar/Avatar';
 import {Text} from '@/shared/ui/Text/Text';
 import {AppLink} from '@/shared/ui/AppLink/AppLink';
-import {pagePaths} from '@/shared/const/router';
+import {getRouteProfile} from '@/shared/const/router';
 
 type CommentCardProps = {
     className?: string;
@@ -29,7 +29,7 @@ export const CommentCard = memo((props: CommentCardProps): ReactNode => {
             </div>
             <Skeleton className={cls.text} width='100%' height={50} />
         </div>
-        : <AppLink to={`${pagePaths.profile}${comment.user.id}`} className={classNames(cls.CommentCard, {}, [className])}>
+        : <AppLink to={getRouteProfile(comment.user.id)} className={classNames(cls.CommentCard, {}, [className])}>
             <div className={cls.header}>
                 {comment.user.avatar ? <Avatar size={30} src={comment.user.avatar} /> : null}
                 <Text className={cls.username} title={comment.user.username} />

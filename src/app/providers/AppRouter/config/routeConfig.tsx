@@ -7,59 +7,67 @@ import {ArticleDetailsPageAsync} from '@/pages/ArticlesDetailsPage';
 import {AdminPanelPageAsync} from '@/pages/AdminPanelPage';
 import {UserRole} from '@/shared/const/user';
 import {ForbiddenPage} from '@/pages/ForbiddenPage';
-import {Pages} from '@/shared/const/router';
-import {pagePaths} from '@/shared/const/router';
+import {Pages,
+    getRouteAbout,
+    getRouteAdmin,
+    getRouteArticleCreate,
+    getRouteArticleDetails,
+    getRouteArticleEdit,
+    getRouteForbidden,
+    getRouteArticles,
+    getRouteMain,
+    getRouteProfile} from '@/shared/const/router';
 import {type AppRouterProps} from '@/shared/types/router';
 import {ArticleEditPageAsync} from '@/pages/ArticleEditPage';
 
 export const routeConfig: Record<Pages, AppRouterProps> = {
     [Pages.MAIN]: {
-        path: pagePaths.main,
+        path: getRouteMain(),
         element: <MainPageAsync />,
     },
     [Pages.ABOUT]: {
-        path: pagePaths.about,
+        path: getRouteAbout(),
         element: <AboutPageAsync />,
     },
     [Pages.PROFILE]: {
-        path: `${pagePaths.profile}:id`,
+        path: getRouteProfile(':id'),
         element: <ProfilePageAsync />,
         authOnly: true,
     },
     [Pages.ARTICLES]: {
-        path: pagePaths.articles,
+        path: getRouteArticles(),
         element: <ArticlesPageAsync />,
         authOnly: true,
     },
     [Pages.ARTICLE_DETAILS]: {
-        path: `${pagePaths.article_details}:id`,
+        path: getRouteArticleDetails(':id'),
         element: <ArticleDetailsPageAsync />,
         authOnly: true,
     },
     [Pages.ARTICLE_CREATE]: {
-        path: pagePaths.article_create,
+        path: getRouteArticleCreate(),
         element: <ArticleEditPageAsync />,
         authOnly: true,
     },
     [Pages.ARTICLE_EDIT]: {
-        path: pagePaths.article_edit,
+        path: getRouteArticleEdit(':id'),
         element: <ArticleEditPageAsync />,
         authOnly: true,
     },
     [Pages.ADMIN_PANEL]: {
-        path: pagePaths.admin_panel,
+        path: getRouteAdmin(),
         element: <AdminPanelPageAsync />,
         authOnly: true,
         roles: [UserRole.MANAGER, UserRole.ADMIN],
     },
     [Pages.FORBIDDEN]: {
-        path: pagePaths.forbidden,
+        path: getRouteForbidden(),
         element: <ForbiddenPage />,
     },
 
     // LAST
     [Pages.NOT_FOUND]: {
-        path: pagePaths['not-found'],
+        path: '*',
         element: <NotFoundPage />,
     },
 };

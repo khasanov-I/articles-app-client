@@ -1,4 +1,4 @@
-import {type ReactNode, useState, useCallback, memo} from 'react';
+import {type ReactNode, useState, useCallback, memo, Suspense} from 'react';
 import cls from './Navbar.module.scss';
 import {useTranslation} from 'react-i18next';
 import {Button} from '@/shared/ui/Button/Button';
@@ -11,6 +11,12 @@ import {HStack} from '@/shared/ui/Stack/HStack/HStack';
 import {NotificationButton} from '@/features/notificationButton';
 import {AvatarDropdown} from '@/features/avatarDropdown';
 import {pagePaths} from '@/shared/const/router';
+import {BrowserView, MobileView} from 'react-device-detect';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import Drawer from 'react-drag-drawer';
+import {DrawerFormAsync} from '@/features/AuthByUsername';
+import {Loader} from '@/shared/ui/Loader/Loader';
 
 export const Navbar = memo((): ReactNode => {
     const {t} = useTranslation('bars');
@@ -46,7 +52,16 @@ export const Navbar = memo((): ReactNode => {
                 <Button theme={ButtonTheme.CLEAR} onClick={onShowModal}>
                     {t('Вход')}
                 </Button>
-                <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModal} />
+                <BrowserView>
+                    <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModal} />
+                </BrowserView>
+                <MobileView>
+                    <Drawer modalElementClass={cls.modal} open={isAuthModalOpen} onRequestClose={onCloseModal}>
+                        <Suspense fallback={<Loader />}>
+                            <DrawerFormAsync />
+                        </Suspense>
+                    </Drawer>
+                </MobileView>
             </div>
         </header>
     );

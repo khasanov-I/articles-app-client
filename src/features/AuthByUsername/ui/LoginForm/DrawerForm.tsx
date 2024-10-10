@@ -3,11 +3,11 @@ import {loginReducer} from '../../model/slice/loginSlice';
 import {DynamicModuleLoader} from '@/shared/lib/dynamicModuleLoader/dynamicModuleLoader';
 import LoginContent from './LoginContent';
 
-export type LoginFormProps = {
+export type DrawerFormProps = {
     className?: string;
 };
 
-const LoginForm = memo((props: LoginFormProps) => {
+const DrawerForm = memo((props: DrawerFormProps) => {
     const {className = ''} = props;
 
     const initialReducers = {
@@ -16,9 +16,9 @@ const LoginForm = memo((props: LoginFormProps) => {
 
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
-            <LoginContent userAgent='desktop'/>
+            <LoginContent userAgent='mobile'/>
         </DynamicModuleLoader>
     );
 });
 
-export default LoginForm;
+export default DrawerForm;
