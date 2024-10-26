@@ -12,24 +12,33 @@ import {NotificationButton} from '@/features/notificationButton';
 import {AvatarDropdown} from '@/features/avatarDropdown';
 import {pagePaths} from '@/shared/const/router';
 import {BrowserView, MobileView} from 'react-device-detect';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import Drawer from 'react-drag-drawer';
 import {DrawerFormAsync} from '@/features/AuthByUsername';
 import {Loader} from '@/shared/ui/Loader/Loader';
+import {SwipeableDrawer} from '@mui/material';
+import {RegisterModal} from '@/features/Register';
 
 export const Navbar = memo((): ReactNode => {
     const {t} = useTranslation('bars');
+
+    const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
     const authData = useSelector(getUserAuthData);
 
-    const onShowModal = useCallback(() => {
+    const onShowRegisterModal = useCallback(() => {
+        setIsRegisterModalOpen(true);
+    }, []);
+
+    const onCloseRegisterModal = useCallback(() => {
+        setIsRegisterModalOpen(false);
+    }, []);
+
+    const onShowAuthModal = useCallback(() => {
         setIsAuthModalOpen(true);
     }, []);
 
-    const onCloseModal = useCallback(() => {
+    const onCloseAuthModal = useCallback(() => {
         setIsAuthModalOpen(false);
     }, []);
 
@@ -49,18 +58,22 @@ export const Navbar = memo((): ReactNode => {
     return (
         <header className={cls.navbar}>
             <div className={cls.links}>
-                <Button theme={ButtonTheme.CLEAR} onClick={onShowModal}>
+                <Button theme={ButtonTheme.CLEAR} onClick={onShowAuthModal}>
                     {t('Вход')}
                 </Button>
+                <Button theme={ButtonTheme.CLEAR} onClick={onShowRegisterModal}>
+                    Регистрация
+                </Button>
                 <BrowserView>
-                    <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModal} />
+                    <LoginModal isOpen={isAuthModalOpen} onClose={onCloseAuthModal} />
+                    <RegisterModal isOpen={isRegisterModalOpen} onClose={onCloseRegisterModal} />
                 </BrowserView>
                 <MobileView>
-                    <Drawer modalElementClass={cls.modal} open={isAuthModalOpen} onRequestClose={onCloseModal}>
+                    <SwipeableDrawer anchor='bottom' onOpen={onShowAuthModal} open={isAuthModalOpen} onClose={onCloseAuthModal}>
                         <Suspense fallback={<Loader />}>
                             <DrawerFormAsync />
                         </Suspense>
-                    </Drawer>
+                    </SwipeableDrawer>
                 </MobileView>
             </div>
         </header>

@@ -5,6 +5,7 @@ export type User = {
     username: string;
     avatar?: string;
     roles?: UserRole[];
+    jwt: string;
 };
 
 export type UserSchema = {

@@ -9,6 +9,7 @@ import {type ArticleDetailsPageSchema} from '@/pages/ArticlesDetailsPage';
 import {type ArticlesPageSchema} from '@/pages/ArticlesPage';
 import {type rtkApi} from '@/shared/api/rtkApi';
 import {type ProfileSchema} from '@/features/editableProfileCard';
+import {type RegisterSchema} from '@/features/Register';
 
 export type StateSchema = {
     user: UserSchema;
@@ -21,6 +22,7 @@ export type StateSchema = {
     addComment?: AddCommentSchema;
     articlesPage?: ArticlesPageSchema;
     articleDetailsPage?: ArticleDetailsPageSchema;
+    registerForm?: RegisterSchema;
 };
 
 export type StateSchemaKey = keyof StateSchema;
