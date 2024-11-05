@@ -15,7 +15,7 @@ import {BrowserView, MobileView} from 'react-device-detect';
 import {DrawerFormAsync} from '@/features/AuthByUsername';
 import {Loader} from '@/shared/ui/Loader/Loader';
 import {SwipeableDrawer} from '@mui/material';
-import {RegisterModal} from '@/features/Register';
+import {RegisterDrawerAsync, RegisterModal} from '@/features/Register';
 
 export const Navbar = memo((): ReactNode => {
     const {t} = useTranslation('bars');
@@ -72,6 +72,11 @@ export const Navbar = memo((): ReactNode => {
                     <SwipeableDrawer anchor='bottom' onOpen={onShowAuthModal} open={isAuthModalOpen} onClose={onCloseAuthModal}>
                         <Suspense fallback={<Loader />}>
                             <DrawerFormAsync />
+                        </Suspense>
+                    </SwipeableDrawer>
+                    <SwipeableDrawer anchor='bottom' onOpen={onShowRegisterModal} open={isRegisterModalOpen} onClose={onCloseRegisterModal}>
+                        <Suspense fallback={<Loader />}>
+                            <RegisterDrawerAsync />
                         </Suspense>
                     </SwipeableDrawer>
                 </MobileView>

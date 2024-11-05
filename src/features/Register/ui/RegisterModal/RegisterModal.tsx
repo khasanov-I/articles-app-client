@@ -3,7 +3,7 @@ import {Loader} from '@/shared/ui/Loader/Loader';
 import {Modal} from '@/shared/ui/Modal/Modal';
 import {Suspense, type ReactNode} from 'react';
 import cls from './RegisterModal.module.scss';
-import {RegisterFormAsync} from '../RegisterForm/RegisterFrom.async';
+import {RegisterFormAsync} from '../RegisterForm/RegisterForm.async';
 
 type RegisterModalProps = {
     className?: string;

@@ -16,9 +16,11 @@ import {Pages,
     getRouteForbidden,
     getRouteArticles,
     getRouteMain,
-    getRouteProfile} from '@/shared/const/router';
+    getRouteProfile,
+    getRouteEmailActivate} from '@/shared/const/router';
 import {type AppRouterProps} from '@/shared/types/router';
 import {ArticleEditPageAsync} from '@/pages/ArticleEditPage';
+import {EmailActivationPage} from '@/pages/EmailActivationPage';
 
 export const routeConfig: Record<Pages, AppRouterProps> = {
     [Pages.MAIN]: {
@@ -63,6 +65,10 @@ export const routeConfig: Record<Pages, AppRouterProps> = {
     [Pages.FORBIDDEN]: {
         path: getRouteForbidden(),
         element: <ForbiddenPage />,
+    },
+    [Pages.EMAIL_ACTIVATE]: {
+        path: getRouteEmailActivate(':id'),
+        element: <EmailActivationPage />,
     },
 
     // LAST

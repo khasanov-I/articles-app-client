@@ -6,7 +6,6 @@ const initialState: RegisterSchema = {
     isLoading: false,
     username: '',
     password: '',
-    avatar: '',
     email: '',
 };
 
@@ -20,9 +19,6 @@ const registerSlice = createSlice({
         setPassword(state, action: PayloadAction<string>) {
             state.password = action.payload;
         },
-        setAvatar(state, action: PayloadAction<string>) {
-            state.avatar = action.payload;
-        },
         setEmail(state, action: PayloadAction<string>) {
             state.email = action.payload;
         },
@@ -30,7 +26,7 @@ const registerSlice = createSlice({
     extraReducers(builder) {
         builder
             .addCase(register.pending, state => {
-                state.error = undefined;
+                state.errors = undefined;
                 state.isLoading = true;
             })
             .addCase(register.fulfilled, state => {
@@ -38,7 +34,7 @@ const registerSlice = createSlice({
             })
             .addCase(register.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = action.payload;
+                state.errors = action.payload;
             });
     },
 });

@@ -8,6 +8,7 @@ export enum Pages {
     ARTICLE_EDIT = 'article_edit',
     ADMIN_PANEL = 'admin_panel',
     FORBIDDEN = 'forbidden',
+    EMAIL_ACTIVATE = 'email_activate',
 
     // LAST
     NOT_FOUND = 'not-found',
@@ -21,6 +22,7 @@ export const getRouteArticleDetails = (id: string) => `/articles/${id}`;
 export const getRouteArticleCreate = () => '/articles/new';
 export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`;
 export const getRouteAdmin = () => '/admin';
+export const getRouteEmailActivate = (id: string) => `/email_activate/${id}`;
 export const getRouteForbidden = () => '/forbidden';
 
 export const pagePaths: Record<Pages, string> = {
@@ -33,6 +35,7 @@ export const pagePaths: Record<Pages, string> = {
     [Pages.ARTICLE_EDIT]: '/articles/:id/edit',
     [Pages.ADMIN_PANEL]: '/admin',
     [Pages.FORBIDDEN]: '/forbidden',
+    [Pages.EMAIL_ACTIVATE]: '/email_activate',
 
     // LAST
     [Pages.NOT_FOUND]: '*',
