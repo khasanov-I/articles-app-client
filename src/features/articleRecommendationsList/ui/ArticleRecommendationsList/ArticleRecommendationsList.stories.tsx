@@ -12,6 +12,7 @@ const article: Article = {
     user: {
         id: '1',
         username: '123',
+        jwt: 'aaa',
     },
     blocks: [],
     type: [],

@@ -12,6 +12,7 @@ const article: Article = {
     user: {
         id: '1',
         username: 'hasan',
+        jwt: 'abc',
     },
     views: 1022,
     createdAt: '26.02.2022',

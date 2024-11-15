@@ -9,13 +9,15 @@ import {getUserAuthData} from '@/entities/User';
 import {AppLink} from '@/shared/ui/AppLink/AppLink';
 import {HStack} from '@/shared/ui/Stack/HStack/HStack';
 import {NotificationButton} from '@/features/notificationButton';
-import {AvatarDropdown} from '@/features/avatarDropdown';
+// eslint-disable-next-line kh-i-start-plugin/layer-imports
+import {AvatarDropdown} from '@/widgets/avatarDropdown';
 import {pagePaths} from '@/shared/const/router';
 import {BrowserView, MobileView} from 'react-device-detect';
 import {DrawerFormAsync} from '@/features/AuthByUsername';
 import {Loader} from '@/shared/ui/Loader/Loader';
 import {SwipeableDrawer} from '@mui/material';
 import {RegisterDrawerAsync, RegisterModal} from '@/features/Register';
+import axios from 'axios';
 
 export const Navbar = memo((): ReactNode => {
     const {t} = useTranslation('bars');
@@ -55,9 +57,14 @@ export const Navbar = memo((): ReactNode => {
         </header>;
     }
 
+    const onDeleteHandler = async () => {
+        await axios.delete('http://localhost:5000/users');
+    };
+
     return (
         <header className={cls.navbar}>
             <div className={cls.links}>
+                <button onClick={onDeleteHandler}>УДАЛИТЬ</button>
                 <Button theme={ButtonTheme.CLEAR} onClick={onShowAuthModal}>
                     {t('Вход')}
                 </Button>

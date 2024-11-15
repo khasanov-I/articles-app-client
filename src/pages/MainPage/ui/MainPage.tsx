@@ -6,6 +6,6 @@ export default function MainPage(): ReactNode {
     const {t} = useTranslation('main');
 
     return <Page>
-        {t('Главная')}
+        ГЛАВНАЯ
     </Page>;
 }

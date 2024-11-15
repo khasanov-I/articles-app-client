@@ -1,11 +1,13 @@
 import {memo, useCallback, type ReactNode} from 'react';
 import {Dropdown} from '@/shared/ui/Popups';
 import {Avatar} from '@/shared/ui/Avatar/Avatar';
-import {useDispatch, useSelector} from 'react-redux';
-import {getUserAuthData, isUserAdmin, isUserManager, userActions} from '@/entities/User';
+import {useSelector} from 'react-redux';
+import {getUserAuthData, isUserAdmin, isUserManager} from '@/entities/User';
 import {useTranslation} from 'react-i18next';
 import {classNames} from '@/shared/lib/classNames';
 import {getRouteAdmin, getRouteProfile} from '@/shared/const/router';
+import {useAppDispatch} from '@/app/providers/StoreProvider';
+import {logout} from '@/features/Register';
 
 type AvatarDropdowmProps = {
     className?: string;
@@ -16,16 +18,16 @@ export const AvatarDropdown = memo((props: AvatarDropdowmProps): ReactNode => {
 
     const {t} = useTranslation('bars');
 
-    const dispatch = useDispatch();
+    const appDispatch = useAppDispatch();
 
     const authData = useSelector(getUserAuthData);
     const isAdmin = useSelector(isUserAdmin);
     const isManager = useSelector(isUserManager);
     const isAdminPanelAvailable = isAdmin ?? isManager;
 
-    const onLogout = useCallback(() => {
-        dispatch(userActions.logout());
-    }, [dispatch]);
+    const onLogout = useCallback(async () => {
+        await appDispatch(logout());
+    }, [appDispatch]);
 
     return <Dropdown
         className={classNames('', {}, [className])}

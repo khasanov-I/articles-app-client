@@ -2,7 +2,6 @@ import {HStack} from '../../../Stack/HStack/HStack';
 import cls from './ListBox.module.scss';
 import generalCls from '../../styles/styles.module.scss';
 import {classNames} from '@/shared/lib/classNames';
-import {Button} from '../../../Button/Button';
 import {Fragment, type ReactNode} from 'react';
 import {type DropdownDirection} from '@/shared/types/ui';
 import {Listbox as HListBox} from '@headlessui/react';
@@ -38,10 +37,8 @@ export function ListBox(props: ListBoxProps) {
                 className={classNames(cls.ListBox, {}, [className])}
                 value={value}
                 onChange={onChange}>
-                <HListBox.Button className={generalCls.trigger}>
-                    <Button disabled={readonly}>
-                        {value ?? defaultValue}
-                    </Button>
+                <HListBox.Button aria-disabled={readonly} className={generalCls.trigger}>
+                    {value ?? defaultValue}
                 </HListBox.Button>
                 <HListBox.Options className={classNames(generalCls.options, {}, optionsClasses)}>
                     {items?.map(item => (

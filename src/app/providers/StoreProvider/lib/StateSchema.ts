@@ -10,6 +10,7 @@ import {type ArticlesPageSchema} from '@/pages/ArticlesPage';
 import {type rtkApi} from '@/shared/api/rtkApi';
 import {type ProfileSchema} from '@/features/editableProfileCard';
 import {type RegisterSchema} from '@/features/Register';
+import {type SendMailSchema} from '@/features/Register';
 
 export type StateSchema = {
     user: UserSchema;
@@ -23,6 +24,7 @@ export type StateSchema = {
     articlesPage?: ArticlesPageSchema;
     articleDetailsPage?: ArticleDetailsPageSchema;
     registerForm?: RegisterSchema;
+    sendMail?: SendMailSchema;
 };
 
 export type StateSchemaKey = keyof StateSchema;

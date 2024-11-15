@@ -22,6 +22,9 @@ const registerSlice = createSlice({
         setEmail(state, action: PayloadAction<string>) {
             state.email = action.payload;
         },
+        setExpectingForVerification(state, action: PayloadAction<boolean>) {
+            state.isLoading = action.payload;
+        },
     },
     extraReducers(builder) {
         builder

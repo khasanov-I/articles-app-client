@@ -3,40 +3,31 @@ import {type ThunkConfig} from '@/app/providers/StoreProvider';
 import {userActions, type User} from '@/entities/User';
 import {TOKEN_LOCAL_STORAGE_KEY, USER_LOCAL_STORAGE_KEY} from '@/shared/const/localStorage';
 import {jwtDecode} from 'jwt-decode';
-import {createFormdataFromObject} from '@/shared/lib/createFormdataFromObject/createFormdataFromObject';
 import {isAxiosError} from 'axios';
-
-type RegisterProps = {
-    username: string;
-    password: string;
-    avatar?: File;
-    email: string;
-};
 
 export type JwtObj = {
     accessToken: string;
     refreshToken: string;
 };
 
-export const register = createAsyncThunk<User, RegisterProps, ThunkConfig<string>>(
-    'register',
+export const checkAuth = createAsyncThunk<User, void, ThunkConfig<string>>(
+    'checkAuth',
     async (authData, thunkAPI) => {
         const {dispatch, rejectWithValue, extra} = thunkAPI;
 
         try {
-            const formdata = createFormdataFromObject(authData);
-
-            const resp = await extra.api.post<JwtObj>('/auth/register', formdata);
+            const resp = await extra.api.get<JwtObj>('/auth/refresh', {withCredentials: true});
             if (!resp.data) {
                 throw new Error('Произошла ошибка на сервере');
             }
 
             const decoded = jwtDecode<User>(resp.data.accessToken);
+            const auth = {...decoded, jwt: resp.data.accessToken};
 
             localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify({...decoded}));
-            localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, resp.data.accessToken);
+            localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, JSON.stringify(resp.data.accessToken));
 
-            dispatch(userActions.setAuthData({...decoded, jwt: resp.data.accessToken}));
+            dispatch(userActions.setAuthData(auth));
 
             // Location.reload();
             return decoded;

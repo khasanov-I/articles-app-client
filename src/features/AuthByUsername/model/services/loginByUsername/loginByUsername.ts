@@ -1,7 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {type ThunkConfig} from '@/app/providers/StoreProvider';
 import {userActions, type User} from '@/entities/User';
-import {USER_LOCAL_STORAGE_KEY} from '@/shared/const/localStorage';
+import {TOKEN_LOCAL_STORAGE_KEY, USER_LOCAL_STORAGE_KEY} from '@/shared/const/localStorage';
 import {jwtDecode} from 'jwt-decode';
 
 type LoginByUsernameProps = {
@@ -10,7 +10,8 @@ type LoginByUsernameProps = {
 };
 
 type JwtObj = {
-    token: string;
+    refreshToken: string;
+    accessToken: string;
 };
 
 export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
@@ -25,10 +26,13 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
                 throw new Error();
             }
 
-            const decoded = jwtDecode<User>(response.data.token);
+            const decoded = jwtDecode<User>(response.data.accessToken);
+            const auth = {...decoded, jwt: response.data.accessToken};
 
-            localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(decoded));
-            dispatch(userActions.setAuthData({...decoded, jwt: response.data.token}));
+            localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify({...decoded}));
+            localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, JSON.stringify(response.data.accessToken));
+
+            dispatch(userActions.setAuthData(auth));
             // Location.reload();
             return decoded;
         } catch (e) {
