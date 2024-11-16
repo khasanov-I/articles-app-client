@@ -11,6 +11,10 @@ import {FileUpload} from '@/shared/ui/FileUpload/FileUpload';
 import {sendMail} from '../../model/services/sendMail';
 import {Loader} from '@/shared/ui/Loader/Loader';
 import {Text, TextTheme} from '@/shared/ui/Text/Text';
+import {profileActions} from '@/entities/Profile';
+import {CurrencySelect, type Currency} from '@/entities/Currency';
+import {CountrySelect, type Country} from '@/entities/Country';
+import {getProfileAge, getProfileCity, getProfileCountry, getProfileCurrency, getProfileFirstName, getProfileLastName} from '@/entities/Profile';
 
 type RegisterContentProps = {
     userAgent?: 'desktop' | 'mobile';
@@ -36,6 +40,37 @@ const RegisterContent = (props: RegisterContentProps): ReactNode => {
     const sendMailErrors = useSelector(getSendMailErrors);
     const unExpectedError = useSelector(getSendMailError);
 
+    const age = useSelector(getProfileAge);
+    const city = useSelector(getProfileCity);
+    const lastname = useSelector(getProfileLastName);
+    const firstname = useSelector(getProfileFirstName);
+    const currency = useSelector(getProfileCurrency);
+    const country = useSelector(getProfileCountry);
+
+    const onChangeAge = useCallback((value: string) => {
+        dispatch(profileActions.setAge(value));
+    }, [dispatch]);
+
+    const onChangeCity = useCallback((value: string) => {
+        dispatch(profileActions.setCity(value));
+    }, [dispatch]);
+
+    const onChangeLastName = useCallback((value: string) => {
+        dispatch(profileActions.setLastName(value));
+    }, [dispatch]);
+
+    const onChangeFirstName = useCallback((value: string) => {
+        dispatch(profileActions.setFirstName(value));
+    }, [dispatch]);
+
+    const onChangeCurrency = useCallback((value: Currency) => {
+        dispatch(profileActions.setCurrency(value));
+    }, [dispatch]);
+
+    const onChangeCountry = useCallback((value: Country) => {
+        dispatch(profileActions.setCountry(value));
+    }, [dispatch]);
+
     const onChangeUsername = useCallback((value: string) => {
         dispatch(registerActions.setUsername(value));
     }, [dispatch]);
@@ -49,8 +84,14 @@ const RegisterContent = (props: RegisterContentProps): ReactNode => {
     }, [dispatch]);
 
     const onRegisterClick = useCallback(async () => {
-        await appDispatch(sendMail({username, email, avatar, password}));
-    }, [appDispatch, username, email, avatar, password]);
+        await appDispatch(sendMail({username, email, avatar, password,
+            age,
+            city,
+            firstname,
+            lastname,
+            country,
+            currency}));
+    }, [appDispatch, username, email, avatar, password, age, city, firstname, lastname, country, currency]);
 
     return (isExpectingForVerification && !sendMailErrors && !registerError) ? <div>Ожидается подтверждение по почте
         <Loader />
@@ -68,6 +109,18 @@ const RegisterContent = (props: RegisterContentProps): ReactNode => {
         <span className={cls.text}>Введите почту:</span>
         <Text text={sendMailErrors?.email} theme={TextTheme.ERROR} />
         <Input className={classNames(cls.input, {[cls.mobileInput]: true}, [])} value={email} type='text' onChange={onChangeEmail}/>
+        <span className={cls.text}>Введите ваш возраст:</span>
+        <Input className={classNames(cls.input, {[cls.mobileInput]: true}, [])} value={age} type='number' onChange={onChangeAge}/>
+        <span className={cls.text}>Введите ваше место проживания:</span>
+        <Input className={classNames(cls.input, {[cls.mobileInput]: true}, [])} value={city} type='text' onChange={onChangeCity}/>
+        <span className={cls.text}>Введите ваше имя:</span>
+        <Input className={classNames(cls.input, {[cls.mobileInput]: true}, [])} value={firstname} type='text' onChange={onChangeFirstName}/>
+        <span className={cls.text}>Введите вашу фамилию:</span>
+        <Input className={classNames(cls.input, {[cls.mobileInput]: true}, [])} value={lastname} type='text' onChange={onChangeLastName}/>
+        <span className={cls.text}>Выберите вашу страну проживания:</span>
+        <CountrySelect value={country} onChange={onChangeCountry}/>
+        <span className={cls.text}>Выберите вашу валюту:</span>
+        <CurrencySelect value={currency} onChange={onChangeCurrency}/>
         <span className={cls.text}>Загрузите аватар:</span>
         <FileUpload avatar={avatar} isAvatarLoaded={Boolean(avatar)} accept='image/*' setFile={setAvatar}>
             Загрузить изображение

@@ -8,9 +8,9 @@ import {type ScrollRestorationSchema} from '@/features/UI';
 import {type ArticleDetailsPageSchema} from '@/pages/ArticlesDetailsPage';
 import {type ArticlesPageSchema} from '@/pages/ArticlesPage';
 import {type rtkApi} from '@/shared/api/rtkApi';
-import {type ProfileSchema} from '@/features/editableProfileCard';
 import {type RegisterSchema} from '@/features/Register';
 import {type SendMailSchema} from '@/features/Register';
+import {type ProfileSchema} from '@/entities/Profile';
 
 export type StateSchema = {
     user: UserSchema;

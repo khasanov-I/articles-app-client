@@ -3,7 +3,7 @@ import {type ThunkConfig} from '@/app/providers/StoreProvider';
 import {userActions, type User} from '@/entities/User';
 import {TOKEN_LOCAL_STORAGE_KEY, USER_LOCAL_STORAGE_KEY} from '@/shared/const/localStorage';
 import {jwtDecode} from 'jwt-decode';
-import {isAxiosError} from 'axios';
+import axios, {isAxiosError} from 'axios';
 
 export type JwtObj = {
     accessToken: string;
@@ -16,7 +16,7 @@ export const checkAuth = createAsyncThunk<User, void, ThunkConfig<string>>(
         const {dispatch, rejectWithValue, extra} = thunkAPI;
 
         try {
-            const resp = await extra.api.get<JwtObj>('/auth/refresh', {withCredentials: true});
+            const resp = await axios.get<JwtObj>(`${__API__}/auth/refresh`, {withCredentials: true});
             if (!resp.data) {
                 throw new Error('Произошла ошибка на сервере');
             }

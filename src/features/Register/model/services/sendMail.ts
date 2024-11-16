@@ -3,12 +3,20 @@ import {type ThunkConfig} from '@/app/providers/StoreProvider';
 import {isAxiosError} from 'axios';
 import {register} from './register';
 import {registerActions} from '../slice/registerSlice';
+import {type Currency} from '@/entities/Currency';
+import {type Country} from '@/entities/Country';
 
 type SendMailProps = {
     email: string;
     username: string;
     avatar?: File;
     password: string;
+    age?: string;
+    city?: string;
+    lastname?: string;
+    firstname?: string;
+    currency?: Currency;
+    country?: Country;
 };
 
 export type MailResponseType = {
@@ -26,6 +34,12 @@ export const sendMail = createAsyncThunk<MailResponseType, SendMailProps, ThunkC
                 username: sendMailProps.username,
                 email: sendMailProps.email,
                 password: sendMailProps.password,
+                age: sendMailProps.age,
+                city: sendMailProps.city,
+                lastname: sendMailProps.lastname,
+                firstname: sendMailProps.firstname,
+                currency: sendMailProps.currency,
+                country: sendMailProps.country,
             });
 
             if (!mailResponse.data) {

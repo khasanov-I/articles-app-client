@@ -1,3 +1,3 @@
 import storyImg from './storyimg.png';
-
-export {storyImg};
+import NoAvatar from './noavatar.jpg';
+export {storyImg, NoAvatar};

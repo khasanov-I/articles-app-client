@@ -7,6 +7,6 @@ import {ArticleViewSelector} from './ui/ArticleViewSelector/ArticleViewSelector'
 import {ArticleTypeTabs} from './ui/ArticleTypeTabs/ArticleTypeTabs';
 import {ArticleSortSelect} from './ui/ArticleSortSelector/ArticleSortSelect';
 import {getArticleDetailsData} from './model/selectors/articleDetails';
-
-export {type Article, type ArticleDetailsSchema};
+import {type ArticleBlock} from './model/types/article';
+export type {Article, ArticleDetailsSchema, ArticleBlock};
 export {getArticleDetailsData, ArticleBlockType, ArticleTypeTabs, ArticleViewSelector, ArticleDetails, ArticleView, ArticleList, ArticleSortSelect, ArticleOrder, ArticleSort, ArticleType};

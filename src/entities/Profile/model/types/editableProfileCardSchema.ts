@@ -5,7 +5,7 @@ export type Profile = {
     id?: string;
     firstname?: string;
     lastname?: string;
-    age?: number;
+    age?: string;
     currency?: Currency;
     country?: Country;
     city?: string;
@@ -13,3 +13,9 @@ export type Profile = {
     avatar?: string;
 };
 
+export type ProfileSchema = {
+    data?: Profile;
+    isLoading: boolean;
+    error?: string;
+    canEdit: boolean;
+};
