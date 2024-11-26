@@ -32,7 +32,7 @@ export type Article = {
     views: number;
     createdAt: string;
     user: User;
-    type: ArticleType[];
+    type: ArticleType;
     blocks: ArticleBlock[];
 };
 

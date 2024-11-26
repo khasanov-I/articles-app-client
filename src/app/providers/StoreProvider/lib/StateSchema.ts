@@ -11,6 +11,7 @@ import {type rtkApi} from '@/shared/api/rtkApi';
 import {type RegisterSchema} from '@/features/Register';
 import {type SendMailSchema} from '@/features/Register';
 import {type ProfileSchema} from '@/entities/Profile';
+import {type ArticleCreationSchema} from '@/pages/ArticleEditPage';
 
 export type StateSchema = {
     user: UserSchema;
@@ -25,6 +26,7 @@ export type StateSchema = {
     articleDetailsPage?: ArticleDetailsPageSchema;
     registerForm?: RegisterSchema;
     sendMail?: SendMailSchema;
+    articleCreate?: ArticleCreationSchema;
 };
 
 export type StateSchemaKey = keyof StateSchema;

@@ -3,13 +3,15 @@
 }
 
 .input {
-    border-color: white;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
     border-style: solid;
     border-width: 2px;
     border-radius: 5px;
     width: 100%;
     outline: none;
     transition: border 0.4s ease-in-out;
+    background: none;
 }
 
 .readonly {

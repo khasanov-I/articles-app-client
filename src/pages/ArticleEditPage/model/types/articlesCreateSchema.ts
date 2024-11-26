@@ -1,13 +1,36 @@
-import {type ArticleBlock} from '@/entities/Article';
+import {type ArticleType, type ArticleBlockType} from '@/entities/Article';
 
-export type ArticleType = 'IT' | 'SCIENCE' | 'ALL' | 'ECONOMICS';
+export type ArticleCreationImageBlock = {
+    id: string;
+    type: ArticleBlockType.IMAGE;
+    title: string;
+    src: File;
+};
 
-export type ArticleCreateSchema = {
+export type ArticleCreationCodeBlock = {
+    id: string;
+    type: ArticleBlockType.CODE;
+    code: string;
+};
+
+export type ArticleCreationTextBlock = {
+    id: string;
+    type: ArticleBlockType.TEXT;
+    title: string;
+    paragraphs: string;
+};
+
+export type ArticleCreationBlock = ArticleCreationCodeBlock | ArticleCreationImageBlock | ArticleCreationTextBlock;
+
+export type ArticleSchema = {
     title: string;
     subtitle: string;
-    img: string;
-    views: string;
-    createdAt: string;
+    img?: File;
     type: ArticleType;
-    blocks: ArticleBlock[];
+    blocks: ArticleCreationBlock[];
+};
+
+export type ArticleCreationSchema = {
+    isLoading: boolean;
+    error?: string;
 };

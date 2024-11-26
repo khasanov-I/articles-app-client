@@ -1,9 +1,7 @@
 import {type ReactNode, Suspense, useEffect} from 'react';
 import {AppRouter} from './providers/AppRouter';
-import {Navbar} from '@/widgets/Navbar';
-import {Sidebar} from '@/widgets/Sidebar';
-import {useDispatch, useSelector} from 'react-redux';
-import {getUserInited, userActions} from '@/entities/User';
+import {useDispatch} from 'react-redux';
+import {userActions} from '@/entities/User';
 import {useTheme} from '@/shared/lib/hooks/useTheme';
 import {checkAuth} from '@/features/Register';
 import {USER_LOCAL_STORAGE_KEY} from '@/shared/const/localStorage';
@@ -14,8 +12,6 @@ export function App(): ReactNode {
 
     const appDispatch = useAppDispatch();
     const dispatch = useDispatch();
-
-    const inited = useSelector(getUserInited);
 
     useEffect(() => {
         if (localStorage.getItem(USER_LOCAL_STORAGE_KEY)) {
@@ -29,11 +25,7 @@ export function App(): ReactNode {
     return (
         <div className={`app ${theme}`}>
             <Suspense>
-                <Navbar />
-                <div className='content-page'>
-                    <Sidebar />
-                    {inited && <AppRouter />}
-                </div>
+                <AppRouter />
             </Suspense>
         </div>
     );

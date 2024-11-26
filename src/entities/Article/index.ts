@@ -6,7 +6,11 @@ import {ArticleList} from './ui/ArticleList/ArticleList';
 import {ArticleViewSelector} from './ui/ArticleViewSelector/ArticleViewSelector';
 import {ArticleTypeTabs} from './ui/ArticleTypeTabs/ArticleTypeTabs';
 import {ArticleSortSelect} from './ui/ArticleSortSelector/ArticleSortSelect';
-import {getArticleDetailsData} from './model/selectors/articleDetails';
+import {getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading} from './model/selectors/articleDetails';
 import {type ArticleBlock} from './model/types/article';
+import {ArticleCodeBlockComponent} from './ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import {ArticleTextBlockComponent} from './ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+
+import {ArticleImageBlockComponent} from './ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
 export type {Article, ArticleDetailsSchema, ArticleBlock};
-export {getArticleDetailsData, ArticleBlockType, ArticleTypeTabs, ArticleViewSelector, ArticleDetails, ArticleView, ArticleList, ArticleSortSelect, ArticleOrder, ArticleSort, ArticleType};
+export {getArticleDetailsData, getArticleDetailsIsLoading, getArticleDetailsError, ArticleImageBlockComponent, ArticleCodeBlockComponent, ArticleTextBlockComponent, ArticleBlockType, ArticleTypeTabs, ArticleViewSelector, ArticleDetails, ArticleView, ArticleList, ArticleSortSelect, ArticleOrder, ArticleSort, ArticleType};

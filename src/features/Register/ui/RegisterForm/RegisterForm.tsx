@@ -18,7 +18,7 @@ const RegisterForm = memo((props: RegisterFormProps): ReactNode => {
         profile: profileReducer,
     };
 
-    return <DynamicModuleLoader reducers={initialReducers}>
+    return <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
         <RegisterContent userAgent='desktop'/>
     </DynamicModuleLoader>;
 });
