@@ -5,7 +5,7 @@ import {type Country} from '@/entities/Country';
 import {type Currency} from '@/entities/Currency';
 
 const initialState: ProfileSchema = {
-    isLoading: false,
+    isLoading: true,
     error: undefined,
     data: undefined,
     canEdit: false,

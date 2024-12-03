@@ -1,0 +1,18 @@
+.Notification {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 10px;
+    opacity: 0;
+    animation: ani 0.5s forwards;
+}
+
+@keyframes ani {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}

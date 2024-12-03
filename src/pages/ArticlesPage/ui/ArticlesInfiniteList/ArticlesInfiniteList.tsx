@@ -28,6 +28,8 @@ export const ArticlesInfiniteList = memo((props: ArticlesInfiniteListProps): Rea
             text={t('Ошибка при загрузке статей')} />;
     }
 
+    console.log(articles);
+
     return <div className={classNames('', {}, [className])}>
         <ArticleList
             className={className}

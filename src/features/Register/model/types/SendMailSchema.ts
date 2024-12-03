@@ -1,5 +1,6 @@
 export type SendMailSchema = {
     isLoading: boolean;
+    preventNextClick: boolean;
     errors?: SendMailErrorType;
     error?: string;
 };

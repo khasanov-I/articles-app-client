@@ -4,6 +4,7 @@ import {sendMail} from '../services/sendMail';
 
 const initialState: SendMailSchema = {
     isLoading: false,
+    preventNextClick: false,
 };
 
 const sendMailSlice = createSlice({
@@ -16,6 +17,7 @@ const sendMailSlice = createSlice({
         builder
             .addCase(sendMail.pending, state => {
                 state.errors = undefined;
+                state.preventNextClick = true;
             })
             .addCase(sendMail.rejected, (state, action) => {
                 if (typeof action.payload === 'string') {
@@ -23,9 +25,12 @@ const sendMailSlice = createSlice({
                 } else {
                     state.errors = action.payload;
                 }
+
+                state.preventNextClick = false;
             })
             .addCase(sendMail.fulfilled, (state, action) => {
                 state.isLoading = true;
+                state.preventNextClick = false;
             });
     },
 });

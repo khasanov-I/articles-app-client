@@ -7,16 +7,17 @@ import {createFormdataFromObject} from '@/shared/lib/createFormdataFromObject/cr
 type CreateArticleProps = {
     images: File[];
     userId: number;
+    authorAvatar: string;
+    authorUsername: string;
 } & ArticleSchema;
 
-export const createArticle = createAsyncThunk<any, CreateArticleProps, ThunkConfig<string>>(
+export const createArticle = createAsyncThunk<void, CreateArticleProps, ThunkConfig<string>>(
     'createArticle',
     async (article, thunkAPI) => {
         const {dispatch, rejectWithValue, extra} = thunkAPI;
 
         try {
             const {images, ...other} = article;
-            console.log(other.img);
 
             const formdata = createFormdataFromObject(other);
 
@@ -24,13 +25,13 @@ export const createArticle = createAsyncThunk<any, CreateArticleProps, ThunkConf
                 formdata.append('files[]', e);
             });
 
-            const resp = await extra.api.post<boolean>('/articles', formdata);
+            const resp = await extra.api.post<number>('/articles', formdata);
 
             if (!resp.data) {
                 throw new Error('Произошла ошибка на сервере');
             }
 
-            return resp.data;
+            window.location.href = `/profile/${resp.data}`;
         } catch (e) {
             console.log(e);
             if (isAxiosError(e)) {

@@ -8,3 +8,4 @@ export const getRegisterEmail = (state: StateSchema) => state?.registerForm?.ema
 export const getSendMailLoading = (state: StateSchema) => state?.sendMail?.isLoading;
 export const getSendMailErrors = (state: StateSchema) => state?.sendMail?.errors;
 export const getSendMailError = (state: StateSchema) => state?.sendMail?.error;
+export const getPreventNextClick = (state: StateSchema) => state?.sendMail?.preventNextClick;

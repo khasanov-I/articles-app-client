@@ -16,6 +16,7 @@ import {getUserAuthData} from '@/entities/User';
 import {ArticleCreationDetails} from '../ArticleCreationDetails/ArticleCreationDetails';
 import {useAppDispatch} from '@/app/providers/StoreProvider';
 import {createArticle} from '../../model/services/createArticle';
+import {Notification} from '@/shared/ui/Notification/Notification';
 
 type ArticleCreateContentProps = {
     className?: string;
@@ -30,7 +31,7 @@ export const ArticleCreateContent = memo((props: ArticleCreateContentProps): Rea
     const [article, setArticle] = useState<ArticleSchema>({
         title: '',
         subtitle: '',
-        type: ArticleType.ALL,
+        type: ArticleType.OTHER,
         blocks: [],
     });
 
@@ -125,7 +126,13 @@ export const ArticleCreateContent = memo((props: ArticleCreateContentProps): Rea
         setCurrentBlockType(tab.value);
     }, []);
 
+    const [isIndicatorOn, setIsIndicatorOn] = useState(false);
+
     const onChangeBlocks = useCallback(() => {
+        setIsIndicatorOn(true);
+        setTimeout(() => {
+            setIsIndicatorOn(false);
+        }, 3000);
         if (currentBlockType === ArticleBlockType.CODE) {
             setArticle(prev => ({...prev, blocks: [...prev.blocks, {
                 id: String(Date.now()),
@@ -169,7 +176,7 @@ export const ArticleCreateContent = memo((props: ArticleCreateContentProps): Rea
                 content: 'Наука',
             },
             {
-                value: ArticleType.ALL,
+                value: ArticleType.OTHER,
                 content: 'Другое',
             },
         ], []);
@@ -215,6 +222,21 @@ export const ArticleCreateContent = memo((props: ArticleCreateContentProps): Rea
 
     const isDataEdited = Boolean(article.title) || Boolean(article.subtitle) || article.blocks.length !== 0 || Boolean(article.img);
 
+    const isBlockCreationButtonDisabled = () => {
+        switch (currentBlockType) {
+            case ArticleBlockType.CODE:
+                return !currentCodeBlock.code;
+            case ArticleBlockType.IMAGE:
+                return !currentImageBlock.src.name;
+            case ArticleBlockType.TEXT:
+                return !(currentTextBlock.paragraphs ?? currentTextBlock.title);
+            default:
+                return false;
+        }
+    };
+
+    const isArticleCreationButtonDisabled = !article.subtitle || !article.title || article.blocks.length === 0 || !article.img;
+
     const appDispatch = useAppDispatch();
 
     const onSendArticle = useCallback(async () => {
@@ -222,8 +244,10 @@ export const ArticleCreateContent = memo((props: ArticleCreateContentProps): Rea
             images: blockImages,
             ...article,
             userId: Number(authData?.id),
+            authorUsername: authData?.username ?? '',
+            authorAvatar: authData?.avatar ?? '',
         }));
-    }, [appDispatch, article, authData?.id, blockImages]);
+    }, [appDispatch, article, authData?.avatar, authData?.id, authData?.username, blockImages]);
 
     unstable_usePrompt({
         message: 'Несохраненные данные будут удалены. Вы уверены?',
@@ -232,30 +256,33 @@ export const ArticleCreateContent = memo((props: ArticleCreateContentProps): Rea
     });
 
     return <div className={classNames(cls.ArticleCreateContent, {}, [className])}>
-        {isArticleOpened ? <ArticleCreationDetails onDeleteBlock={onDeleteBlock} article={article} />
-            : <VStack gap='8'>
-                <HStack max align='start' gap='16'>
-                    <VStack gap='8'>
-                        <Tabs onTabClick={onChangeArticleType} tabs={typeTabs} value={article.type} />
-                        <FileUpload avatar={article.img} accept='image/*' setFile={onChangeArticleImg}>
+        <ArticleCreationDetails className={isArticleOpened ? '' : cls.none} onDeleteBlock={onDeleteBlock} article={article} />
+        <VStack className={isArticleOpened ? cls.none : ''} gap='8'>
+            <HStack max align='start' gap='16'>
+                <VStack gap='8'>
+                    <Tabs onTabClick={onChangeArticleType} tabs={typeTabs} value={article.type} />
+                    <FileUpload avatar={article.img} accept='image/*' setFile={onChangeArticleImg}>
                         Загрузить изображение
-                        </FileUpload>
-                    </VStack>
-                    <VStack gap='8' className={cls.headers}>
-                        <span>Напишите заголовок:</span>
-                        <Input className={cls.input} value={article.title} onChange={onChangeArticleTitle} />
-                        <span>Напишите подзаголовок:</span>
-                        <Input className={cls.input} value={article.subtitle} onChange={onChangeArticleSubTitle} />
-                    </VStack>
-                </HStack>
-                <Tabs onTabClick={onChangeBlockType} tabs={blockTypeTabs} value={currentBlockType} />
-                {renderCurrentBlock()}
-                <Button className={cls.button} onClick={onChangeBlocks}>
+                    </FileUpload>
+                </VStack>
+                <VStack gap='8' className={cls.headers}>
+                    <span>Напишите заголовок:</span>
+                    <Input className={cls.input} value={article.title} onChange={onChangeArticleTitle} />
+                    <span>Напишите подзаголовок:</span>
+                    <Input className={cls.input} value={article.subtitle} onChange={onChangeArticleSubTitle} />
+                </VStack>
+            </HStack>
+            <Tabs onTabClick={onChangeBlockType} tabs={blockTypeTabs} value={currentBlockType} />
+            {renderCurrentBlock()}
+            <Button disabled={isBlockCreationButtonDisabled()} className={cls.button} onClick={onChangeBlocks}>
                 Добавить блок
-                </Button>
-                <Button className={cls.button} onClick={onSendArticle} >
+            </Button>
+            <Button disabled={isArticleCreationButtonDisabled} className={cls.button} onClick={onSendArticle} >
                 Создать статью
-                </Button>
-            </VStack>}
+            </Button>
+        </VStack>
+        {isIndicatorOn && <Notification>
+            Блок добавлен
+        </Notification>}
     </div>;
 });

@@ -53,14 +53,14 @@ export function ProfileCard(props: ProfileCardProps): ReactNode {
         </HStack>;
     }
 
-    if (isLoading) {
+    if (isLoading ?? !username) {
         return <HStack justify='center' className={classNames(cls.ProfileCard, {}, [className])}>
             <Loader />
         </HStack>;
     }
 
     return <HStack align='start' gap='8' max className={classNames(cls.ProfileCard, {}, [className])}>
-        <Avatar src={avatar ? avatar : NoAvatar as string} size={200}/>
+        <Avatar alt='not found' src={avatar ? `${__API__}/${avatar}` : NoAvatar as string} size={200}/>
         <VStack>
             <HStack>
                 <span>{firstname + ' ' + lastname}</span>

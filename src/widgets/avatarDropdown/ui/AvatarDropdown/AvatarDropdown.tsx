@@ -8,7 +8,6 @@ import {classNames} from '@/shared/lib/classNames';
 import {getRouteAdmin, getRouteProfile} from '@/shared/const/router';
 import {useAppDispatch} from '@/app/providers/StoreProvider';
 import {logout} from '@/features/Register';
-import {getProfileAvatar} from '@/entities/Profile';
 import {NoAvatar} from '@/shared/assets/img';
 
 type AvatarDropdowmProps = {
@@ -27,15 +26,13 @@ export const AvatarDropdown = memo((props: AvatarDropdowmProps): ReactNode => {
     const isManager = useSelector(isUserManager);
     const isAdminPanelAvailable = isAdmin ?? isManager;
 
-    const avatar = useSelector(getProfileAvatar);
-
     const onLogout = useCallback(async () => {
         await appDispatch(logout());
     }, [appDispatch]);
 
     return <Dropdown
         className={classNames('', {}, [className])}
-        trigger={<Avatar size={30} src={avatar ? avatar : NoAvatar as string}/>}
+        trigger={<Avatar size={30} src={authData?.avatar ? `${__API__}/${authData.avatar}` : NoAvatar as string}/>}
         direction='bottom left'
         items={[
             ...(isAdminPanelAvailable ? [

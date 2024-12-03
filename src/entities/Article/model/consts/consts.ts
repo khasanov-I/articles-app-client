@@ -9,6 +9,7 @@ export enum ArticleType {
     IT = 'IT',
     SCIENCE = 'SCIENCE',
     ECONOMICS = 'ECONOMICS',
+    OTHER = 'OTHER',
 }
 export enum ArticleView {
     BIG = 'BIG',

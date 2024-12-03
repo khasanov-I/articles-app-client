@@ -5,7 +5,7 @@ import {Input} from '@/shared/ui/Input/Input';
 import {useCallback, useState, type ReactNode} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import cls from './RegisterForm.module.scss';
-import {getRegisterEmail, getRegisterErrors, getRegisterIsLoading, getRegisterPassword, getRegisterUsername, getSendMailError, getSendMailErrors, getSendMailLoading} from '../../model/selectors/RegisterSelectors';
+import {getPreventNextClick, getRegisterEmail, getRegisterErrors, getRegisterIsLoading, getRegisterPassword, getRegisterUsername, getSendMailError, getSendMailErrors, getSendMailLoading} from '../../model/selectors/RegisterSelectors';
 import {registerActions} from '../../model/slice/registerSlice';
 import {FileUpload} from '@/shared/ui/FileUpload/FileUpload';
 import {sendMail} from '../../model/services/sendMail';
@@ -35,6 +35,7 @@ const RegisterContent = (props: RegisterContentProps): ReactNode => {
     const password = useSelector(getRegisterPassword);
     const email = useSelector(getRegisterEmail);
     const isLoading = useSelector(getRegisterIsLoading);
+    const preventNextClick = useSelector(getPreventNextClick);
     const isExpectingForVerification = useSelector(getSendMailLoading);
     const registerError = useSelector(getRegisterErrors);
     const sendMailErrors = useSelector(getSendMailErrors);
@@ -122,10 +123,10 @@ const RegisterContent = (props: RegisterContentProps): ReactNode => {
         <span className={cls.text}>Выберите вашу валюту:</span>
         <CurrencySelect value={currency} onChange={onChangeCurrency}/>
         <span className={cls.text}>Загрузите аватар:</span>
-        <FileUpload avatar={avatar} isAvatarLoaded={Boolean(avatar)} accept='image/*' setFile={setAvatar}>
+        <FileUpload avatar={avatar} accept='image/*' setFile={setAvatar}>
             Загрузить изображение
         </FileUpload>
-        <Button className={cls.loginBtn} disabled={isLoading} onClick={onRegisterClick}>
+        <Button className={cls.loginBtn} disabled={preventNextClick} onClick={onRegisterClick}>
             Создать аккаунт
         </Button>
     </div>;

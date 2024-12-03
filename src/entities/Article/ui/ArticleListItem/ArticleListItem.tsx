@@ -8,17 +8,25 @@ import {classNames} from '@/shared/lib/classNames';
 import {Text} from '@/shared/ui/Text/Text';
 import {EyeLogo} from '@/shared/assets/icons';
 import {Card} from '@/shared/ui/Card/Card';
-import {Avatar} from '@/shared/ui/Avatar/Avatar';
 import {Button} from '@/shared/ui/Button/Button';
 import {ArticleTextBlockComponent} from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import {AppLink} from '@/shared/ui/AppLink/AppLink';
 import {getRouteArticleDetails} from '@/shared/const/router';
+import {Avatar} from '@/shared/ui/Avatar/Avatar';
+import {NoAvatar} from '@/shared/assets/img';
 
 type ArticleListItemProps = {
     className?: string;
     article: Article;
     view: ArticleView;
     target?: HTMLAttributeAnchorTarget;
+};
+
+const formatDate = (str: string) => {
+    const arr = str.split('T');
+    const day = arr[0];
+    const time = arr[1];
+    return `${day} в ${time.substring(0, 5)}`;
 };
 
 export const ArticleListItem = memo((props: ArticleListItemProps): ReactNode => {
@@ -33,13 +41,15 @@ export const ArticleListItem = memo((props: ArticleListItemProps): ReactNode => 
         return <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
             <Card className={cls.card}>
                 <div className={cls.header}>
-                    <Avatar size={30} src={article.user.avatar}/>
-                    <Text text={article.user.username} className={cls.username}/>
-                    <Text text={article.createdAt} className={cls.date}/>
+                    <AppLink to={`/profile/${article.profileId}`} className={cls.username}>
+                        <Avatar size={30} src={article.authorAvatar ? `${__API__}/${article.authorAvatar}` : NoAvatar as string}/>
+                        {article.authorUsername}
+                    </AppLink>
+                    <Text text={formatDate(article.createdAt)} className={cls.date}/>
                 </div>
                 <Text title={article.title} className={cls.title} />
-                <Text text={article.type.join(', ')} className={cls.types}/>
-                <img src={article.img} className={cls.img}/>
+                <Text text={article.type} className={cls.types}/>
+                <img src={`${__API__}/${article.img}`} className={cls.img}/>
                 {textBlocks && <ArticleTextBlockComponent block={textBlocks} className={cls.textBlock}/>}
                 <div className={cls.footer}>
                     <AppLink
@@ -66,7 +76,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps): ReactNode => 
                     <Text text={article.createdAt} className={cls.date}/>
                 </div>
                 <div className={cls.infoWrapper}>
-                    <Text text={article.type.join(', ')} className={cls.types}/>
+                    {/* <Text text={article.type.join(', ')} className={cls.types}/> */}
                     <Text text={String(article.views)} className={cls.views}/>
                     <EyeLogo className='icons' />
                 </div>

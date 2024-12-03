@@ -7,9 +7,7 @@ import cls from './ArticleList.module.scss';
 import {ArticleListItemSkeleton} from '../ArticleListItem/ArticleListItemSkeleton';
 import {Text} from '@/shared/ui/Text/Text';
 import {useTranslation} from 'react-i18next';
-import {List, type ListRowProps, WindowScroller} from 'react-virtualized';
-// eslint-disable-next-line kh-i-start-plugin/layer-imports
-import {PAGE_ID} from '@/widgets/Page';
+import {type ListRowProps} from 'react-virtualized';
 
 type ArticleListProps = {
     className?: string;
@@ -70,47 +68,47 @@ export const ArticleList = memo((props: ArticleListProps): ReactNode => {
         </div>;
     }
 
-    // Const renderArticle = (article: Article) =>
-    //     <ArticleListItem key={article.id} className={cls.card} article={article} view={view} target={target}/>;
+    const renderArticle = (article: Article) =>
+        <ArticleListItem key={article.id} className={cls.card} article={article} view={view} target={target}/>;
 
-    // return <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-    //     {articles.length > 0
-    //         ? articles.map(renderArticle)
-    //         : undefined}
-    //     {isLoading && getSkeletons(view)}
-    // </div>;
+    return <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+        {articles.length > 0
+            ? articles.map(renderArticle)
+            : undefined}
+        {isLoading && getSkeletons(view)}
+    </div>;
 
-    return <WindowScroller
-        scrollElement={document.getElementById(PAGE_ID) as Element}>
-        {({
-            height,
-            width,
-            registerChild,
-            onChildScroll,
-            isScrolling,
-            scrollTop,
-        }) => (<div
-            className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-            {
-                virtualized ? (<List
-                    height={height ?? 700}
-                    rowCount={rowCount}
-                    rowHeight={isBig ? 700 : 330}
-                    rowRenderer={rowRender}
-                    width={width ? width - 80 : 700}
-                    autoHeight
-                    onScroll={onChildScroll}
-                    isScrolling={isScrolling}
-                    scrollTop={scrollTop}/>)
-                    : articles.map((article: Article) =>
-                        <ArticleListItem key={article.id}
-                            className={cls.card}
-                            article={article}
-                            view={view}
-                            target={target}/>)
-            }
-            {isLoading && getSkeletons(view)}
-        </div>)
-        }
-    </WindowScroller>;
+    // Return <WindowScroller
+    //     scrollElement={document.getElementById(PAGE_ID) as Element}>
+    //     {({
+    //         height,
+    //         width,
+    //         registerChild,
+    //         onChildScroll,
+    //         isScrolling,
+    //         scrollTop,
+    //     }) => (<div
+    //         className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+    //         {
+    //             virtualized ? (<List
+    //                 height={height ?? 700}
+    //                 rowCount={rowCount}
+    //                 rowHeight={isBig ? 700 : 330}
+    //                 rowRenderer={rowRender}
+    //                 width={width ? width - 80 : 700}
+    //                 autoHeight
+    //                 onScroll={onChildScroll}
+    //                 isScrolling={isScrolling}
+    //                 scrollTop={scrollTop}/>)
+    //                 : articles.map((article: Article) =>
+    //                     <ArticleListItem key={article.id}
+    //                         className={cls.card}
+    //                         article={article}
+    //                         view={view}
+    //                         target={target}/>)
+    //         }
+    //         {isLoading && getSkeletons(view)}
+    //     </div>)
+    //     }
+    // </WindowScroller>;
 });

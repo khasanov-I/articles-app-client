@@ -4,10 +4,7 @@ import {useTranslation} from 'react-i18next';
 import {classNames} from '@/shared/lib/classNames';
 import {Button} from '@/shared/ui/Button/Button';
 import {useNavigate} from 'react-router-dom';
-import {useSelector} from 'react-redux';
-import {getCanEditArticle} from '../../model/selectors/article';
 import {pagePaths} from '@/shared/const/router';
-import {getArticleDetailsData} from '@/entities/Article';
 
 type ArticleDetailsPageHeaderProps = {
     className?: string;
@@ -20,25 +17,13 @@ export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderPro
 
     const navigate = useNavigate();
 
-    const canEdit = useSelector(getCanEditArticle);
-    const article = useSelector(getArticleDetailsData);
-
     const onBackToList = useCallback(() => {
         navigate(pagePaths.articles);
     }, [navigate]);
-
-    const onEditArticle = useCallback(() => {
-        navigate(pagePaths.article_details + article?.id + '/edit');
-    }, [navigate, article]);
 
     return <div className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}>
         <Button onClick={onBackToList}>
             {t('Назад к списку')}
         </Button>
-        {canEdit && <Button
-            className={cls.editBtn}
-            onClick={onEditArticle}>
-            {t('Редактировать')}
-        </Button>}
     </div>;
 });

@@ -16,10 +16,6 @@ type ArticlesPageProps = {
     className?: string;
 };
 
-const reducers: ReducersList = {
-    articlesPage: articlesPageReducer,
-};
-
 const ArticlesPage = (props: ArticlesPageProps): ReactNode => {
     const {className = ''} = props;
 
@@ -34,6 +30,10 @@ const ArticlesPage = (props: ArticlesPageProps): ReactNode => {
     useInitialEffect(async () => {
         void dispatch(initArticlesPage(searchParams));
     });
+
+    const reducers: ReducersList = {
+        articlesPage: articlesPageReducer,
+    };
 
     return <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
         <Page onScrollEnd={onLoadNextPart} className={classNames(cls.ArticlesPage, {}, [className])}>

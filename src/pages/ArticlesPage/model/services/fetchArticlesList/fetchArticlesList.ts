@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/indent */
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {type ThunkConfig} from '@/app/providers/StoreProvider';
-import {ArticleType, type Article} from '@/entities/Article';
+import {type Article} from '@/entities/Article';
 import {getArticlesPageLimit, getArticlesPageNum, getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, getArticlesPageType} from '../../selectors/articlesPageSelector';
 import {addQueryParams} from '@/shared/lib/url/addQueryParams/addQueryParams';
 
@@ -30,13 +30,12 @@ export const fetchArticlesList
                 .api
                 .get<Article[]>('/articles', {
                     params: {
-                        _expand: 'user',
-                        _limit: limit,
-                        _page: page,
-                        _sort: sort,
-                        _order: order,
+                        limit,
+                        page,
+                        sort,
+                        order,
                         q: search,
-                        type: type === ArticleType.ALL ? undefined : type,
+                        type,
                     },
                 });
 

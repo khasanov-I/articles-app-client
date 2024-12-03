@@ -1,4 +1,3 @@
-import {type User} from '@/entities/User';
 import {type ArticleBlockType} from '../consts/consts';
 import {type ArticleType} from '../consts/consts';
 
@@ -19,7 +18,7 @@ export type ArticleTextBlock = {
     id: string;
     type: ArticleBlockType.TEXT;
     title: string;
-    paragraphs: string[];
+    paragraphs: string;
 };
 
 export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock;
@@ -31,8 +30,10 @@ export type Article = {
     img: string;
     views: number;
     createdAt: string;
-    user: User;
     type: ArticleType;
     blocks: ArticleBlock[];
+    authorAvatar: string;
+    authorUsername: string;
+    profileId: number;
 };
 
