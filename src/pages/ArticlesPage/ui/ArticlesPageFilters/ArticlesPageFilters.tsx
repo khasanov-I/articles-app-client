@@ -18,7 +18,6 @@ import {
     getArticlesPageView} from '../../model/selectors/articlesPageSelector';
 import {articlesPageActions} from '../../model/slice/articlesPageSlice';
 import {useAppDispatch} from '@/app/providers/StoreProvider';
-import {Card} from '@/shared/ui/Card/Card';
 import {Input} from '@/shared/ui/Input/Input';
 import {fetchArticlesList} from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {useDebounce} from '@/shared/lib/hooks/useDebounce';
@@ -54,25 +53,25 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps): React
 
     const onChangeSort = useCallback((sort: ArticleSort) => {
         dispatch(articlesPageActions.setSort(sort));
-        dispatch(articlesPageActions.setPage(1));
+        dispatch(articlesPageActions.setPage(0));
         fetchData();
     }, [dispatch, fetchData]);
 
     const onChangeOrder = useCallback((order: ArticleOrder) => {
         dispatch(articlesPageActions.setOrder(order));
-        dispatch(articlesPageActions.setPage(1));
+        dispatch(articlesPageActions.setPage(0));
         fetchData();
     }, [dispatch, fetchData]);
 
     const onChangeSearch = useCallback((search: string) => {
         dispatch(articlesPageActions.setSearch(search));
-        dispatch(articlesPageActions.setPage(1));
+        dispatch(articlesPageActions.setPage(0));
         debouncedFetchData();
     }, [dispatch, debouncedFetchData]);
 
     const onChangeType = useCallback((tab: TabItem<ArticleType>) => {
         dispatch(articlesPageActions.setType(tab.value));
-        dispatch(articlesPageActions.setPage(1));
+        dispatch(articlesPageActions.setPage(0));
         fetchData();
     }, [dispatch, fetchData]);
 
@@ -87,12 +86,11 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps): React
                 view={view}
                 onViewClick={onChangeView}/>
         </div>
-        <Card className={cls.search}>
-            <Input
-                onChange={onChangeSearch}
-                value={search}
-                placeholder={t('Поиск')}/>
-        </Card>
+        <Input
+            className={cls.search}
+            onChange={onChangeSearch}
+            value={search}
+            placeholder={t('Поиск')}/>
         <ArticleTypeTabs
             className={cls.tabs}
             value={type}

@@ -258,9 +258,9 @@ export const ArticleCreateContent = memo((props: ArticleCreateContentProps): Rea
     return <div className={classNames(cls.ArticleCreateContent, {}, [className])}>
         <ArticleCreationDetails className={isArticleOpened ? '' : cls.none} onDeleteBlock={onDeleteBlock} article={article} />
         <VStack className={isArticleOpened ? cls.none : ''} gap='8'>
-            <HStack max align='start' gap='16'>
-                <VStack gap='8'>
-                    <Tabs onTabClick={onChangeArticleType} tabs={typeTabs} value={article.type} />
+            <HStack className={cls.options} max align='start' gap='16'>
+                <VStack className={cls.tabsContainer} gap='8'>
+                    <Tabs className={cls.tabs} onTabClick={onChangeArticleType} tabs={typeTabs} value={article.type} />
                     <FileUpload avatar={article.img} accept='image/*' setFile={onChangeArticleImg}>
                         Загрузить изображение
                     </FileUpload>
@@ -272,7 +272,7 @@ export const ArticleCreateContent = memo((props: ArticleCreateContentProps): Rea
                     <Input className={cls.input} value={article.subtitle} onChange={onChangeArticleSubTitle} />
                 </VStack>
             </HStack>
-            <Tabs onTabClick={onChangeBlockType} tabs={blockTypeTabs} value={currentBlockType} />
+            <Tabs className={cls.blockTabs} onTabClick={onChangeBlockType} tabs={blockTypeTabs} value={currentBlockType} />
             {renderCurrentBlock()}
             <Button disabled={isBlockCreationButtonDisabled()} className={cls.button} onClick={onChangeBlocks}>
                 Добавить блок

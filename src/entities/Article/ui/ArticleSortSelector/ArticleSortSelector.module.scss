@@ -6,3 +6,14 @@
 .order {
     margin-left: 8px;
 }   
+
+@media (max-width: 600px) {
+    .ArticleSortSelector {
+        flex-direction: column;
+        align-items: start;
+        gap: 16px;
+    }
+    .order {
+        margin: 0 ;
+    }
+}

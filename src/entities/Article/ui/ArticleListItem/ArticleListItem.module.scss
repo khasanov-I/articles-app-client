@@ -32,6 +32,9 @@
         max-height: 200px;
         overflow-y: hidden;
     }
+    .btn {
+        width: 100px;
+    }
 }
 
 .SMALL {
@@ -64,6 +67,7 @@
     .img {
         width: 200px;
         height: 200px;
+        object-fit: cover;
     }
     
     .infoWrapper {

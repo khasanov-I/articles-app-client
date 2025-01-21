@@ -12,5 +12,6 @@ import {ArticleCodeBlockComponent} from './ui/ArticleCodeBlockComponent/ArticleC
 import {ArticleTextBlockComponent} from './ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 import {ArticleImageBlockComponent} from './ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
+import {articleDetailsReducer} from './model/slice/articleDetailsSlice';
 export type {Article, ArticleDetailsSchema, ArticleBlock};
-export {getArticleDetailsData, getArticleDetailsIsLoading, getArticleDetailsError, ArticleImageBlockComponent, ArticleCodeBlockComponent, ArticleTextBlockComponent, ArticleBlockType, ArticleTypeTabs, ArticleViewSelector, ArticleDetails, ArticleView, ArticleList, ArticleSortSelect, ArticleOrder, ArticleSort, ArticleType};
+export {articleDetailsReducer, getArticleDetailsData, getArticleDetailsIsLoading, getArticleDetailsError, ArticleImageBlockComponent, ArticleCodeBlockComponent, ArticleTextBlockComponent, ArticleBlockType, ArticleTypeTabs, ArticleViewSelector, ArticleDetails, ArticleView, ArticleList, ArticleSortSelect, ArticleOrder, ArticleSort, ArticleType};

@@ -2,29 +2,24 @@ import {useTranslation} from 'react-i18next';
 import cls from './ArticleDetails.module.scss';
 import {classNames} from '@/shared/lib/classNames';
 import {useEffect, type ReactNode, memo, useCallback} from 'react';
-import {DynamicModuleLoader, type ReducersList} from '@/shared/lib/dynamicModuleLoader/dynamicModuleLoader';
-import {articleDetailsReducer} from '../../model/slice/articleDetailsSlice';
 import {useAppDispatch} from '@/app/providers/StoreProvider';
 import {fetchArticleById} from '../../model/services/fetchArticleById/fetchArticleById';
 import {useSelector} from 'react-redux';
 import {getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading} from '../../model/selectors/articleDetails';
 import {Text, TextTheme} from '@/shared/ui/Text/Text';
 import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
-import {Avatar} from '@/shared/ui/Avatar/Avatar';
 import {CalendarLogo, EyeLogo} from '@/shared/assets/icons';
 import {type ArticleBlock} from '../../model/types/article';
 import {ArticleBlockType} from '../../model/consts/consts';
 import {ArticleCodeBlockComponent} from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import {ArticleImageBlockComponent} from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import {ArticleTextBlockComponent} from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import {formatDate} from '@/shared/lib/formatDate/formatDate';
+import {Avatar} from '@/shared/ui/Avatar/Avatar';
 
 type ArticleDetailsProps = {
     className?: string;
     id?: string;
-};
-
-const reducers: ReducersList = {
-    articleDetails: articleDetailsReducer,
 };
 
 export const ArticleDetails = memo((props: ArticleDetailsProps): ReactNode => {
@@ -66,16 +61,20 @@ export const ArticleDetails = memo((props: ArticleDetailsProps): ReactNode => {
             <Skeleton className={cls.skeleton} width={'100%'} height={200}/>
             <Skeleton className={cls.skeleton} width={'100%'} height={200}/>
         </div>);
-    } else if (error) {
+    }
+
+    if (error) {
         content = (
             <Text title={t('Произошла ошибка при загрузке статьи')}
                 theme={TextTheme.ERROR}/>
         );
-    } else {
+    }
+
+    if (article) {
         content = (
             <>
                 <div className={cls.avatarWrapper}>
-                    <Avatar src={article?.img}
+                    <Avatar alt='no image' src={`${__API__}/${article?.img}`}
                         size={200}
                         className={cls.avatar}
                     />
@@ -87,16 +86,14 @@ export const ArticleDetails = memo((props: ArticleDetailsProps): ReactNode => {
                 </div>
                 <div className={cls.articleInfo}>
                     <CalendarLogo className='icons' />
-                    <Text text={article?.createdAt}/>
+                    <Text text={article?.createdAt && formatDate(article?.createdAt)}/>
                 </div>
                 {article?.blocks.map(renderBlock)}
             </>
         );
     }
 
-    return <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-        <div className={classNames(cls.ArticleDetails, {}, [className])}>
-            {content}
-        </div>
-    </DynamicModuleLoader>;
+    return <div className={classNames(cls.ArticleDetails, {}, [className])}>
+        {content}
+    </div>;
 });

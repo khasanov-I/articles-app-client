@@ -9,6 +9,7 @@ import {useSelector} from 'react-redux';
 import {useAppDispatch} from '@/app/providers/StoreProvider';
 import {addCommentActions, addCommentReducer} from '../../model/slice/addCommentSlice';
 import {DynamicModuleLoader, type ReducersList} from '@/shared/lib/dynamicModuleLoader/dynamicModuleLoader';
+import {notificationReducer} from '@/entities/Notification';
 
 export type AddCommentFormProps = {
     className?: string;
@@ -20,6 +21,7 @@ const AddCommentForm = memo((props: AddCommentFormProps): ReactNode => {
 
     const reducers: ReducersList = {
         addComment: addCommentReducer,
+        notification: notificationReducer,
     };
 
     const text = useSelector(getAddCommentText);

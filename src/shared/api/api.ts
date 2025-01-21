@@ -28,7 +28,7 @@ $api?.interceptors?.response?.use(config => config, async error => {
             localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, response.data.accessToken);
             return await $api.request(originalRequest);
         } catch (e) {
-            console.log('НЕ АВТОРИЗОВАН');
+            // Location.reload();
         }
     }
 

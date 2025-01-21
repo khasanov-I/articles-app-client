@@ -1,9 +1,14 @@
 .ArticleDetails {
     min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .avatar {
-    margin: 0 auto;
+    max-width: 100%;
+    // margin: 0 auto;
+    // object-fit: cover;
 }
 
 .title {

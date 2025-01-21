@@ -18,6 +18,8 @@ export const ArticlesInfiniteList = memo((props: ArticlesInfiniteListProps): Rea
 
     const articles = useSelector(getArticles.selectAll);
 
+    console.log(articles.length);
+
     const error = useSelector(getArticlesPageError);
     const isLoading = useSelector(getArticlesPageIsLoading);
     const view = useSelector(getArticlesPageView);
@@ -27,8 +29,6 @@ export const ArticlesInfiniteList = memo((props: ArticlesInfiniteListProps): Rea
             theme={TextTheme.ERROR}
             text={t('Ошибка при загрузке статей')} />;
     }
-
-    console.log(articles);
 
     return <div className={classNames('', {}, [className])}>
         <ArticleList

@@ -11,7 +11,7 @@ export type ArticleRatingProps = {
     articleId: string;
 };
 
-const ArticleRating = memo((props: ArticleRatingProps): ReactNode => {
+export const ArticleRating = memo((props: ArticleRatingProps): ReactNode => {
     const {className = '', articleId} = props;
 
     const {t} = useTranslation('article-details');
@@ -50,7 +50,7 @@ const ArticleRating = memo((props: ArticleRatingProps): ReactNode => {
         return <Skeleton width='100%' height='120px'/>;
     }
 
-    const rating = data?.[0];
+    const rating = data;
 
     return <RatingCard
         onCancel={onCancel}
@@ -61,5 +61,3 @@ const ArticleRating = memo((props: ArticleRatingProps): ReactNode => {
         feedbackTitle={t('Оставьте свой отзыв о статье, это поможет улучшить качество')}
         hasFeedback/>;
 });
-
-export default ArticleRating;

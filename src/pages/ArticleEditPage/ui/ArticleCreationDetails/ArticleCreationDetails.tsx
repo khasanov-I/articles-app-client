@@ -2,7 +2,6 @@ import cls from './ArticleCreationDetails.module.scss';
 import {classNames} from '@/shared/lib/classNames';
 import {type ReactNode, memo, useCallback} from 'react';
 import {Text} from '@/shared/ui/Text/Text';
-import {Avatar} from '@/shared/ui/Avatar/Avatar';
 import {CalendarLogo, EyeLogo} from '@/shared/assets/icons';
 import {type ArticleCreationBlock, type ArticleSchema} from '../../model/types/articlesCreateSchema';
 import {ArticleBlockType} from '@/entities/Article';
@@ -35,8 +34,8 @@ export const ArticleCreationDetails = memo((props: ArticleCreationDetailsProps):
     const content = (
         <>
             {article.img ? <div className={cls.avatarWrapper}>
-                <Avatar src={URL.createObjectURL(article?.img as Blob)}
-                    size={200}
+                <img src={URL.createObjectURL(article?.img as Blob)}
+                    // Size={200}
                     className={cls.avatar}
                 />
             </div> : null}

@@ -10,11 +10,14 @@ import {useInitialEffect} from '@/shared/lib/hooks/useInitialEffect';
 import {fetchProfileData} from '../../model/services/fetchProfileData/fetchProfileData';
 import {useSelector} from 'react-redux';
 import {useAppDispatch} from '@/app/providers/StoreProvider';
-import {getProfileAge, getProfileAvatar, getProfileCity, getProfileCountry, getProfileCurrency, getProfileFirstName, getProfileLastName, getProfileUsername} from '../../model/selectors/getProfileData/getProfileData';
+import {getProfileAge, getProfileAvatar, getProfileCity, getProfileCountry, getProfileFirstName, getProfileLastName, getProfileUsername} from '../../model/selectors/getProfileData/getProfileData';
 import {getProfileError} from '../../model/selectors/getProfileError/getProfileError';
 import {getProfileIsLoading} from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import {NoAvatar} from '@/shared/assets/img';
 import {VStack} from '@/shared/ui/Stack/VStack/VStack';
+// eslint-disable-next-line kh-i-start-plugin/layer-imports
+import {fetchArticlesByProfile, getProfileArticles, getProfileArticlesError, getProfileArticlesIsLoading, getProfileMounted} from '@/pages/ProfilePage';
+import {ArticleList, ArticleView} from '@/entities/Article';
 
 type ProfileCardProps = {
     className?: string;
@@ -32,7 +35,6 @@ export function ProfileCard(props: ProfileCardProps): ReactNode {
     const city = useSelector(getProfileCity);
     const lastname = useSelector(getProfileLastName);
     const firstname = useSelector(getProfileFirstName);
-    const currency = useSelector(getProfileCurrency);
     const country = useSelector(getProfileCountry);
     const avatar = useSelector(getProfileAvatar);
     const username = useSelector(getProfileUsername);
@@ -41,10 +43,16 @@ export function ProfileCard(props: ProfileCardProps): ReactNode {
 
     const isLoading = useSelector(getProfileIsLoading);
 
+    const articles = useSelector(getProfileArticles);
+    const articlesError = useSelector(getProfileArticlesError);
+    const articlesIsLoading = useSelector(getProfileArticlesIsLoading);
+    const mounted = useSelector(getProfileMounted);
+
     useInitialEffect(() => {
-        if (id) {
-            void dispatch(fetchProfileData(id));
-        }
+        // If (id && !mounted) {
+        void dispatch(fetchProfileData(id));
+        void dispatch(fetchArticlesByProfile(id));
+        // }
     });
 
     if (error) {
@@ -59,15 +67,20 @@ export function ProfileCard(props: ProfileCardProps): ReactNode {
         </HStack>;
     }
 
-    return <HStack align='start' gap='8' max className={classNames(cls.ProfileCard, {}, [className])}>
-        <Avatar alt='not found' src={avatar ? `${__API__}/${avatar}` : NoAvatar as string} size={200}/>
-        <VStack>
-            <HStack>
-                <span>{firstname + ' ' + lastname}</span>
-            </HStack>
-            <span>{'Возраст: ' + age}</span>
-            <span>{'Место проживания: ' + city}</span>
-            <span>{'Страна проживания: ' + country}</span>
-        </VStack>
-    </HStack>;
+    return <VStack className={cls.content} gap='16'>
+        <HStack align='start' gap='8' max className={classNames(cls.ProfileCard, {}, [className])}>
+            <Avatar alt='not found' src={avatar ? `${__API__}/${avatar}` : NoAvatar as string} size={200}/>
+            <VStack>
+                <HStack>
+                    <span>{firstname + ' ' + lastname}</span>
+                </HStack>
+                <span>{'Возраст: ' + age}</span>
+                <span>{'Место проживания: ' + city}</span>
+                <span>{'Страна проживания: ' + country}</span>
+            </VStack>
+        </HStack>
+        {articlesIsLoading ? <Loader /> : null}
+        {articlesError ? <Text theme={TextTheme.ERROR} text={'Произошла ошибка при загрузке статей'} /> : null}
+        <ArticleList className={cls.list} view={ArticleView.BIG} articles={articles} />
+    </VStack>;
 }

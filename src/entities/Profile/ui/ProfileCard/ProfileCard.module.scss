@@ -4,3 +4,18 @@
     border-right: none;
     border-left: none;
 }
+
+.content {
+    width: 100%;
+}
+
+.list {
+    width: 100%;
+}
+
+@media (max-width: 520px) {
+    .ProfileCard {
+        flex-direction: column;
+        align-items: center;
+    }
+}

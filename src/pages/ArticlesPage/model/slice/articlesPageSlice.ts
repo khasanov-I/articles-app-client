@@ -25,7 +25,7 @@ const articlesPageSlice = createSlice({
         ids: [],
         entities: {},
         view: ArticleView.SMALL,
-        page: 1,
+        page: 0,
         hasMore: true,
         _inited: false,
         order: ArticleOrder.ASC,

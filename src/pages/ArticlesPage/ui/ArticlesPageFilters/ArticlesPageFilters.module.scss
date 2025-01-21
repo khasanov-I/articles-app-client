@@ -15,3 +15,14 @@
 .tabs {
     margin-top: 16px;
 }
+
+@media (max-width: 600px) {
+    .sortWrapper {
+        flex-direction: column;
+        gap: 16px;
+        align-items: start;
+    }
+    .tabs {
+        flex-direction: column;
+    }
+}

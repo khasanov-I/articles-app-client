@@ -11,12 +11,12 @@ export const fetchNextArticlesPage
     async (_, thunkAPI) => {
         const {dispatch, getState} = thunkAPI;
         const hasMore = getArticlesPageHasMore(getState()) ?? true;
-        const page = getArticlesPageNum(getState()) ?? 1;
-        const limit = getArticlesPageLimit(getState());
+        const page = getArticlesPageNum(getState()) ?? 0;
+        const limit = getArticlesPageLimit(getState()) ?? 9;
         const isLoading = getArticlesPageIsLoading(getState()) ?? false;
 
         if (hasMore && !isLoading) {
-            dispatch(articlesPageActions.setPage(page + 1));
+            dispatch(articlesPageActions.setPage(page + limit));
             void dispatch(fetchArticlesList({}));
         }
     },

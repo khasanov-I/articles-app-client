@@ -17,10 +17,12 @@ export const Code = memo((props: CodeProps): ReactNode => {
 
     // Const {t} = useTranslation('article-details');
 
-    return <pre className={classNames(cls.Code, {}, [className])}>
-        <Button onClick={onCopy} className={cls.copyBtn}>Копировать</Button>
-        <code>
-            {text}
-        </code>
-    </pre>;
+    return <div className={cls.container}>
+        <pre className={classNames(cls.Code, {}, [className])}>
+            <Button onClick={onCopy} className={cls.copyBtn}>Копировать</Button>
+            <code>
+                {text}
+            </code>
+        </pre>
+    </div>;
 });

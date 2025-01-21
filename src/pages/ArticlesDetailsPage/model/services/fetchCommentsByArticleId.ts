@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/indent */
+
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {type ThunkConfig} from '@/app/providers/StoreProvider';
 import {type Comment} from '@/entities/Comment';
@@ -16,12 +16,7 @@ export const fetchCommentsArticleById
         try {
             const response = await extra
                 .api
-                .get<Comment[]>('/comments', {
-                    params: {
-                        articleId,
-                        _expand: 'user',
-                    },
-                });
+                .get<Comment[]>(`/comments/${articleId}`);
 
             if (!response.data) {
                 throw new Error();

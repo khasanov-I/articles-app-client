@@ -42,9 +42,9 @@ const LoginContent = (props: LoginContentProps): ReactNode => {
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
 
-    const onLoginClick = useCallback(async () =>
-        appDispatch(loginByUsername({username, password}))
-    , [appDispatch, username, password]);
+    const onLoginClick = useCallback(async () => {
+        await appDispatch(loginByUsername({username, password}));
+    }, [appDispatch, username, password]);
 
     return <div className={classNames(cls.LoginForm, {}, [])}>
         {error ? <Text text={t('Неверный логин или пароль')} theme={TextTheme.ERROR}/> : undefined}

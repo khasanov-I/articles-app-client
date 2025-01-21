@@ -47,8 +47,9 @@ export const Navbar = memo((): ReactNode => {
     if (authData) {
         return <header className={cls.navbar}>
             <AppLink
+                className={cls.createArticleBtn}
                 to={pagePaths.article_create}>
-                {'Создать статью'}
+                <span className={cls.text}>Создать статью</span>
             </AppLink>
             <HStack gap='16' className={cls.links}>
                 <NotificationButton />

@@ -7,6 +7,7 @@ import {Avatar} from '@/shared/ui/Avatar/Avatar';
 import {Text} from '@/shared/ui/Text/Text';
 import {AppLink} from '@/shared/ui/AppLink/AppLink';
 import {getRouteProfile} from '@/shared/const/router';
+import {NoAvatar} from '@/shared/assets/img';
 
 type CommentCardProps = {
     className?: string;
@@ -17,10 +18,6 @@ type CommentCardProps = {
 export const CommentCard = memo((props: CommentCardProps): ReactNode => {
     const {className = '', comment, isLoading} = props;
 
-    if (!comment) {
-        return undefined;
-    }
-
     return isLoading
         ? <div className={classNames(cls.CommentCard, {}, [className])}>
             <div className={cls.header}>
@@ -29,11 +26,11 @@ export const CommentCard = memo((props: CommentCardProps): ReactNode => {
             </div>
             <Skeleton className={cls.text} width='100%' height={50} />
         </div>
-        : <AppLink to={getRouteProfile(comment.user.id)} className={classNames(cls.CommentCard, {}, [className])}>
+        : <AppLink to={getRouteProfile(String(comment?.profileId))} className={classNames(cls.CommentCard, {}, [className])}>
             <div className={cls.header}>
-                {comment.user.avatar ? <Avatar size={30} src={comment.user.avatar} /> : null}
-                <Text className={cls.username} title={comment.user.username} />
+                <Avatar size={30} src={comment?.profileAvatar ? `${__API__}/${comment?.profileAvatar}` : NoAvatar as string} />
+                <Text className={cls.username} title={comment?.profileUsername} />
             </div>
-            <Text className={cls.text} text={comment.text} />
+            <Text className={cls.text} text={comment?.text} />
         </AppLink>;
 });

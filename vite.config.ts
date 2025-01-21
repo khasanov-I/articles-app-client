@@ -17,5 +17,6 @@ export default defineConfig({
         __IS_DEV__: JSON.stringify(true),
         __API__: JSON.stringify('http://localhost:5000'),
         __PROJECT__: JSON.stringify('frontend'),
+        __CLIENT_URL__: JSON.stringify('http://localhost:5173'),
     },
 });

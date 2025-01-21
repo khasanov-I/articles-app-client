@@ -7,6 +7,7 @@ import {useTranslation} from 'react-i18next';
 import {Page} from '@/widgets/Page';
 import {ProfileCard, profileReducer} from '@/entities/Profile';
 import {DynamicModuleLoader, type ReducersList} from '@/shared/lib/dynamicModuleLoader/dynamicModuleLoader';
+import {profileArticlesReducer} from '../model/slice/slice';
 
 type ProfilePageProps = {
     className?: string;
@@ -21,6 +22,7 @@ function ProfilePage(props: ProfilePageProps): ReactNode {
 
     const reducers: ReducersList = {
         profile: profileReducer,
+        articleProfile: profileArticlesReducer,
     };
 
     if (!id) {

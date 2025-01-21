@@ -14,19 +14,13 @@ import {AppLink} from '@/shared/ui/AppLink/AppLink';
 import {getRouteArticleDetails} from '@/shared/const/router';
 import {Avatar} from '@/shared/ui/Avatar/Avatar';
 import {NoAvatar} from '@/shared/assets/img';
+import {formatDate} from '@/shared/lib/formatDate/formatDate';
 
 type ArticleListItemProps = {
     className?: string;
     article: Article;
     view: ArticleView;
     target?: HTMLAttributeAnchorTarget;
-};
-
-const formatDate = (str: string) => {
-    const arr = str.split('T');
-    const day = arr[0];
-    const time = arr[1];
-    return `${day} в ${time.substring(0, 5)}`;
 };
 
 export const ArticleListItem = memo((props: ArticleListItemProps): ReactNode => {
@@ -55,7 +49,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps): ReactNode => 
                     <AppLink
                         target={target}
                         to={getRouteArticleDetails(article.id)}>
-                        <Button>
+                        <Button className={cls.btn}>
                             {t('Читать далее')}
                         </Button>
                     </AppLink>
@@ -72,11 +66,11 @@ export const ArticleListItem = memo((props: ArticleListItemProps): ReactNode => 
             to={getRouteArticleDetails(article.id)}>
             <Card>
                 <div className={cls.imageWrapper}>
-                    <img src={article.img} className={cls.img}/>
-                    <Text text={article.createdAt} className={cls.date}/>
+                    <img src={`${__API__}/${article.img}`} className={cls.img}/>
+                    <Text text={formatDate(article.createdAt)} className={cls.date}/>
                 </div>
                 <div className={cls.infoWrapper}>
-                    {/* <Text text={article.type.join(', ')} className={cls.types}/> */}
+                    <Text text={article.type} className={cls.types}/>
                     <Text text={String(article.views)} className={cls.views}/>
                     <EyeLogo className='icons' />
                 </div>

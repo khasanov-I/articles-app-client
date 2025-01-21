@@ -4,3 +4,8 @@ export type Notification = {
     description: string;
     href?: string;
 };
+
+export type NotificationSchema = {
+    error?: string;
+    isLoading: boolean;
+};

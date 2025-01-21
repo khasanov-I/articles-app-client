@@ -5,13 +5,15 @@ import {type UserSchema} from '@/entities/User';
 import {type AddCommentSchema} from '@/features/AddComment';
 import {type LoginSchema} from '@/features/AuthByUsername';
 import {type ScrollRestorationSchema} from '@/features/UI';
-import {type ArticleDetailsPageSchema} from '@/pages/ArticlesDetailsPage';
 import {type ArticlesPageSchema} from '@/pages/ArticlesPage';
 import {type rtkApi} from '@/shared/api/rtkApi';
 import {type RegisterSchema} from '@/features/Register';
 import {type SendMailSchema} from '@/features/Register';
 import {type ProfileSchema} from '@/entities/Profile';
 import {type ArticleCreationSchema} from '@/pages/ArticleEditPage';
+import {type ArticleDetailsCommentsSchema} from '@/pages/ArticlesDetailsPage';
+import {type ProfileArticleListSchema} from '@/pages/ProfilePage';
+import {type NotificationSchema} from '@/entities/Notification';
 
 export type StateSchema = {
     user: UserSchema;
@@ -23,10 +25,12 @@ export type StateSchema = {
     articleDetails?: ArticleDetailsSchema;
     addComment?: AddCommentSchema;
     articlesPage?: ArticlesPageSchema;
-    articleDetailsPage?: ArticleDetailsPageSchema;
     registerForm?: RegisterSchema;
     sendMail?: SendMailSchema;
     articleCreate?: ArticleCreationSchema;
+    articleDetailsComments?: ArticleDetailsCommentsSchema;
+    articleProfile?: ProfileArticleListSchema;
+    notification?: NotificationSchema;
 };
 
 export type StateSchemaKey = keyof StateSchema;

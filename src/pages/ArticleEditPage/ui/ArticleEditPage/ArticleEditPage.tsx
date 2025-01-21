@@ -37,11 +37,11 @@ const ArticleEditPage = memo((props: ArticleEditPageProps): ReactNode => {
 
     return <Page
         className={classNames(cls.ArticleEditPage, {}, [className])}>
-        <HStack justify='between'>
+        <HStack className={cls.header} justify='between'>
             <span>Создание новой статьи</span>
             {isArticleOpen
-                ? <Button onClick={onArticleClose}>Закрыть статью</Button>
-                : <Button onClick={onArticleOpen}>Посмотреть статью</Button>}
+                ? <Button className={cls.btn} onClick={onArticleClose}>Закрыть статью</Button>
+                : <Button className={cls.btn} onClick={onArticleOpen}>Посмотреть статью</Button>}
         </HStack>
         <DynamicModuleLoader reducers={reducers}>
             <ArticleCreateContent isArticleOpened={isArticleOpen} />
