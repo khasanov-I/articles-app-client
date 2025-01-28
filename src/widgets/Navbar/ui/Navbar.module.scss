@@ -10,8 +10,11 @@
 }
 
 .links {
+    display: flex;
+    flex-direction: row;
     position: absolute;
     right: 30px;
+    gap: 10px;
 }
 
 .text {

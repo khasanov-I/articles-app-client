@@ -7,7 +7,6 @@ import {fetchArticleById} from '../../model/services/fetchArticleById/fetchArtic
 import {useSelector} from 'react-redux';
 import {getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading} from '../../model/selectors/articleDetails';
 import {Text, TextTheme} from '@/shared/ui/Text/Text';
-import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
 import {CalendarLogo, EyeLogo} from '@/shared/assets/icons';
 import {type ArticleBlock} from '../../model/types/article';
 import {ArticleBlockType} from '../../model/consts/consts';
@@ -16,6 +15,7 @@ import {ArticleImageBlockComponent} from '../ArticleImageBlockComponent/ArticleI
 import {ArticleTextBlockComponent} from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import {formatDate} from '@/shared/lib/formatDate/formatDate';
 import {Avatar} from '@/shared/ui/Avatar/Avatar';
+import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
 
 type ArticleDetailsProps = {
     className?: string;
@@ -53,16 +53,6 @@ export const ArticleDetails = memo((props: ArticleDetailsProps): ReactNode => {
 
     let content;
 
-    if (isLoading) {
-        content = (<div>
-            <Skeleton className={cls.avatar} width={200} height={200} border={'50%'}/>
-            <Skeleton className={cls.title} width={300} height={32}/>
-            <Skeleton className={cls.skeleton} width={600} height={24}/>
-            <Skeleton className={cls.skeleton} width={'100%'} height={200}/>
-            <Skeleton className={cls.skeleton} width={'100%'} height={200}/>
-        </div>);
-    }
-
     if (error) {
         content = (
             <Text title={t('Произошла ошибка при загрузке статьи')}
@@ -95,5 +85,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps): ReactNode => {
 
     return <div className={classNames(cls.ArticleDetails, {}, [className])}>
         {content}
+        {isLoading ? <div>
+            <Skeleton className={cls.avatar} width={200} height={200} border={'50%'}/>
+            <Skeleton className={cls.title} width={300} height={32}/>
+            <Skeleton className={cls.skeleton} width={600} height={24}/>
+            <Skeleton className={cls.skeleton} width={'100%'} height={200}/>
+            <Skeleton className={cls.skeleton} width={'100%'} height={200}/>
+        </div> : null}
     </div>;
 });

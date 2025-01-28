@@ -12,8 +12,8 @@ import {sendMail} from '../../model/services/sendMail';
 import {Loader} from '@/shared/ui/Loader/Loader';
 import {Text, TextTheme} from '@/shared/ui/Text/Text';
 import {profileActions} from '@/entities/Profile';
-import {CurrencySelect, type Currency} from '@/entities/Currency';
-import {CountrySelect, type Country} from '@/entities/Country';
+import {type Currency} from '@/entities/Currency';
+import {type Country} from '@/entities/Country';
 import {getProfileAge, getProfileCity, getProfileCountry, getProfileCurrency, getProfileFirstName, getProfileLastName} from '@/entities/Profile';
 
 type RegisterContentProps = {
@@ -118,10 +118,6 @@ const RegisterContent = (props: RegisterContentProps): ReactNode => {
         <Input className={classNames(cls.input, {[cls.mobileInput]: true}, [])} value={firstname} type='text' onChange={onChangeFirstName}/>
         <span className={cls.text}>Введите вашу фамилию:</span>
         <Input className={classNames(cls.input, {[cls.mobileInput]: true}, [])} value={lastname} type='text' onChange={onChangeLastName}/>
-        <span className={cls.text}>Выберите вашу страну проживания:</span>
-        <CountrySelect value={country} onChange={onChangeCountry}/>
-        <span className={cls.text}>Выберите вашу валюту:</span>
-        <CurrencySelect value={currency} onChange={onChangeCurrency}/>
         <span className={cls.text}>Загрузите аватар:</span>
         <FileUpload avatar={avatar} accept='image/*' setFile={setAvatar}>
             Загрузить изображение

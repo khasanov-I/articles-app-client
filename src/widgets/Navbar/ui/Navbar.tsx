@@ -70,7 +70,7 @@ export const Navbar = memo((): ReactNode => {
                     {t('Вход')}
                 </Button>
                 <Button theme={ButtonTheme.CLEAR} onClick={onShowRegisterModal}>
-                    Регистрация
+                    {t('Регистрация')}
                 </Button>
                 <BrowserView>
                     <LoginModal isOpen={isAuthModalOpen} onClose={onCloseAuthModal} />

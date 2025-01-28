@@ -1,5 +1,4 @@
 import {AboutPageAsync} from '@/pages/AboutPage';
-import {MainPageAsync} from '@/pages/MainPage';
 import {NotFoundPage} from '@/pages/NotFoundPage';
 import {ProfilePageAsync} from '@/pages/ProfilePage';
 import {ArticlesPageAsync} from '@/pages/ArticlesPage';
@@ -15,7 +14,6 @@ import {Pages,
     getRouteArticleEdit,
     getRouteForbidden,
     getRouteArticles,
-    getRouteMain,
     getRouteProfile,
     getRouteEmailActivate} from '@/shared/const/router';
 import {type AppRouterProps} from '@/shared/types/router';
@@ -23,10 +21,10 @@ import {ArticleEditPageAsync} from '@/pages/ArticleEditPage';
 import {EmailActivationPage} from '@/pages/EmailActivationPage';
 
 export const routeConfig: Record<Pages, AppRouterProps> = {
-    [Pages.MAIN]: {
-        path: getRouteMain(),
-        element: <MainPageAsync />,
-    },
+    // [Pages.MAIN]: {
+    //     path: getRouteMain(),
+    //     element: <MainPageAsync />,
+    // },
     [Pages.ABOUT]: {
         path: getRouteAbout(),
         element: <AboutPageAsync />,
@@ -34,17 +32,17 @@ export const routeConfig: Record<Pages, AppRouterProps> = {
     [Pages.PROFILE]: {
         path: getRouteProfile(':id'),
         element: <ProfilePageAsync />,
-        authOnly: true,
+        // AuthOnly: true,
     },
     [Pages.ARTICLES]: {
         path: getRouteArticles(),
         element: <ArticlesPageAsync />,
-        authOnly: true,
+        // AuthOnly: true,
     },
     [Pages.ARTICLE_DETAILS]: {
         path: getRouteArticleDetails(':id'),
         element: <ArticleDetailsPageAsync />,
-        authOnly: true,
+        // AuthOnly: true,
     },
     [Pages.ARTICLE_CREATE]: {
         path: getRouteArticleCreate(),

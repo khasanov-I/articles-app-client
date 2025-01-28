@@ -1,6 +1,6 @@
 import {getUserAuthData, getUserRoles} from '@/entities/User';
 import {type UserRole} from '@/shared/const/user';
-import {getRouteForbidden, getRouteMain} from '@/shared/const/router';
+import {getRouteArticles, getRouteForbidden} from '@/shared/const/router';
 import {useMemo} from 'react';
 import {useSelector} from 'react-redux';
 import {Navigate, useLocation} from 'react-router-dom';
@@ -29,7 +29,7 @@ export function RequireAuth(props: RequireAuthProps) {
     }, [roles, userRoles]);
 
     if (!auth) {
-        return <Navigate to={getRouteMain()}
+        return <Navigate to={getRouteArticles()}
             state={{from: location}} replace/>;
     }
 

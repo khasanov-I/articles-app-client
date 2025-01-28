@@ -5,5 +5,5 @@ import {useTranslation} from 'react-i18next';
 export default function AboutPage(): ReactNode {
     const {t} = useTranslation('about');
 
-    return <Page>{t('О сайте')}</Page>;
+    return <Page>https://github.com/khasanov-I?tab=repositories</Page>;
 }

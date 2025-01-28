@@ -5,6 +5,8 @@ import {useNotifications} from '../../api/notificationApi';
 import {VStack} from '@/shared/ui/Stack/VStack/VStack';
 import {NotificationItem} from '../NotificationItem/NotificationItem';
 import {Skeleton} from '@/shared/ui/Skeleton/Skeleton';
+import {useSelector} from 'react-redux';
+import {getUserAuthData} from '@/entities/User';
 
 type NotificationListProps = {
     className?: string;
@@ -13,7 +15,9 @@ type NotificationListProps = {
 export const NotificationList = memo((props: NotificationListProps): ReactNode => {
     const {className = ''} = props;
 
-    const {data, isLoading} = useNotifications(undefined, {
+    const authData = useSelector(getUserAuthData)!;
+
+    const {data, isLoading} = useNotifications(authData?.id, {
         pollingInterval: 10000,
     });
 

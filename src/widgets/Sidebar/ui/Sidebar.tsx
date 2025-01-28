@@ -39,7 +39,7 @@ export const Sidebar = memo((props: SidebarProps): ReactNode => {
             <Button data-testid='sidebar-toggle' theme={ButtonTheme.IMAGE_BUTTON} onClick={toggle}>
                 <MenuLogo className='img'/>
             </Button>
-            <VStack role='navigation' gap='32'>
+            <VStack className={cls.links} role='navigation' gap='32'>
                 {itemsList}
             </VStack>
             <div className={cls.switchers}>

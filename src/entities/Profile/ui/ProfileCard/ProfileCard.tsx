@@ -76,7 +76,6 @@ export function ProfileCard(props: ProfileCardProps): ReactNode {
                 </HStack>
                 <span>{'Возраст: ' + age}</span>
                 <span>{'Место проживания: ' + city}</span>
-                <span>{'Страна проживания: ' + country}</span>
             </VStack>
         </HStack>
         {articlesIsLoading ? <Loader /> : null}

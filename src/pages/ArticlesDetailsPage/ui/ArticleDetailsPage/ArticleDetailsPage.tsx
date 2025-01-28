@@ -11,6 +11,8 @@ import {articleDetailsCommentsReducer} from '../../model/slices/articleDetailsCo
 import {ArticleDetailsPageHeader} from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import {ArticleDetailsComments} from '../ArticleDetailsComments/ArticleDetailsComments';
 import {ArticleRating} from '@/features/articleRating';
+import {useSelector} from 'react-redux';
+import {getUserAuthData} from '@/entities/User';
 
 type ArticleDetailsPageProps = {
     className?: string;
@@ -23,6 +25,8 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps): ReactNode => {
 
     const {id} = useParams<{id: string}>();
 
+    const authData = useSelector(getUserAuthData);
+
     const reducers: ReducersList = {
         articleDetails: articleDetailsReducer,
         articleDetailsComments: articleDetailsCommentsReducer,
@@ -32,14 +36,12 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps): ReactNode => {
         return null;
     }
 
-    console.log('page rendered');
-
     return <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
         <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
             <VStack gap='16' max>
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id}/>
-                <ArticleRating articleId={id} />
+                {authData ? <ArticleRating articleId={id} /> : undefined}
                 <ArticleDetailsComments id={id}/>
             </VStack>
         </Page>

@@ -1,7 +1,7 @@
 import {memo, useCallback, type ReactNode, Suspense} from 'react';
 import {classNames} from '@/shared/lib/classNames';
 import {useTranslation} from 'react-i18next';
-import {Text} from '@/shared/ui/Text/Text';
+import {Text, TextTheme} from '@/shared/ui/Text/Text';
 import {AddCommentFormAsync} from '@/features/AddComment';
 import {CommentList} from '@/entities/Comment';
 import {useSelector} from 'react-redux';
@@ -14,6 +14,8 @@ import {Loader} from '@/shared/ui/Loader/Loader';
 import cls from './ArticleDetailsComments.module.scss';
 import {sendNotification} from '@/entities/Notification';
 import {getArticleDetailsData} from '@/entities/Article';
+import {getUserAuthData} from '@/entities/User';
+import {HStack} from '@/shared/ui/Stack/HStack/HStack';
 
 type ArticleDetailsCommentsProps = {
     className?: string;
@@ -33,6 +35,8 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps):
 
     const dispatch = useAppDispatch();
 
+    const authData = useSelector(getUserAuthData);
+
     const onSendComment = useCallback((value: string) => {
         if (value) {
             void dispatch(addCommentForArticle(value));
@@ -51,9 +55,11 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps):
 
     return <div className={classNames(cls.comments, {}, [className])}>
         <Text className={cls.header} title={t('Комментарии')} />
-        <Suspense fallback={<Loader />}>
+        {authData ? <Suspense fallback={<Loader />}>
             <AddCommentFormAsync onSendComment={onSendComment}/>
-        </Suspense>
+        </Suspense> : <HStack justify='center'>
+            <Text theme={TextTheme.ERROR} text={'Авторизуйтесь, чтобы оставить комментарий или оценить статью'} />
+        </HStack>}
         <CommentList comments={comments} isLoading={commentsIsLoading}/>
     </div>;
 });

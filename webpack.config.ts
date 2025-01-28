@@ -4,8 +4,8 @@ import {type BuildMode, type BuildEnv, type BuildOptions} from './config/build/t
 
 export default (env: BuildEnv) => {
     const mode: BuildMode = env.mode || 'development';
-    const apiUrl = env.apiUrl || 'http://localhost:8000';
-    const PORT = env.port || 3000;
+    const apiUrl = env.apiUrl || 'https://articlesplatform.ru/api';
+    const PORT = env.port || 80;
     const paths = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
         build: path.resolve(__dirname, 'build'),

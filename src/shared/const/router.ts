@@ -1,5 +1,5 @@
 export enum Pages {
-    MAIN = 'main',
+    // MAIN = 'main',
     ABOUT = 'about',
     PROFILE = 'profile',
     ARTICLES = 'articles',
@@ -14,10 +14,11 @@ export enum Pages {
     NOT_FOUND = 'not-found',
 }
 
-export const getRouteMain = () => '/';
+// Export const getRouteMain = () => '/';
 export const getRouteAbout = () => '/about';
 export const getRouteProfile = (id: string) => `/profile/${id}`;
-export const getRouteArticles = () => '/articles';
+export const getRouteArticles = () => '/';
+// Export const getRouteArticles = () => '/articles';
 export const getRouteArticleDetails = (id: string) => `/articles/${id}`;
 export const getRouteArticleCreate = () => '/articles/new';
 export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`;
@@ -26,10 +27,11 @@ export const getRouteEmailActivate = (id: string) => `/email_activate/${id}`;
 export const getRouteForbidden = () => '/forbidden';
 
 export const pagePaths: Record<Pages, string> = {
-    [Pages.MAIN]: '/',
+    // [Pages.MAIN]: '/',
     [Pages.ABOUT]: '/about',
     [Pages.PROFILE]: '/profile/',
-    [Pages.ARTICLES]: '/articles',
+    // [Pages.ARTICLES]: '/articles',
+    [Pages.ARTICLES]: '/',
     [Pages.ARTICLE_DETAILS]: '/articles/',
     [Pages.ARTICLE_CREATE]: '/articles/new',
     [Pages.ARTICLE_EDIT]: '/articles/:id/edit',

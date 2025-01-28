@@ -32,7 +32,7 @@ export const CountrySelect = memo((props: CountrySelectProps): ReactNode => {
     return <ListBox
         className={classNames('', {}, [className])}
         defaultValue={t('Укажите страну')}
-        label={t('Укажите страну')}
+        // Label={'Укажите страну'}
         items={options}
         value={value}
         onChange={onChangeHandler}
