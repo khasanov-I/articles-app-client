@@ -7,7 +7,7 @@ type NotificationProps = {
     children: ReactNode;
 };
 
-export const Notification = memo((props: NotificationProps): ReactNode => {
+export const NotificationNode = memo((props: NotificationProps): ReactNode => {
     const {className = '', children} = props;
 
     return <div className={classNames(cls.Notification, {}, [className])}>

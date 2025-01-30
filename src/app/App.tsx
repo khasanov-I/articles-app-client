@@ -6,8 +6,9 @@ import {useTheme} from '@/shared/lib/hooks/useTheme';
 import {checkAuth} from '@/features/Register';
 import {USER_LOCAL_STORAGE_KEY} from '@/shared/const/localStorage';
 import {useAppDispatch} from './providers/StoreProvider';
-import {Notification} from '@/shared/ui/Notification/Notification';
+import {NotificationNode} from '@/shared/ui/Notification/Notification';
 import {VStack} from '@/shared/ui/Stack/VStack/VStack';
+import {type Notification} from '@/features/Register';
 
 export function App(): ReactNode {
     const {theme} = useTheme();
@@ -15,11 +16,11 @@ export function App(): ReactNode {
     const appDispatch = useAppDispatch();
     const dispatch = useDispatch();
 
-    const [notificationOn, setNotificationOn] = useState(null);
-    const onChangeNotificationOn = useCallback((message: any) => {
+    const [notificationOn, setNotificationOn] = useState<Notification | undefined>(undefined);
+    const onChangeNotificationOn = useCallback((message: Notification) => {
         setNotificationOn(message);
         setTimeout(() => {
-            setNotificationOn(null);
+            setNotificationOn(undefined);
         }, 10000);
     }, []);
 
@@ -37,13 +38,13 @@ export function App(): ReactNode {
             <Suspense>
                 <AppRouter />
             </Suspense>
-            {notificationOn ? <Notification>
+            {notificationOn ? <NotificationNode>
                 <VStack>
                     <span>{notificationOn.title}</span>
                     <span>{notificationOn.description}</span>
                     <a href={notificationOn.href} target='_blank' rel='noreferrer'>{notificationOn.href}</a>
                 </VStack>
-            </Notification> : null}
+            </NotificationNode> : null}
         </div>
     );
 }

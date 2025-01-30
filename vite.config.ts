@@ -19,4 +19,7 @@ export default defineConfig({
         __PROJECT__: JSON.stringify('frontend'),
         __CLIENT_URL__: JSON.stringify('http://localhost:5173'),
     },
+    build: {
+        cssCodeSplit: false,
+    },
 });

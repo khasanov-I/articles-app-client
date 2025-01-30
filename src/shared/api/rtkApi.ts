@@ -38,6 +38,7 @@ FetchBaseQueryError
                     extraOptions,
                 );
                 if (refreshResult.data) {
+                    // @ts-expect-error next-line
                     localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, refreshResult.data.accessToken);
                     // Retry the initial query
                     result = await baseQuery(args, api, extraOptions);

@@ -10,7 +10,14 @@ export type JwtObj = {
     refreshToken: string;
 };
 
-export const checkAuth = createAsyncThunk<User, (message) => void, ThunkConfig<string>>(
+export type Notification = {
+    readonly title: string;
+    readonly description: string;
+    readonly href: string;
+    readonly userId: number;
+};
+
+export const checkAuth = createAsyncThunk<User, (message: Notification) => void, ThunkConfig<string>>(
     'checkAuth',
 async (setNotification, thunkAPI) => {
     const {dispatch, rejectWithValue, extra} = thunkAPI;
@@ -30,7 +37,8 @@ async (setNotification, thunkAPI) => {
         // Const subscribe = useCallback(async () => {
         const eventSource = new EventSource(`http://localhost:5000/notifications/connect/subscribe/${auth.id}`);
         eventSource.onmessage = function (event) {
-            const message = JSON.parse(event.data);
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+            const message = JSON.parse(event.data) as Notification;
             setNotification(message);
             console.log(message);
         };

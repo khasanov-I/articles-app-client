@@ -11,7 +11,7 @@ export type ArticleRatingProps = {
     articleId: string;
 };
 
-export const ArticleRating = memo((props: ArticleRatingProps): ReactNode => {
+const ArticleRating = memo((props: ArticleRatingProps): ReactNode => {
     const {className = '', articleId} = props;
 
     const {t} = useTranslation('article-details');
@@ -61,3 +61,5 @@ export const ArticleRating = memo((props: ArticleRatingProps): ReactNode => {
         feedbackTitle={t('Оставьте свой отзыв о статье, это поможет улучшить качество')}
         hasFeedback/>;
 });
+
+export default ArticleRating;

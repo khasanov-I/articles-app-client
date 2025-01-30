@@ -16,7 +16,7 @@ import {getUserAuthData} from '@/entities/User';
 import {ArticleCreationDetails} from '../ArticleCreationDetails/ArticleCreationDetails';
 import {useAppDispatch} from '@/app/providers/StoreProvider';
 import {createArticle} from '../../model/services/createArticle';
-import {Notification} from '@/shared/ui/Notification/Notification';
+import {NotificationNode} from '@/shared/ui/Notification/Notification';
 
 type ArticleCreateContentProps = {
     className?: string;
@@ -281,8 +281,8 @@ export const ArticleCreateContent = memo((props: ArticleCreateContentProps): Rea
                 Создать статью
             </Button>
         </VStack>
-        {isIndicatorOn && <Notification>
+        {isIndicatorOn && <NotificationNode>
             Блок добавлен
-        </Notification>}
+        </NotificationNode>}
     </div>;
 });
