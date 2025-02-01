@@ -69,7 +69,7 @@ export function ProfileCard(props: ProfileCardProps): ReactNode {
 
     return <VStack className={cls.content} gap='16'>
         <HStack align='start' gap='8' max className={classNames(cls.ProfileCard, {}, [className])}>
-            <Avatar alt='not found' src={avatar ? `${__API__}/${avatar}` : NoAvatar as string} size={200}/>
+            <Avatar alt='not found' src={avatar ? `${__API__}/static/${avatar}` : NoAvatar as string} size={200}/>
             <VStack>
                 <HStack>
                     <span>{firstname + ' ' + lastname}</span>

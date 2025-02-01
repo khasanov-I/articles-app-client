@@ -32,7 +32,7 @@ export const AvatarDropdown = memo((props: AvatarDropdowmProps): ReactNode => {
 
     return <Dropdown
         className={classNames('', {}, [className])}
-        trigger={<Avatar size={30} src={authData?.avatar ? `${__API__}/${authData.avatar}` : NoAvatar as string}/>}
+        trigger={<Avatar size={30} src={authData?.avatar ? `${__API__}/static/${authData.avatar}` : NoAvatar as string}/>}
         direction='bottom left'
         items={[
             ...(isAdminPanelAvailable ? [

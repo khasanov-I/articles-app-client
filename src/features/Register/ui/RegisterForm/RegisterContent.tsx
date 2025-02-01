@@ -94,7 +94,9 @@ const RegisterContent = (props: RegisterContentProps): ReactNode => {
             currency}));
     }, [appDispatch, username, email, avatar, password, age, city, firstname, lastname, country, currency]);
 
-    return (isExpectingForVerification && !sendMailErrors && !registerError) ? <div>Ожидается подтверждение по почте
+    return (isExpectingForVerification && !sendMailErrors && !registerError) ? <div>
+        <span>Ожидается подтверждение по почте</span>
+        <span>Если письмо не пришло, проверьте папку спама</span>
         <Loader />
     </div> : <div className={classNames(cls.LoginForm, {}, [])}>
         <Text text={unExpectedError} theme={TextTheme.ERROR} />

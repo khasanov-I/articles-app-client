@@ -36,14 +36,14 @@ export const ArticleListItem = memo((props: ArticleListItemProps): ReactNode => 
             <Card className={cls.card}>
                 <div className={cls.header}>
                     <AppLink to={`/profile/${article.profileId}`} className={cls.username}>
-                        <Avatar size={30} src={article.authorAvatar ? `${__API__}/${article.authorAvatar}` : NoAvatar as string}/>
+                        <Avatar size={30} src={article.authorAvatar ? `${__API__}/static/${article.authorAvatar}` : NoAvatar as string}/>
                         {article.authorUsername}
                     </AppLink>
                     <Text text={formatDate(article.createdAt)} className={cls.date}/>
                 </div>
                 <Text title={article.title} className={cls.title} />
                 <Text text={article.type} className={cls.types}/>
-                <img src={`${__API__}/${article.img}`} className={cls.img}/>
+                <img src={`${__API__}/static/${article.img}`} className={cls.img}/>
                 {textBlocks && <ArticleTextBlockComponent block={textBlocks} className={cls.textBlock}/>}
                 <div className={cls.footer}>
                     <AppLink
@@ -66,7 +66,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps): ReactNode => 
             to={getRouteArticleDetails(article.id)}>
             <Card>
                 <div className={cls.imageWrapper}>
-                    <img src={`${__API__}/${article.img}`} className={cls.img}/>
+                    <img src={`${__API__}/static/${article.img}`} className={cls.img}/>
                     <Text text={formatDate(article.createdAt)} className={cls.date}/>
                 </div>
                 <div className={cls.infoWrapper}>

@@ -64,7 +64,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps): ReactNode => {
         content = (
             <>
                 <div className={cls.avatarWrapper}>
-                    <Avatar alt='no image' src={`${__API__}/${article?.img}`}
+                    <Avatar alt='no image' src={`${__API__}/static/${article?.img}`}
                         size={200}
                         className={cls.avatar}
                     />

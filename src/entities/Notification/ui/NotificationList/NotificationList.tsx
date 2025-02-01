@@ -35,8 +35,8 @@ export const NotificationList = memo((props: NotificationListProps): ReactNode =
     return <VStack gap='16'
         max
         className={classNames(cls.NotificationList, {}, [className])}>
-        {data?.map(item => (
+        {data && data?.length !== 0 ? data?.map(item => (
             <NotificationItem key={item.id} item={item}/>
-        ))}
+        )) : <span>Уведомления отсутствуют</span>}
     </VStack>;
 });

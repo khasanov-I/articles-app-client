@@ -46,7 +46,7 @@ export const sendMail = createAsyncThunk<MailResponseType, SendMailProps, ThunkC
                 throw new Error('Письмо не отправлено');
             }
 
-            const eventSource = new EventSource('http://localhost:5000/auth/register/listen');
+            const eventSource = new EventSource(`${__API__}/auth/register/listen`);
 
             eventSource.onmessage = async function (event) {
                 if (event.data === mailResponse.data) {

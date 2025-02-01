@@ -35,7 +35,7 @@ async (setNotification, thunkAPI) => {
         localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, JSON.stringify(resp.data.accessToken));
 
         // Const subscribe = useCallback(async () => {
-        const eventSource = new EventSource(`http://localhost:5000/notifications/connect/subscribe/${auth.id}`);
+        const eventSource = new EventSource(`${__API__}/notifications/connect/subscribe/${auth.id}`);
         eventSource.onmessage = function (event) {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             const message = JSON.parse(event.data) as Notification;

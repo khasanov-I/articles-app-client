@@ -28,7 +28,7 @@ export const CommentCard = memo((props: CommentCardProps): ReactNode => {
         </div>
         : <AppLink to={getRouteProfile(String(comment?.profileId))} className={classNames(cls.CommentCard, {}, [className])}>
             <div className={cls.header}>
-                <Avatar size={30} src={comment?.profileAvatar ? `${__API__}/${comment?.profileAvatar}` : NoAvatar as string} />
+                <Avatar size={30} src={comment?.profileAvatar ? `${__API__}/static/${comment?.profileAvatar}` : NoAvatar as string} />
                 <Text className={cls.username} title={comment?.profileUsername} />
             </div>
             <Text className={cls.text} text={comment?.text} />

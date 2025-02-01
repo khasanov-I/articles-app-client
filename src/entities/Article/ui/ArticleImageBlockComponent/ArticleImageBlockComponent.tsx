@@ -13,7 +13,7 @@ export const ArticleImageBlockComponent = memo((props: ArticleImageBlockComponen
     const {className = '', block} = props;
 
     return <div className={classNames(cls.ArticleImageBlockComponent, {}, [className])}>
-        <img src={`${__API__}/${block.src}`} className={cls.img}/>
+        <img src={`${__API__}/static/${block.src}`} className={cls.img}/>
         {block.title && (
             <Text text={block.title}/>
         )}
